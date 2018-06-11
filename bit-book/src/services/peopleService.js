@@ -10,8 +10,8 @@ class PeopleService {
             return data.map(user => {
                 let splited = user.lastPost.split('T')
                 let lastTime = splited[1].split(':')
-                let lastPost = `${lastTime[0]}:${lastPost[1]}`
-                return new User(user.avatarUrl, user.aboutShort, user.name, user.userId, lastPost)
+                let postLast = `${lastTime[0]}:${lastTime[1]}`
+                return new User(user.avatarUrl, user.aboutShort, user.name, user.userId, postLast)
             })
         })
 
