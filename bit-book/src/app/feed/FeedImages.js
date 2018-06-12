@@ -1,10 +1,10 @@
 import React from 'react';
 import feedService from '../../services/feedService';
 import { LoadingScreen } from '../partials/LoadingScreen';
-import { FeedContent } from './FeedContent';
 import { FeedSideBar } from './FeedSideBar';
+import { FilterImages } from './FilterImages';
 
-export default class Feed extends React.Component {
+export default class FeedImages extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -18,10 +18,6 @@ export default class Feed extends React.Component {
             this.setState({
                 posts: data
             });
-            // data.map((post, i) => {
-            //     feedService.getPostByType(post.id, post.type).then(imageData => {
-            //     });
-            // });
         });
     }
 
@@ -32,7 +28,7 @@ export default class Feed extends React.Component {
     render() {
         return this.state.posts === null ? <LoadingScreen /> : (
             <div className="feed">
-                <FeedContent posts={this.state.posts} />
+                <FilterImages posts={this.state.posts} />
                 <FeedSideBar />
             </div>
         );

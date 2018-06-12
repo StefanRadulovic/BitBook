@@ -1,11 +1,6 @@
 import { apiUrl, apiKey, sessionId } from '../shared/constants';
 
-class DataService {
-    constructor () {
-        this.data = {
-            posts: []
-        };
-    }
+class FeedService {
 
     getPosts() {
         return fetch(apiUrl + 'Posts/', {
@@ -13,39 +8,13 @@ class DataService {
             headers: {
                 'Content-Type': 'application/json',
                 'Key': apiKey,
-                'SessionId': sessionId                
+                'SessionId': sessionId
             }
         })
-        .then(response => response.json())
-        .then(data => {
-            return data;
-        });
-    }
-
-    getPostByType(postId, type) {
-        
-        let typeUrl = 'TextPosts/';
-
-        if (type == 'image') {
-            typeUrl = 'ImagePosts/';
-        }
-
-        if (type == 'video') {
-            typeUrl = 'VideoPosts/';
-        }
-
-        return fetch(apiUrl + typeUrl + postId, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Key': apiKey,
-                'SessionId': sessionId                
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            return data;
-        });
+            .then(response => response.json())
+            .then(data => {
+                return data;
+            });
     }
 
     // addNewPost(postTitle, postBody, userId) {
@@ -67,4 +36,4 @@ class DataService {
     // }
 }
 
-export default new DataService();
+export default new FeedService();
