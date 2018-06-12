@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { Header } from './partials/Header';
 import { Footer } from './partials/Footer';
+import Feed from './feed/Feed';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 class App extends Component {
@@ -9,9 +10,12 @@ class App extends Component {
     return (
       <div id="bit-book">
         <Header />
-        <Switch>
+        <div id="page-content">
+          <Switch>
+            <Route path="/home" component={Feed} />
 
-        </Switch>
+          </Switch>
+        </div>
         <Footer />
       </div>
     );
