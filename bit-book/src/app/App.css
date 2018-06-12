@@ -175,6 +175,7 @@ footer p {
     transform: scale(1.0);
   }
 }
+/* People page */
 
 .user {
   padding: 10px;
@@ -200,6 +201,8 @@ color: #222
 .people-img{
   width: 100%;
 }
+
+
 
 
 

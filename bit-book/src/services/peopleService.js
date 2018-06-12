@@ -1,13 +1,19 @@
+<<<<<<< HEAD
 import { apiUrl, apiKey, sessionId } from '../shared/constants';
 import formatedDate from '../entities/formatedDate'
 import User from '../entities/User';
 import { capitalize } from '../entities/capitalize';
 
 
+=======
+import { apiUrl } from '../shared/constants'
+import User from '../entities/User'
+>>>>>>> f9daf7476b880d14a5655ffcd4418e25bdcdb22e
 
 class PeopleService {
 
     fetchPeopleData() {
+<<<<<<< HEAD
         return fetch(`${apiUrl}/users`, {
             headers: {
                 'Content-Type': 'application/json',
@@ -34,6 +40,15 @@ class PeopleService {
                     return new User(imgUrl, aboutShort, capitalize(user.name), user.id, postLast)
 
                 }
+=======
+        return fetch(`${apiUrl}/users`).then(response => {
+            return response.json()
+        }).then(data => {
+            return data.map(user => {
+                let splited = user.lastPost.split('T')
+                let lastTime = splited[1].split(':')
+                let postLast = `${lastTime[0]}:${lastTime[1]}`
+>>>>>>> f9daf7476b880d14a5655ffcd4418e25bdcdb22e
                 return new User(user.avatarUrl, user.aboutShort, user.name, user.userId, postLast)
             })
         })
