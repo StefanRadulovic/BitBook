@@ -1,5 +1,9 @@
-import { apiUrl } from '../shared/constants'
-import User from '../entities/User'
+import { apiUrl, apiKey, sessionId } from '../shared/constants';
+import formatedDate from '../entities/formatedDate'
+import User from '../entities/User';
+import { capitalize } from '../entities/capitalize';
+
+
 
 class PeopleService {
 
@@ -7,29 +11,27 @@ class PeopleService {
         return fetch(`${apiUrl}/users`, {
             headers: {
                 'Content-Type': 'application/json',
-                Key: 'bitbookdev',
-                SessionId: '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE'
+                'Key': apiKey,
+                'SessionId': sessionId
             }
         }).then(response => {
             return response.json()
         }).then(data => {
-            // console.log(data)
             return data.map(user => {
-                console.log(user.lastPostDate)
-                let userLastdate = '2018-06-12T19:13:44'
                 let splited = user.lastPostDate.split('T')
                 let lastTime = splited[1].split(':')
                 let postLast;
-                if (new Date(userLastdate).toDateString() == new Date().toDateString()) {
+                if (new Date(user.lastPostDate).toDateString() == new Date().toDateString()) {
                     postLast = `${lastTime[0]}:${lastTime[1]}`
                 } else {
-                    postLast = `${lastTime[0]}:${lastTime[1]}`
+                    let date = formatedDate(splited[0]);
+                    postLast = `${date} ${lastTime[0]}:${lastTime[1]}`
 
                 }
-
+                let aboutShort = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, nulla animi dignissimos corporis nostrum voluptatibus tenetur natus voluptatem obcaecati quidem eos iusto nesciunt, quo voluptates illo, excepturi aut nisi accusantium. Delectus debitis, quidem asperiores ut'
                 if (true) {  // zameni uslov kad bude ok input sa apija
                     let imgUrl = 'http://livetestbed3.squaregrowth.com/core-content/uploads/2017/04/Placeholder-human-1.png';
-                    return new User(imgUrl, user.aboutShort, user.name, user.id, postLast)
+                    return new User(imgUrl, aboutShort, capitalize(user.name), user.id, postLast)
 
                 }
                 return new User(user.avatarUrl, user.aboutShort, user.name, user.userId, postLast)

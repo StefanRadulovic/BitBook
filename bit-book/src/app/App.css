@@ -176,14 +176,12 @@ footer p {
   }
 }
 
-/* end of loading screen */
-/* People page */
-
 .user {
   padding: 10px;
   margin: 20px 0;
   box-shadow: 0 0 10px 0px rgba(0,0,0,0.3);
   border-radius: 3px;
+  
 }
 .user a,.user a:hover{
 text-decoration: none;
@@ -200,9 +198,8 @@ color: #222
   width: 100%
 }
 .people-img{
-  width: 100%
+  width: 100%;
 }
-
 
 
 

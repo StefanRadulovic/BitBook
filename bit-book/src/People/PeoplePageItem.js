@@ -11,7 +11,7 @@ const PeoplePageItem = (props) => {
                 <img src={props.user.img} className='people-img' />
             </div>
             <div className="col-9">
-                <h2><Link to={"/singleUser/" + props.user.id}>{props.user.name}</Link></h2>
+                <h5><Link to={"/singleUser/" + props.user.id}>{props.user.name}</Link></h5>
                 <span>{props.user.aboutShort}</span>
             </div>
             <div className="col-2">Last post:

@@ -43,7 +43,7 @@ class PeoplePage extends Component {
     render() {
         return (
             <div className="container">
-                <div className="row">
+                <div className="row people">
                     <SearchBox search={this.search} />
                     {(this.state.people.filter(this.filterUserList).length == 0) ? '' : this.state.people.filter(this.filterUserList).map((user, i) => {
                         return <PeoplePageItem key={i} user={user} />
