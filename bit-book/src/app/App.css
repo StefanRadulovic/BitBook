@@ -175,8 +175,35 @@ footer p {
     transform: scale(1.0);
   }
 }
+/* People page */
 
-/* end of loading screen */
+.user {
+  padding: 10px;
+  margin: 20px 0;
+  box-shadow: 0 0 10px 0px rgba(0,0,0,0.3);
+  border-radius: 3px;
+  
+}
+.user a,.user a:hover{
+text-decoration: none;
+color: #222
+}
+.user img{
+  border-radius: 50%
+}
+.user span{
+  display: inline-block
+}
+.search {
+  
+  width: 100%
+}
+.people-img{
+  width: 100%;
+}
+
+
+
 
 
 
