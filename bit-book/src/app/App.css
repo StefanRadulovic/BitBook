@@ -209,6 +209,24 @@ color: #222
   text-align: center;
 }
 
+.profileImg {
+  width: 20%;
+  margin-bottom: 20px;
+}
+
+.postCommentButton{
+  margin: 20px;
+  border-radius: 30%;
+}
+
+.fa-circle{
+  color: rgb(55, 55, 238);
+}
+
+.about{
+  margin: 40px 0;
+}
+
 @media all and (max-width: 640px) {
   .menu-button {
     display: block;
