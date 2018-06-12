@@ -150,15 +150,15 @@ footer p {
   vertical-align: middle;
 }
 
-.create-post {
+#create-post {
   color: #4298B5;
 }
 
-.create-image {
+#create-image {
   color: #92B06A;
 }
 
-.create-video {
+#create-video {
   color: #ED1C24;
 }
 
