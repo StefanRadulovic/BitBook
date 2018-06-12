@@ -10,6 +10,7 @@ import FeedText from './feed/FeedText';
 import FeedImages from './feed/FeedImages';
 import FeedVideos from './feed/FeedVideos';
 import SingleFeedItem from './singleFeedItem/SingleFeedItem';
+import LogInPage from './Log In/LogInPage'
 
 
 class App extends Component {
@@ -26,6 +27,7 @@ class App extends Component {
             <Route path="/images" component={FeedImages} />
             <Route path="/videos" component={FeedVideos} />
             <Route path={"/post/:type/:id"} component={SingleFeedItem} />
+            <Route path='/logIn' component={LogInPage} />
           </Switch>
         </div>
         <Footer />
