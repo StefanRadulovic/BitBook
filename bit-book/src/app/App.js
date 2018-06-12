@@ -13,7 +13,7 @@ class App extends Component {
         <div id="page-content">
           <Switch>
             <Route path="/home" component={Feed} />
-            
+
           </Switch>
         </div>
         <Footer />

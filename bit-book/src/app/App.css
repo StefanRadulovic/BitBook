@@ -77,13 +77,13 @@ footer p {
 
 #page-content {
   width: 100%;
-  max-width: 960px;
   margin: auto;
   padding-bottom: 120px;
 }
 
 .feed-content {
   width: 100%;
+  max-width: 960px;
   margin: auto;
 }
 
