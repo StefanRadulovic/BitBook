@@ -6,16 +6,16 @@ const PeoplePageItem = (props) => {
 
     return (
 
-        <div className="post col-12">
+        <div className="user row col-12">
             <div className="col-1">
-                <img src={props.user.img} />
+                <img src={props.user.img} className='people-img' />
             </div>
-            <div className="col-10">
+            <div className="col-9">
                 <h2><Link to={"/singleUser/" + props.user.id}>{props.user.name}</Link></h2>
                 <span>{props.user.aboutShort}</span>
             </div>
-            <div className="col-1">
-                {props.user.lastPost}
+            <div className="col-2">Last post:
+                <p>{props.user.lastPost}</p>
             </div>
 
         </div>

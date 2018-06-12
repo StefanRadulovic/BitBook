@@ -18,7 +18,9 @@ class SearchBox extends Component {
     render() {
         return (
             <div className='container'>
-                <i className="fa fa-search"></i> <input type='text' className='col-11' value={this.state.inputText} onChange={this.inputHandler} placeholder='Search users' />
+                <div className='col-12'>
+                    <i className="fa fa-search"></i> <input type='text' className='col-11' value={this.state.inputText} onChange={this.inputHandler} placeholder='Search users' />
+                </div>
             </div>
         )
     }
