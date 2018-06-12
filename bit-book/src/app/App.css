@@ -205,7 +205,9 @@ color: #222
 
 
 
-
+.profile {
+  text-align: center;
+}
 
 @media all and (max-width: 640px) {
   .menu-button {
