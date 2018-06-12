@@ -1,10 +1,25 @@
 import React, { Component } from 'react';
-// import NumberOfPostsComments from './NumberOfPostsComments';
+import apiUrl from '../../shared/constants';
+import userService from '../../services/userService';
 // import { Link } from 'react-router-dom';
+
 
 class MyProfilePage extends Component {
     constructor(props) {
-        super(props)
+        super(props);
+        this.state = {
+            profile: {}
+        }
+    }
+
+
+    componentDidMount() {
+        userService.getProfile()
+            .then(profile => {
+                this.setState({
+                    profile: profile
+                })
+            })
     }
 
 
