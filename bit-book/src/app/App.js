@@ -10,7 +10,7 @@ import FeedText from './feed/FeedText';
 import FeedImages from './feed/FeedImages';
 import FeedVideos from './feed/FeedVideos';
 import SingleFeedItem from './singleFeedItem/SingleFeedItem';
-import LogInPage from './Log In/LogInPage'
+import HomePage from './home/HomePage'
 
 
 class App extends Component {
@@ -20,6 +20,7 @@ class App extends Component {
         <Header />
         <div id="page-content">
           <Switch>
+            <Route exact path='/' component={HomePage} />
             <Route path="/home" component={Feed} />
             <Route exact path='/people' component={PeoplePage} />
             <Route path='/people/:id' component={MyProfilePage} />
