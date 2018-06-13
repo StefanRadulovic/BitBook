@@ -1,7 +1,6 @@
 import React from 'react';
-import { SingleComment } from './SingleComment';
+import SingleComment from './SingleComment';
 import { NoComments } from './NoComments';
-
 
 export const Comments = (props) => {
 

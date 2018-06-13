@@ -8,7 +8,6 @@ export const SingleTextPost = (props) => {
             <div className="post-content">
                 <p>{props.post.text}</p>
             </div>
-            <Comments comments={props.comments} />
         </div>
     );
 }

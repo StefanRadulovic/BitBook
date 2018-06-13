@@ -8,7 +8,6 @@ export const SingleImagePost = (props) => {
             <div className="post-content">
                 <img src={props.post.imageUrl} alt={"image" + props.post.userId} />
             </div>
-            <Comments comments={props.comments} />
         </div>
     );
 }
