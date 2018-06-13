@@ -1,6 +1,6 @@
 import { apiUrl, apiKey, sessionId } from '../shared/constants';
 
-class SingleFeedService {
+class SingleFeedItemService {
 
     getPostByType(postId, type) {
 
@@ -23,7 +23,6 @@ class SingleFeedService {
         })
             .then(response => response.json())
             .then(data => {
-                console.log(data);
                 return data;
             });
     }
@@ -39,26 +38,31 @@ class SingleFeedService {
         })
             .then(response => response.json())
             .then(data => {
-                console.log(data);
                 return data;
             });
     }
 
-    getComments(postId) {
-        return fetch(apiUrl + 'Comments?postId=' + postId, {
-            method: 'GET',
+    addNewComment(authorId, authorName, comment, dateCreated, postId) {
+        return fetch(apiUrl + 'Comments', {
+            method: 'POST',
+            body: JSON.stringify({
+                authorId: authorId,
+                authorName: authorName,
+                body: comment,
+                dateCreated: dateCreated,
+                postId: postId
+            }),
             headers: {
-                'Content-Type': 'application/json',
+                "Content-type": "application/json; charset=UTF-8",
                 'Key': apiKey,
                 'SessionId': sessionId
             }
         })
             .then(response => response.json())
             .then(data => {
-                console.log(data);
                 return data;
             });
     }
 }
 
-export default new SingleFeedService();
+export default new SingleFeedItemService();

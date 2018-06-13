@@ -1,10 +1,10 @@
 import React from 'react';
-import singleFeedService from '../../services/singleFeedService';
+import singleFeedItemService from '../../services/singleFeedItemService';
 import { LoadingScreen } from '../partials/LoadingScreen';
 import { SingleTextPost } from './SingleTextPost';
 import { SingleImagePost } from './SingleImagePost';
 import { SingleVideoPost } from './SingleVideoPost';
-import { Comments } from './Comments';
+import Comments from './Comments';
 
 export default class SingleFeedItem extends React.Component {
     constructor(props) {
@@ -20,7 +20,7 @@ export default class SingleFeedItem extends React.Component {
         let postId = this.props.match.params.id;
         let type = this.props.match.params.type;
 
-        singleFeedService.getPostByType(postId, type).then(data => {
+        singleFeedItemService.getPostByType(postId, type).then(data => {
             this.setState({
                 post: data
             });
@@ -28,13 +28,16 @@ export default class SingleFeedItem extends React.Component {
     }
 
     loadComments = () => {
-
         let postId = this.props.match.params.id;
-        singleFeedService.getComments(postId).then(data => {
+        singleFeedItemService.getComments(postId).then(data => {
             this.setState({
                 comments: data
             });
         });
+    }
+
+    updateComments = () => {
+        this.loadComments();
     }
 
     componentDidMount() {
@@ -49,7 +52,7 @@ export default class SingleFeedItem extends React.Component {
                     : this.state.post.type === "image" ? <SingleImagePost post={this.state.post} comments={this.state.comments} />
                         : <SingleVideoPost post={this.state.post} comments={this.state.comments} />}
                 <div className="feed-item-comments">
-                    <Comments comments={this.state.comments} />
+                    <Comments comments={this.state.comments} postId={this.state.post.id} updateComments={this.updateComments} />
                 </div>
             </div >
         );
