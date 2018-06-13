@@ -16,9 +16,11 @@ class MyProfilePage extends Component {
             nameInput: '',
             aboutInput: '',
             openSecondModal: false,
+            imageUploadUrl: null,
+            fileImg: {},
+            updateError: ''
+            // userId: this.props.match.params.userId
         }
-        this.updateName = this.updateName.bind(this);
-        this.updateAbout = this.updateAbout.bind(this);
 
     }
 
@@ -68,8 +70,50 @@ class MyProfilePage extends Component {
             )
         }
     }
+    onSaveHandler = () => {
+        const profileObj = {
+            'name': this.state.nameInput,
+            'email': this.state.nameInput,
+            'about': this.state.aboutInput,
+            'aboutShort': this.state.aboutInput,
+            'avatarUrl': this.state.imageUploadUrl,
+        }
 
 
+        profileService.updateProfile(profileObj).then(data => {
+
+            if (data) {
+
+                this.setState({
+                    updateError: data.message
+                })
+            }
+        })
+
+    }
+    uploadFileHandler = () => {
+
+        const formData = new FormData();
+        formData.append('file', this.state.fileImg)
+        profileService.uploadImage(formData).then(data => {
+            this.setState({
+                imageUploadUrl: data
+            })
+        })
+
+    }
+    selectProfileImageHandler = (event) => {
+        this.setState({
+            fileImg: event.target.files[0]
+        })
+
+    }
+
+    setImgurl = (text) => {
+        this.setState({
+            imageUploadUrl: text
+        })
+    }
     render() {
         return (
             <div className="container profile">
@@ -85,12 +129,12 @@ class MyProfilePage extends Component {
                     classNames={{ overlay: 'custom-overlay', modal: 'custom-modal' }}>
                     <h2>Update profile</h2>
 
-                    <ProfileUpdate updateName={this.updateName} updateAbout={this.updateAbout} onCloseClickHandler={this.onCloseModal} openSecondModal={this.onOpenSecondModal} />
+                    <ProfileUpdate updateName={this.updateName} updateAbout={this.updateAbout} onCloseClickHandler={this.onCloseModal} openSecondModal={this.onOpenSecondModal} onSaveHandler={this.onSaveHandler} imgUrl={this.state.imageUploadUrl} error={this.state.updateError} />
 
                 </Modal >
 
                 <Modal open={this.state.openSecondModal} onClose={this.onCloseSecondModal} center className={{ overlay: 'custom-overlay', modal: 'custom-modal2' }}>
-                    <UploadPicture />
+                    <UploadPicture uploadFileHandler={this.uploadFileHandler} photoUrl={this.setImgurl} selectProfileImageHandler={this.selectProfileImageHandler} imgUrl={this.state.imageUploadUrl} />
 
                 </Modal>
                 <button type="button" className="btn btn-light postCommentButton"><i className="fas fa-circle"></i> {this.state.profile.postsCount} Posts</button>
