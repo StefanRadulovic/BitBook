@@ -4,6 +4,10 @@
   font-family: Roboto;
 }
 
+textarea:focus, input:focus{
+  outline: none;
+}
+
 header {
   width: 100%;
   margin-bottom: 20px;
@@ -231,6 +235,46 @@ footer p {
   max-width: 960px;
   margin: auto;
   padding: 5px;
+}
+
+.single-comment {
+  width: 100%;
+  margin: 20px 0;
+}
+
+.comment-content {
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.no-comments {
+  width: 100%;
+  padding: 10px;
+}
+
+.add-comment {
+  width: 100%;
+  overflow: hidden;
+}
+
+.add-comment input {
+  width: 90%;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  float: left;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+.send-comment {
+  float: right;
+  background-color: #a5b9cc;
+  color: white;
+  border-radius: 5px;
+  padding: 5px 10px;
+  box-sizing: border-box;
+  cursor: pointer;
 }
 
 /* loading screen */
