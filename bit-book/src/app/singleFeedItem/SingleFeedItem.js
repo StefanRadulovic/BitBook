@@ -51,7 +51,7 @@ export default class SingleFeedItem extends React.Component {
                 <div className="feed-item-comments">
                     <Comments comments={this.state.comments} />
                 </div>
-            </div>
+            </div >
         );
     }
 }
