@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { apiUrl } from '../../shared/constants';
 import Modal from 'react-responsive-modal';
 import ProfileUpdate from './ProfileUpdate';
+import UploadPicture from './UploadPicture'
 
 
 class MyProfilePage extends Component {
@@ -13,8 +14,12 @@ class MyProfilePage extends Component {
             profile: {},
             open: false,
             nameInput: '',
+            aboutInput: '',
+            openSecondModal: false,
         }
-        this.updateName = this.updateName.bind(this)
+        this.updateName = this.updateName.bind(this);
+        this.updateAbout = this.updateAbout.bind(this);
+
     }
 
 
@@ -38,10 +43,22 @@ class MyProfilePage extends Component {
             nameInput: text
         })
     }
+    updateAbout = (text) => {
+        this.setState({
+            aboutInput: text
+        })
+    }
+    onOpenSecondModal = () => {
+        this.setState({ openSecondModal: true });
+    };
+
+    onCloseSecondModal = () => {
+        this.setState({ openSecondModal: false });
+    };
+
     profileImage = () => {
 
-        // if (this.state.profile.avatarUrl === undefined) {
-        if (true) {
+        if (!this.state.profile.avatarUrl) {
             return (
                 <img className="profileImg" src="https://intellihr.com.au/wp-content/uploads/2017/06/avatar_placeholder_temporary.png" />
             )
@@ -68,9 +85,13 @@ class MyProfilePage extends Component {
                     classNames={{ overlay: 'custom-overlay', modal: 'custom-modal' }}>
                     <h2>Update profile</h2>
 
-                    <ProfileUpdate update={this.updateName} />
+                    <ProfileUpdate updateName={this.updateName} updateAbout={this.updateAbout} onCloseClickHandler={this.onCloseModal} openSecondModal={this.onOpenSecondModal} />
 
                 </Modal >
+
+                <Modal open={this.state.openSecondModal} onClose={this.onCloseSecondModal} center>
+                    <UploadPicture />
+                </Modal>
                 <button type="button" className="btn btn-light postCommentButton"><i className="fas fa-circle"></i> {this.state.profile.postsCount} Posts</button>
                 <button type="button" className="btn btn-light postCommentButton"><i className="fas fa-circle"></i> {this.state.profile.commentsCount} Comments</button>
 

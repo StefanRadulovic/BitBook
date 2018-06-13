@@ -231,9 +231,9 @@ color: #222
   background: rgba(167, 180, 185, 0.7);
 }
 .custom-modal {
-  background: rgb(135, 191, 240);
-  max-width: 500px;
-  width: 100%;
+  background: rgb(255, 255, 255);
+  max-width: 700px;
+  width:100%;
 }
 .btn.btn-action {
   background-color: #e0e1e2;
@@ -253,25 +253,42 @@ color: #222
   margin:15px;
   float: right;
 }
-#inputFullName, #inputFullName:focus {
-  background-color: rgb(135, 191, 240);
+#inputFullName, #inputFullName:focus, #aboutUser-update {
+  background-color: rgb(255, 255, 255);
   border:none;
-  
   border-bottom:  2px solid gray;
+}
+#inputFullNmae{
+  width: 100%;
 }
 #letter-counter{
   display: block;
-  /* float: right; */
+  float: right;
 }
 .alert{
   color:red
 }
 #update-img{
   width: 100%;
-}
+  }
 .update-profile-img-name{
   display: inline-block;
 }
+.update-profile-img-name{
+  margin-top: 20px;
+}
+.upload-img-btn{
+  width: 100%;
+  margin-top: 10px;
+  border-radius: 200px;
+  padding: 5px 0;
+  font-size: 85%
+}
+#aboutUser-update{
+  margin-top: 15px;
+}
+
+
 /* end my profil page */
 
 

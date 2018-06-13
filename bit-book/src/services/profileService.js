@@ -1,4 +1,3 @@
-// import Profile from '../entities/Profile'
 import { apiUrl } from '../shared/constants';
 
 class ProfileService {
