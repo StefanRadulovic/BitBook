@@ -40,6 +40,18 @@ class PeopleService {
 
     }
 
+    fetchSingleUserData = (id) => {
+        return fetch(`${apiUrl}/users/${id}`, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Key': apiKey,
+                'SessionId': sessionId
+            }
+        }).then(response => {
+            return response.json()
+        }).then(data => {
+            return data
+        })
+    }
 }
-
 export default new PeopleService();

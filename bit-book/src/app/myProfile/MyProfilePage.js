@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { apiUrl } from '../../shared/constants';
 import Modal from 'react-responsive-modal';
 import ProfileUpdate from './ProfileUpdate';
-import UploadPicture from './UploadPicture'
+// import UploadPicture from './UploadPicture'
 
 
 class MyProfilePage extends Component {
@@ -89,8 +89,9 @@ class MyProfilePage extends Component {
 
                 </Modal >
 
-                <Modal open={this.state.openSecondModal} onClose={this.onCloseSecondModal} center>
-                    <UploadPicture />
+                <Modal open={this.state.openSecondModal} onClose={this.onCloseSecondModal} center className={{ overlay: 'custom-overlay', modal: 'custom-modal' }}>
+                    {/* <UploadPicture /> */}
+
                 </Modal>
                 <button type="button" className="btn btn-light postCommentButton"><i className="fas fa-circle"></i> {this.state.profile.postsCount} Posts</button>
                 <button type="button" className="btn btn-light postCommentButton"><i className="fas fa-circle"></i> {this.state.profile.commentsCount} Comments</button>
