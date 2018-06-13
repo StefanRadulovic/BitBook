@@ -2,14 +2,24 @@ import React, { Component } from 'react';
 import profileService from '../../services/profileService';
 import { Link } from 'react-router-dom';
 import { apiUrl } from '../../shared/constants';
+import Modal from 'react-responsive-modal';
+import ProfileUpdate from './ProfileUpdate';
+// import UploadPicture from './UploadPicture'
 
 
 class MyProfilePage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            profile: {}
+            profile: {},
+            open: false,
+            nameInput: '',
+            aboutInput: '',
+            openSecondModal: false,
         }
+        this.updateName = this.updateName.bind(this);
+        this.updateAbout = this.updateAbout.bind(this);
+
     }
 
 
@@ -21,12 +31,34 @@ class MyProfilePage extends Component {
                 })
             })
     }
+    onOpenModal = () => {
+        this.setState({ open: true });
+    };
 
+    onCloseModal = () => {
+        this.setState({ open: false });
+    };
+    updateName = (text) => {
+        this.setState({
+            nameInput: text
+        })
+    }
+    updateAbout = (text) => {
+        this.setState({
+            aboutInput: text
+        })
+    }
+    onOpenSecondModal = () => {
+        this.setState({ openSecondModal: true });
+    };
+
+    onCloseSecondModal = () => {
+        this.setState({ openSecondModal: false });
+    };
 
     profileImage = () => {
 
-        // if (this.state.profile.avatarUrl === undefined) {
-        if (true) {
+        if (!this.state.profile.avatarUrl) {
             return (
                 <img className="profileImg" src="https://intellihr.com.au/wp-content/uploads/2017/06/avatar_placeholder_temporary.png" />
             )
@@ -39,19 +71,34 @@ class MyProfilePage extends Component {
 
 
     render() {
-        let about = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente eveniet enim consequatur, neque molestias beatae odit, dolores aut expedita mollitia eius quae minus fuga a saepe error ex quaerat? Mollitia.Eligendi nam earum natus eos. Vitae consequuntur, aliquid quis debitis pariatur laboriosam accusantium molestias officiis, soluta dolorem odio est hic. Porro illo aliquid suscipit dolorem veniam explicabo consequatur maiores non?        Dolorem ducimus possimus earum. Assumenda officiis velit mollitia ex qui at, dolores reiciendis doloremque earum perferendis hic sequi molestiae dolorum asperiores eaque inventore consequatur enim maiores optio reprehenderit magni quas.Veritatis architecto expedita ea ad unde quasi nostrum soluta repellat eaque, autem at error, ipsam in iure exercitationem facere asperiores, sapiente earum. Tenetur, tempore ad enim modi rerum mollitia dolorem?        Consequatur, natus atque. Vero consequatur cum dolore in incidunt excepturi magnam ipsa officiis delectus natus, doloribus non iure repudiandae quibusdam, impedit sint, neque omnis adipisci aut? Quos explicabo sed debitis?'
         return (
             <div className="container profile">
                 {this.profileImage()}
                 <h1>{this.state.profile.name}</h1>
-                <p><Link to='/*'>Edit profile</Link></p>
-                {/* <p>{this.state.profile.about}</p> */}
-                <p className="about">{about}</p>
+                <p className="btn btn-action" onClick={this.onOpenModal}>Edit profile</p>
+                <p>{this.state.profile.about}</p>
 
+                < Modal
+                    open={this.state.open}
+                    onClose={this.onCloseModal}
+                    center
+                    classNames={{ overlay: 'custom-overlay', modal: 'custom-modal' }}>
+                    <h2>Update profile</h2>
+
+                    <ProfileUpdate updateName={this.updateName} updateAbout={this.updateAbout} onCloseClickHandler={this.onCloseModal} openSecondModal={this.onOpenSecondModal} />
+
+                </Modal >
+
+                <Modal open={this.state.openSecondModal} onClose={this.onCloseSecondModal} center className={{ overlay: 'custom-overlay', modal: 'custom-modal' }}>
+                    {/* <UploadPicture /> */}
+
+                </Modal>
                 <button type="button" className="btn btn-light postCommentButton"><i className="fas fa-circle"></i> {this.state.profile.postsCount} Posts</button>
                 <button type="button" className="btn btn-light postCommentButton"><i className="fas fa-circle"></i> {this.state.profile.commentsCount} Comments</button>
-            </div>
+
+            </div >
         )
+
     }
 }
 

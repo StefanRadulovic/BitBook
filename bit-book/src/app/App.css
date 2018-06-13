@@ -304,7 +304,7 @@ color: #222
 }
 
 
-
+/* My profil Page */
 
 .profile {
   text-align: center;
@@ -317,7 +317,7 @@ color: #222
 
 .postCommentButton{
   margin: 20px;
-  border-radius: 30%;
+  border-radius: 200px;
 }
 
 .fa-circle{
@@ -327,6 +327,71 @@ color: #222
 .about{
   margin: 40px 0;
 }
+
+.custom-overlay {
+  background: rgba(167, 180, 185, 0.7);
+}
+.custom-modal {
+  background: rgb(255, 255, 255);
+  max-width: 700px;
+  width:100%;
+}
+.btn.btn-action {
+  background-color: #e0e1e2;
+  border: none;
+  color: rgba(0, 0, 0, 0.6);
+}
+.btn.btn-action:hover {
+  background-color: #c0c1c2;
+  color: rgba(0, 0, 0, 0.95);
+}
+.btn.btn-action:focus {
+  outline: none;
+}
+.updateProfileButton{
+  width: 80px;
+  border-radius: 200px;
+  margin:15px;
+  float: right;
+}
+#inputFullName, #inputFullName:focus, #aboutUser-update {
+  background-color: rgb(255, 255, 255);
+  border:none;
+  border-bottom:  2px solid gray;
+}
+#inputFullNmae{
+  width: 100%;
+}
+#letter-counter{
+  display: block;
+  float: right;
+}
+.alert{
+  color:red
+}
+#update-img{
+  width: 100%;
+  }
+.update-profile-img-name{
+  display: inline-block;
+}
+.update-profile-img-name{
+  margin-top: 20px;
+}
+.upload-img-btn{
+  width: 100%;
+  margin-top: 10px;
+  border-radius: 200px;
+  padding: 5px 0;
+  font-size: 85%
+}
+#aboutUser-update{
+  margin-top: 15px;
+}
+
+
+/* end my profil page */
+
 
 @media all and (max-width: 640px) {
   .menu-button {
