@@ -14,7 +14,6 @@ export default class SingleFeedItem extends React.Component {
         super(props);
         this.state = {
             post: null,
-            comments: [],
             user: null
         }
     }
@@ -31,22 +30,8 @@ export default class SingleFeedItem extends React.Component {
         });
     }
 
-    loadComments = () => {
-        let postId = this.props.match.params.id;
-        singleFeedItemService.getComments(postId).then(data => {
-            this.setState({
-                comments: data
-            });
-        });
-    }
-
-    updateComments = () => {
-        this.loadComments();
-    }
-
     componentDidMount() {
         this.loadPost();
-        this.loadComments();
     }
 
     render() {
@@ -57,7 +42,7 @@ export default class SingleFeedItem extends React.Component {
                     : this.state.post.type === "image" ? <SingleImagePost post={this.state.post} comments={this.state.comments} />
                         : <SingleVideoPost post={this.state.post} comments={this.state.comments} />}
                 <div className="feed-item-comments">
-                    <Comments comments={this.state.comments} postId={this.state.post.id} updateComments={this.updateComments} />
+                    <Comments postId={this.state.post.id} />
                 </div>
             </div >
         );

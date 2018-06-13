@@ -343,6 +343,10 @@ footer p {
   cursor: pointer;
 }
 
+.feed-item-comments .spinner {
+  margin-top: 50px;
+}
+
 /* loading screen */
 
 .spinner {
