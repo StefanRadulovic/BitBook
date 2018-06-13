@@ -1,17 +1,21 @@
 import React from 'react';
 import singleFeedItemService from '../../services/singleFeedItemService';
+import { timeSince } from '../../entities/timeSince';
 import { LoadingScreen } from '../partials/LoadingScreen';
 import { SingleTextPost } from './SingleTextPost';
 import { SingleImagePost } from './SingleImagePost';
 import { SingleVideoPost } from './SingleVideoPost';
+import { PostAuthor } from '../partials/PostAuthor';
 import Comments from './Comments';
+import { Link } from 'react-router-dom';
 
 export default class SingleFeedItem extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             post: null,
-            comments: null
+            comments: [],
+            user: null
         }
     }
 
@@ -48,6 +52,7 @@ export default class SingleFeedItem extends React.Component {
     render() {
         return this.state.post === null ? <LoadingScreen /> : (
             <div className="single-feed-item">
+                <PostAuthor post={this.state.post} />
                 {this.state.post.type === "text" ? <SingleTextPost post={this.state.post} comments={this.state.comments} />
                     : this.state.post.type === "image" ? <SingleImagePost post={this.state.post} comments={this.state.comments} />
                         : <SingleVideoPost post={this.state.post} comments={this.state.comments} />}

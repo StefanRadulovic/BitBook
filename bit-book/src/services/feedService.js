@@ -10,11 +10,7 @@ class FeedService {
                 'Key': apiKey,
                 'SessionId': sessionId
             }
-        })
-            .then(response => response.json())
-            .then(data => {
-                return data;
-            });
+        }).then(response => response.json());
     }
 
     // addNewPost(postTitle, postBody, userId) {

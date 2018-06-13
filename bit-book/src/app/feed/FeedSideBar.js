@@ -45,7 +45,7 @@ export class FeedSideBar extends React.Component {
                     <div><i className="fas fa-circle" id="create-image"></i><div className="create-new-type">Image</div></div>
                     <div><i className="fas fa-circle" id="create-video"></i><div className="create-new-type">Video</div></div>
                 </div>
-                <div className="create-new-post" onClick={this.toggleCreateNew}><i className="fas fa-plus-circle"></i></div>
+                <div className="create-new-post" onClick={this.toggleCreateNew}><div className={"new-post " + this.state.createNewClass}>New post</div><i className="fas fa-plus-circle"></i></div>
             </div >
         );
     }

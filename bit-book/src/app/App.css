@@ -142,6 +142,15 @@ footer p {
   cursor: pointer;
 }
 
+.new-post {
+  font-size: 14px;
+  color: #333;
+}
+
+.new-post.open-create-new {
+  visibility: hidden;
+}
+
 .create-new-post i {
   color: #DD5F32;
 }
@@ -183,6 +192,37 @@ footer p {
 
 .create-new-options.open-create-new {
   visibility: visible;
+}
+
+.post-writer {
+  width: 100%;
+  padding: 15px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.post-writers-img img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+
+.post-writers-img {
+  float: left;
+}
+
+.post-writers-details {
+  float: left;
+  margin-left: 20px;
+}
+
+.post-writers-name a,
+.post-writers-name a:visited {
+  text-decoration: none;
+}
+
+.post-time {
+  font-size: 12px;
 }
 
 .post {
@@ -241,35 +281,36 @@ footer p {
   width: 100%;
   margin: 20px 0;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
-  padding: 10px;
+  padding: 15px;
   box-sizing: border-box;
   overflow: hidden;
 }
 
-.comment-writer {
-  float: left;
-}
-
-.comment-writer img {
+.comment-writers-img img {
   height: 50px;
+  width: 50px;
   border-radius: 50%;
 }
 
 .comment-writers-img {
-  width: 50%;
-  margin: auto;
-}
-
-.comment-writers-name {
-  width: 100%;
-  font-size: 12px;
+  float: left;
 }
 
 .comment-content {
   float: left;
   margin-left: 20px;
-  line-height: 70px;
-  vertical-align: middle;
+}
+
+.comment-writers-name a,
+.comment-writers-name a:visited {
+  text-decoration: none;
+}
+
+.comment-time {
+  width: 100%;
+  float: left;
+  text-align: right;
+  font-size: 12px;
 }
 
 .no-comments {
@@ -280,6 +321,7 @@ footer p {
 .add-comment {
   width: 100%;
   overflow: hidden;
+  margin: 20px 0;
 }
 
 .add-comment input {
@@ -287,7 +329,7 @@ footer p {
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.5);
   float: left;
-  padding: 5px;
+  padding: 3px;
   box-sizing: border-box;
 }
 
@@ -296,7 +338,7 @@ footer p {
   background-color: #a5b9cc;
   color: white;
   border-radius: 5px;
-  padding: 5px 10px;
+  padding: 3px 10px;
   box-sizing: border-box;
   cursor: pointer;
 }
