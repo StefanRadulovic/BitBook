@@ -7,7 +7,8 @@ class ProfileUpdate extends Component {
         this.state = {
             nameText: '',
             aboutText: '',
-            updateError: ''
+
+
 
         }
         this.onChangeNameHandler = this.onChangeNameHandler.bind(this);
@@ -37,7 +38,8 @@ class ProfileUpdate extends Component {
             <Fragment>
                 <div className='row'>
                     <div className='col-4 update-profile-img-name'>
-                        <img src='http://www.btisolutions.com/v2/wp-content/uploads/2016/07/ef3-placeholder-image-470x430.jpg' className="offset-1 col-10" id="update-img" />
+                        {(!this.props.imgUrl) ? <img src='http://www.btisolutions.com/v2/wp-content/uploads/2016/07/ef3-placeholder-image-470x430.jpg' className="offset-1 col-10" id="update-img" /> :
+                            <img src={this.props.imgUrl} className="offset-1 col-10" id="update-img" />}
                         <input type='button' className="btn btn-light upload-img-btn" value='UPLOAD PHOTO' onClick={this.props.openSecondModal} />
                     </div>
                     <div className={alertClass}>
@@ -49,10 +51,10 @@ class ProfileUpdate extends Component {
                     </div>
                 </div>
                 <textarea name="aboutUser" id="aboutUser-update" className='col-12' rows="4" onChange={this.onChangeAboutHandler} value={this.state.aboutText}></textarea>
-                <div className="update-profile-error">{this.state.updateError}</div>
+                <div className="update-profile-error">{this.props.error}</div>
                 <div>
                     <input className="btn btn-light updateProfileButton" type='button' value='CLOSE' onClick={this.props.onCloseClickHandler} />
-                    <input className="btn btn-light updateProfileButton" type='button' value='SAVE' />
+                    <input className="btn btn-light updateProfileButton" type='button' value='SAVE' onClick={this.props.onSaveHandler} />
                 </div>
             </Fragment >
         )
