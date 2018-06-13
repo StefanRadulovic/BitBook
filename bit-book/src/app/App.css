@@ -450,6 +450,12 @@ color: #222
   max-width: 700px;
   width:100%;
 }
+/* .custom-modal2{
+  background: rgb(255, 255, 255);
+  min-width: 500px !important;
+  max-width: 700px;
+  width:100%;
+} */
 .btn.btn-action {
   background-color: #e0e1e2;
   border: none;
