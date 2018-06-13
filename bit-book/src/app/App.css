@@ -142,6 +142,15 @@ footer p {
   cursor: pointer;
 }
 
+.new-post {
+  font-size: 14px;
+  color: #333;
+}
+
+.new-post.open-create-new {
+  visibility: hidden;
+}
+
 .create-new-post i {
   color: #DD5F32;
 }
