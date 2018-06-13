@@ -18,10 +18,6 @@ export default class Feed extends React.Component {
             this.setState({
                 posts: data
             });
-            // data.map((post, i) => {
-            //     feedService.getPostByType(post.id, post.type).then(imageData => {
-            //     });
-            // });
         });
     }
 
