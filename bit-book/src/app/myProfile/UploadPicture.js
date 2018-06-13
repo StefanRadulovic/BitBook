@@ -20,13 +20,13 @@ class UploadPicture extends Component {
                     <input type='text' id='input-new-url' value={this.props.imgUrl} className='col-12' onChange={this.photoUrlHandler} />
                 </div>
                 <div>
-                    <input type='button' value='Upload URL' className='btn btn-light upload-url-btn' />
+                    <input type='button' value='Upload URL' className='btn btn-light upload-url-btn' onClick={this.props.upLoadUrl}/>
                 </div>
                 <input type="file" id="my_file" accept='image/*' className='btn btn-light' onChange={this.props.selectProfileImageHandler} />
                 <div>
                     <input type='button' value='Upload File' className='btn btn-light upload-url-btn' onClick={this.props.uploadFileHandler} />
                 </div>
-                <input type='button' value="CLOSE" className='offset-9 btn btn-light upload-close-btn' />
+                <input type='button' value="CLOSE" className='offset-9 btn btn-light upload-close-btn' onClick={this.props.close}/>
             </div>
         )
     }

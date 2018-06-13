@@ -97,7 +97,9 @@ class MyProfilePage extends Component {
         formData.append('file', this.state.fileImg)
         profileService.uploadImage(formData).then(data => {
             this.setState({
-                imageUploadUrl: data
+                imageUploadUrl: data,
+                openSecondModal: false
+
             })
         })
 
@@ -108,7 +110,22 @@ class MyProfilePage extends Component {
         })
 
     }
+    onClosePictureUpload=()=>{
+        this.setState({
+            openSecondModal: false,
+            imageUploadUrl: null            
+        })
+    }
+    onCloseClickHandler=()=>{
+        
+        
+        this.setState({
+            imageUploadUrl: null,
+            
+        })
+        this.onCloseModal()
 
+    }
     setImgurl = (text) => {
         this.setState({
             imageUploadUrl: text
@@ -129,12 +146,12 @@ class MyProfilePage extends Component {
                     classNames={{ overlay: 'custom-overlay', modal: 'custom-modal' }}>
                     <h2>Update profile</h2>
 
-                    <ProfileUpdate updateName={this.updateName} updateAbout={this.updateAbout} onCloseClickHandler={this.onCloseModal} openSecondModal={this.onOpenSecondModal} onSaveHandler={this.onSaveHandler} imgUrl={this.state.imageUploadUrl} error={this.state.updateError} />
+                    <ProfileUpdate updateName={this.updateName} updateAbout={this.updateAbout} onCloseClickHandler={this.onCloseClickHandler} openSecondModal={this.onOpenSecondModal} onSaveHandler={this.onSaveHandler} imgUrl={this.state.imageUploadUrl} error={this.state.updateError} />
 
                 </Modal >
 
                 <Modal open={this.state.openSecondModal} onClose={this.onCloseSecondModal} center className={{ overlay: 'custom-overlay', modal: 'custom-modal2' }}>
-                    <UploadPicture uploadFileHandler={this.uploadFileHandler} photoUrl={this.setImgurl} selectProfileImageHandler={this.selectProfileImageHandler} imgUrl={this.state.imageUploadUrl} />
+                    <UploadPicture uploadFileHandler={this.uploadFileHandler} photoUrl={this.setImgurl} selectProfileImageHandler={this.selectProfileImageHandler} imgUrl={this.state.imageUploadUrl} close={this.onClosePictureUpload} upLoadUrl={this.onCloseSecondModal}/>
 
                 </Modal>
                 <button type="button" className="btn btn-light postCommentButton"><i className="fas fa-circle"></i> {this.state.profile.postsCount} Posts</button>
