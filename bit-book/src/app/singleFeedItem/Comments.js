@@ -24,10 +24,6 @@ export default class Comments extends React.Component {
         });
     }
 
-    updateComments = () => {
-        this.loadComments();
-    }
-
     handleChange = (event) => {
         let value = event.target.value;
         this.setState({
@@ -36,14 +32,11 @@ export default class Comments extends React.Component {
     }
 
     handleClick = (event) => {
-        let authorId = this.state.profile.userId;
-        let authorName = this.state.profile.name;
         let comment = this.state.inputValue;
         let postId = this.props.postId;
-        let dateCreated = new Date();
         if (this.state.inputValue) {
-            singleFeedItemService.addNewComment(authorId, authorName, comment, dateCreated, postId).then(data => {
-                this.updateComments();
+            singleFeedItemService.addNewComment(comment, postId).then(data => {
+                this.loadComments();
             });
             this.setState({
                 inputValue: ""
@@ -52,7 +45,7 @@ export default class Comments extends React.Component {
     }
 
     componentDidMount() {
-        this.updateComments();
+        this.loadComments();
         profileService.getProfile()
             .then(profile => {
                 this.setState({
@@ -69,10 +62,10 @@ export default class Comments extends React.Component {
                     <div className="send-comment" onClick={this.handleClick}>Send</div>
                 </div>
                 {this.state.comments === null ? <LoadingScreen /> :
-                     this.state.comments.length === 0 ? <NoComments /> :
+                    this.state.comments.length === 0 ? <NoComments /> :
                         this.state.comments.map((comment, i) => {
-                        return <SingleComment comment={comment} key={i} />
-                    })}
+                            return <SingleComment comment={comment} key={i} />
+                        })}
             </div>
         );
     }
