@@ -577,8 +577,15 @@ label {
   padding-right: 20px;
 }​
 
+.logRegButton{
+  background-color: #5e9eda;
+  padding: 5px;
+  margin: 20px 0;
+}
+
 /* END Welcome page */
-{}
+
+
 @media all and (max-width: 640px) {
   .menu-button {
     display: block;
