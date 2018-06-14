@@ -1,6 +1,5 @@
 import React from 'react';
 import singleFeedItemService from '../../services/singleFeedItemService';
-import profileService from '../../services/profileService';
 import { LoadingScreen } from '../partials/LoadingScreen';
 import SingleComment from './SingleComment';
 import { NoComments } from './NoComments';
@@ -46,12 +45,6 @@ export default class Comments extends React.Component {
 
     componentDidMount() {
         this.loadComments();
-        profileService.getProfile()
-            .then(profile => {
-                this.setState({
-                    profile: profile
-                });
-            });
     }
 
     render() {
