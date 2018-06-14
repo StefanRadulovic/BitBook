@@ -18,7 +18,7 @@ class PeoplePage extends Component {
 
     componentDidMount() {
         peopleService.fetchPeopleData().then(people => {
-            console.log(people);
+
 
             this.setState({
                 people: people
@@ -46,6 +46,7 @@ class PeoplePage extends Component {
                 <div className="row people">
                     <SearchBox search={this.search} />
                     {(this.state.people.filter(this.filterUserList).length == 0) ? '' : this.state.people.filter(this.filterUserList).map((user, i) => {
+
                         return <PeoplePageItem key={i} user={user} />
                     })}
                 </div>

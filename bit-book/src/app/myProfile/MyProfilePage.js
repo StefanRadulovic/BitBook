@@ -21,12 +21,18 @@ class MyProfilePage extends Component {
             imageUploadUrl: '',
             fileImg: {},
             updateError: '',
-            errorImgUrl: ''
-            // userId: this.props.match.params.userId
+            errorImgUrl: '',
         }
 
     }
-
+    getUserProfile = () => {
+        const id = this.props.match.params.id
+        profileService.getUserProfile(id).then(profile => {
+            this.setState({
+                profile: profile
+            })
+        })
+    }
     reloadPage = () => {
         profileService.getProfile()
             .then(profile => {
@@ -36,8 +42,12 @@ class MyProfilePage extends Component {
             })
     }
     componentDidMount() {
-        this.reloadPage()
+
+
+        (!this.props.match.params.id) ? this.reloadPage() : this.getUserProfile() // ubaciti u uslov i nas ID
+
     }
+
     onOpenModal = () => {
         this.setState({ open: true });
     };
@@ -88,6 +98,7 @@ class MyProfilePage extends Component {
                 'about': this.state.aboutInput,
                 'aboutShort': this.state.aboutInput,
                 'avatarUrl': this.state.imageUploadUrl,
+
             }
 
 
@@ -176,7 +187,9 @@ class MyProfilePage extends Component {
             <div className="container profile">
                 {this.profileImage()}
                 <h1>{this.state.profile.name}</h1>
-                <p className="btn btn-action" onClick={this.onOpenModal}>Edit profile</p>
+
+
+                {(this.props.match.params.id) ? '' : <p className="btn btn-action" onClick={this.onOpenModal}>Edit profile</p>}
                 <p>{this.state.profile.about}</p>
 
                 < Modal

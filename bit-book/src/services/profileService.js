@@ -12,7 +12,16 @@ class ProfileService {
             .then(response => response.json())
 
     }
-
+    getUserProfile(id) {
+        return fetch(`${apiUrl}/users/${id}`, {
+            headers: {
+                'Key': 'bitbookdev',
+                'SessionId': '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE'
+            }
+        }).then(response => {
+            return response.json()
+        })
+    }
     updateProfile(profileObj) {
         return fetch(`${apiUrl}Profiles`, {
             'method': 'PUT',

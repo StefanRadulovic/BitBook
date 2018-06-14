@@ -17,6 +17,7 @@ class PeopleService {
         }).then(response => {
             return response.json()
         }).then(data => {
+
             return data.map(user => {
                 let splited = user.lastPostDate.split('T')
                 let lastTime = splited[1].split(':')
@@ -33,7 +34,9 @@ class PeopleService {
                     return new User(imgUrl, user.aboutShort, capitalize(user.name), user.id, postLast)
 
                 }
-                return new User(user.avatarUrl, user.aboutShort, capitalize(user.name), user.userId, postLast)
+
+
+                return new User(user.avatarUrl, user.aboutShort, capitalize(user.name), user.id, postLast)
             })
         })
 
