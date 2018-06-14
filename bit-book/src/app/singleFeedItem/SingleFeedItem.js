@@ -38,9 +38,9 @@ export default class SingleFeedItem extends React.Component {
         return this.state.post === null ? <LoadingScreen /> : (
             <div className="single-feed-item">
                 <PostAuthor post={this.state.post} />
-                {this.state.post.type === "text" ? <SingleTextPost post={this.state.post} comments={this.state.comments} />
-                    : this.state.post.type === "image" ? <SingleImagePost post={this.state.post} comments={this.state.comments} />
-                        : <SingleVideoPost post={this.state.post} comments={this.state.comments} />}
+                {this.state.post.type === "text" ? <SingleTextPost post={this.state.post} />
+                    : this.state.post.type === "image" ? <SingleImagePost post={this.state.post} />
+                        : <SingleVideoPost post={this.state.post} />}
                 <div className="feed-item-comments">
                     <Comments postId={this.state.post.id} />
                 </div>
