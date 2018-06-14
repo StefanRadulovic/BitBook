@@ -418,7 +418,7 @@ color: #222
 }
 
 
-/* My profil Page */
+/* My profile Page */
 
 .profile {
   text-align: center;
@@ -536,7 +536,49 @@ width: 600px;
 }
 /* end my profil page */
 
+/* END My Profile page */
 
+
+/* Welcome Page */
+
+.welcomeMainDiv{
+  margin: 100px 0;
+}
+
+.tabList{
+  list-style-type: none;
+  text-align: center;
+  border-bottom: 1px solid  #a5b9cc;
+}
+
+.tabs{
+  border: 1px solid #a5b9cc;
+}
+
+.react-tabs__tab--selected{
+  background-color: #5e9eda;
+  color: white;
+}
+
+.react-tabs__tab-panel--selected{
+  padding: 10px 0;
+  text-align: center;
+}
+
+#welcomeTitle{
+  margin-bottom: 20px;
+  color: #2783d8;
+}
+
+label {
+  display: inline-block;
+  width: 80px;
+  text-align: right;
+  padding-right: 20px;
+}​
+
+/* END Welcome page */
+{}
 @media all and (max-width: 640px) {
   .menu-button {
     display: block;
