@@ -7,7 +7,6 @@ class WelcomePage extends Component {
         super(props);
 
         this.state = {
-<<<<<<< HEAD
             loginEmail: '',
             loginPass: '',
             registerName: '',
@@ -38,36 +37,24 @@ class WelcomePage extends Component {
             this.setState({
                 registerPass: event.target.value
             })
-=======
 
->>>>>>> 014c9da8367ca1551e5be877bff31fc47c42bb95
         }
     }
 
 
     render() {
-<<<<<<< HEAD
-=======
 
->>>>>>> 014c9da8367ca1551e5be877bff31fc47c42bb95
         return (
             <div className='container'>
                 <div className='row welcomeMainDiv'>
                     <div className='col-4 offset-1'>
                         <h3 id="welcomeTitle">Welcome to BitBook!</h3>
-<<<<<<< HEAD
                         <p>Please log in or register and join our growing BitBook community.</p>
                     </div>
                     <div className='col-5 offset-1'>
                         <LoginRegister
                             setInputValues={this.setInputValues}
                         />
-=======
-                        <p>Please log in or register and join our constantly growing BitBook community.</p>
-                    </div>
-                    <div className='col-5 offset-1'>
-                        <LoginRegister />
->>>>>>> 014c9da8367ca1551e5be877bff31fc47c42bb95
                     </div>
                 </div>
             </div>
