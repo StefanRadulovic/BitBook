@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import peopleService from '../../services/peopleService';
-import { apiUrl } from '../../shared/constants';
+
 
 
 class SingleUserProfilePage extends Component {

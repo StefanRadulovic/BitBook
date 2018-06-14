@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import profileService from '../../services/profileService';
 import { Link } from 'react-router-dom';
-import { apiUrl } from '../../shared/constants';
+
 import Modal from 'react-responsive-modal';
 import ProfileUpdate from './ProfileUpdate';
 import UploadPicture from './UploadPicture';

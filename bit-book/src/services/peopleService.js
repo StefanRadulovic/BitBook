@@ -8,7 +8,7 @@ import { capitalize } from '../entities/capitalize';
 class PeopleService {
 
     fetchPeopleData() {
-        return fetch(`${apiUrl}/users`, {
+        return fetch(`${apiUrl}users`, {
             headers: {
                 'Content-Type': 'application/json',
                 'Key': apiKey,
@@ -40,7 +40,7 @@ class PeopleService {
     }
 
     fetchSingleUserData = (id) => {
-        return fetch(`${apiUrl}/users/${id}`, {
+        return fetch(`${apiUrl}users/${id}`, {
             headers: {
                 'Content-Type': 'application/json',
                 'Key': apiKey,

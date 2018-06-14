@@ -1,4 +1,4 @@
-export const apiUrl = 'http://bitbookapi.azurhttp>ewebsites.net/api/';
+export const apiUrl = 'http://bitbookapi.azurewebsites.net/api/';
 
 export const apiKey = 'bitbookdev';
 
