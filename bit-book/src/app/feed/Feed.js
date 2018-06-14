@@ -2,7 +2,8 @@ import React from 'react';
 import feedService from '../../services/feedService';
 import { LoadingScreen } from '../partials/LoadingScreen';
 import { FeedContent } from './FeedContent';
-import { FeedSideBar } from './FeedSideBar';
+import { FilterPosts } from './FilterPosts';
+import { CreateNewPost } from '../createNewPost/CreateNewPost';
 
 export default class Feed extends React.Component {
     constructor(props) {
@@ -29,7 +30,8 @@ export default class Feed extends React.Component {
         return this.state.posts === null ? <LoadingScreen /> : (
             <div className="feed">
                 <FeedContent posts={this.state.posts} />
-                <FeedSideBar />
+                <FilterPosts />
+                <CreateNewPost refreshFeed={this.loadPosts} />
             </div>
         );
     }

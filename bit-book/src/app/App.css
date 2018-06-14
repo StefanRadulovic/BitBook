@@ -109,18 +109,18 @@ footer p {
   top: 125px;
 }
 
-.feed-sidebar ul {
+.filter-posts ul {
   list-style-type: none;
   text-align: center;
   visibility: hidden;
   margin-top: 10px;
 }
 
-.feed-sidebar .open-menu {
+.filter-posts .open-menu {
   visibility: visible;
 }
 
-.feed-sidebar-menu {
+.feed-posts-menu {
   background-color:	#a5b9cc;
   color: white;
   padding: 10px;
@@ -129,12 +129,12 @@ footer p {
   cursor: pointer;
 }
 
-.feed-sidebar-menu i {
+.feed-posts-menu i {
   margin-left: 10px;
 }
 
-.feed-sidebar a,
-.feed-sidebar a:visited {
+.filter-posts a,
+.filter-posts a:visited {
   text-decoration: none;
   color: #706c6c;
 }
@@ -222,6 +222,38 @@ footer p {
 
 .create-new-options.open-create-new {
   visibility: visible;
+}
+
+.new-post-title {
+  font-size: 24px;
+  width: 500px;
+  margin-bottom: 40px;
+}
+
+.new-post-description {
+  font-size: 14px;
+  padding-left: 2px; 
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.new-post-content {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  padding: 3px;
+  box-sizing: border-box;
+}
+
+.send-post {
+  float: right;
+  background-color: #a5b9cc;
+  color: white;
+  border-radius: 3px;
+  padding: 3px 10px;
+  margin-top: 30px;
+  box-sizing: border-box;
+  cursor: pointer;
 }
 
 .post-writer {
