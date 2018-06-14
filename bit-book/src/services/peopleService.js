@@ -8,7 +8,7 @@ import { capitalize } from '../entities/capitalize';
 class PeopleService {
 
     fetchPeopleData() {
-        return fetch(`${apiUrl}/users`, {
+        return fetch(`${apiUrl}users`, {
             headers: {
                 'Content-Type': 'application/json',
                 'Key': apiKey,
@@ -17,6 +17,7 @@ class PeopleService {
         }).then(response => {
             return response.json()
         }).then(data => {
+
             return data.map(user => {
                 let splited = user.lastPostDate.split('T')
                 let lastTime = splited[1].split(':')
@@ -33,14 +34,16 @@ class PeopleService {
                     return new User(imgUrl, user.aboutShort, capitalize(user.name), user.id, postLast)
 
                 }
-                return new User(user.avatarUrl, user.aboutShort, capitalize(user.name), user.userId, postLast)
+
+
+                return new User(user.avatarUrl, user.aboutShort, capitalize(user.name), user.id, postLast)
             })
         })
 
     }
 
     fetchSingleUserData = (id) => {
-        return fetch(`${apiUrl}/users/${id}`, {
+        return fetch(`${apiUrl}users/${id}`, {
             headers: {
                 'Content-Type': 'application/json',
                 'Key': apiKey,
@@ -53,4 +56,5 @@ class PeopleService {
         })
     }
 }
+
 export default new PeopleService();
