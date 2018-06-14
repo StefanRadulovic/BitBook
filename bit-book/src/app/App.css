@@ -577,9 +577,7 @@ label {
   padding-right: 20px;
 }​
 
-.logRegButton{
-  background-color: #5e9eda;
-  padding: 5px;
+.btn-outline-primary {
   margin: 20px 0;
 }
 

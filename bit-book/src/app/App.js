@@ -39,3 +39,42 @@ class App extends Component {
 }
 
 export default App;
+
+
+// class App extends Component {
+//   constructor(props) {
+//     super(props);
+
+//     this.state = {
+//       loggedIn: false
+//     }
+//   }
+
+//   render() {
+//     return (
+//       <div id="bit-book">
+//         {this.state.loggedIn ? (
+//           <div>
+//             <Header />
+//             <div id="page-content">
+//               <Switch>
+//                 <Route path="/home" component={Feed} />
+//                 <Route path='/people' component={PeoplePage} />
+//                 <Route path='/profile' component={MyProfilePage} />
+//                 <Route path="/text" component={FeedText} />
+//                 <Route path="/images" component={FeedImages} />
+//                 <Route path="/videos" component={FeedVideos} />
+//                 <Route path={"/post/:type/:id"} component={SingleFeedItem} />
+//               </Switch>
+//             </div>
+//           </div>
+//         ) : (
+//             <Switch>
+//               <Route path='/' component={WelcomePage} />
+//             </Switch>
+//           )}
+//         <Footer />
+//       </div >
+//     );
+//   }
+// }
