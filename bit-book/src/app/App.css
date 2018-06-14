@@ -256,35 +256,46 @@ footer p {
   cursor: pointer;
 }
 
-.post-writer {
+.post-author {
   width: 100%;
   padding: 15px;
   box-sizing: border-box;
   overflow: hidden;
 }
 
-.post-writers-img img {
+.post-author-img img {
   height: 50px;
   width: 50px;
   border-radius: 50%;
 }
 
-.post-writers-img {
+.post-author-img {
   float: left;
 }
 
-.post-writers-details {
+.post-author-details {
   float: left;
   margin-left: 20px;
 }
 
-.post-writers-name a,
-.post-writers-name a:visited {
+.post-author-name a,
+.post-author-name a:visited {
   text-decoration: none;
 }
 
 .post-time {
   font-size: 12px;
+}
+
+.delete-post {
+    float: right;
+    font-size: 14px;
+    background-color: #a5b9cc;
+    color: white;
+    border-radius: 5px;
+    padding: 3px 10px;
+    box-sizing: border-box;
+    cursor: pointer;
 }
 
 .post {
@@ -348,13 +359,13 @@ footer p {
   overflow: hidden;
 }
 
-.comment-writers-img img {
+.comment-author-img img {
   height: 50px;
   width: 50px;
   border-radius: 50%;
 }
 
-.comment-writers-img {
+.comment-author-img {
   float: left;
 }
 
@@ -363,8 +374,8 @@ footer p {
   margin-left: 20px;
 }
 
-.comment-writers-name a,
-.comment-writers-name a:visited {
+.comment-author-name a,
+.comment-author-name a:visited {
   text-decoration: none;
 }
 

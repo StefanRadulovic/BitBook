@@ -11,13 +11,13 @@ export const FeedContent = (props) => {
             {props.posts.length === 0 ? <NothingInFeed /> :
                 (props.posts.map((post, i) => {
                     if (post.type === "text") {
-                        return <TextPost post={post} key={i} />;
+                        return <TextPost post={post} refreshFeed={props.refreshFeed} key={i} />;
                     }
                     if (post.type === "image") {
-                        return <ImagePost post={post} key={i} />;
+                        return <ImagePost post={post} refreshFeed={props.refreshFeed} key={i} />;
                     }
                     if (post.type === "video") {
-                        return <VideoPost post={post} key={i} />;
+                        return <VideoPost post={post} refreshFeed={props.refreshFeed} key={i} />;
                     }
                 }))}
         </div>
