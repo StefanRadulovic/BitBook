@@ -20,7 +20,10 @@ class SingleFeedItemService {
                 'Key': apiKey,
                 'SessionId': sessionId
             }
-        }).then(response => response.json());
+        }).then(response => response.json())
+            .then(data => {
+                return data
+            });
     }
 
     getComments(postId) {
@@ -31,17 +34,17 @@ class SingleFeedItemService {
                 'Key': apiKey,
                 'SessionId': sessionId
             }
-        }).then(response => response.json());
+        }).then(response => response.json())
+            .then(data => {
+                return data
+            });
     }
 
-    addNewComment(authorId, authorName, comment, dateCreated, postId) {
+    addNewComment(comment, postId) {
         return fetch(apiUrl + 'Comments', {
             method: 'POST',
             body: JSON.stringify({
-                authorId: authorId,
-                authorName: authorName,
                 body: comment,
-                dateCreated: dateCreated,
                 postId: postId
             }),
             headers: {
@@ -49,7 +52,10 @@ class SingleFeedItemService {
                 'Key': apiKey,
                 'SessionId': sessionId
             }
-        }).then(response => response.json());
+        }).then(response => response.json())
+            .then(data => {
+                return data
+            });
     }
 }
 
