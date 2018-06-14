@@ -24,7 +24,11 @@ export class FilterPosts extends React.Component {
             <div className="filter-posts">
                 <div className="feed-posts-menu" onClick={this.toggleMenu}>Show on feed<i className="fas fa-caret-down" ></i></div >
                 <ul className={this.state.menuClass}>
+<<<<<<< HEAD
                     <li><Link to="/posts">All posts</Link></li>
+=======
+                    <li><Link to="/home">All posts</Link></li>
+>>>>>>> Add new text post.
                     <li><Link to="/videos">Videos</Link></li>
                     <li><Link to="/images">Images</Link></li>
                     <li><Link to="/text">Text</Link></li>

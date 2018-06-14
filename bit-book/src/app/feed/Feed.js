@@ -29,7 +29,11 @@ export default class Feed extends React.Component {
     render() {
         return this.state.posts === null ? <LoadingScreen /> : (
             <div className="feed">
+<<<<<<< HEAD
                 <FeedContent posts={this.state.posts} refreshFeed={this.loadPosts} />
+=======
+                <FeedContent posts={this.state.posts} />
+>>>>>>> Add new text post.
                 <FilterPosts />
                 <CreateNewPost refreshFeed={this.loadPosts} />
             </div>

@@ -10,10 +10,14 @@ export class CreateNewPost extends React.Component {
             toggleCreateNew: false,
             createNewClass: "",
             open: false,
+<<<<<<< HEAD
             postType: "",
             inputValue: "",
             title: "",
             postDescription: ""
+=======
+            inputValue: ""
+>>>>>>> Add new text post.
         }
     }
 
@@ -26,6 +30,7 @@ export class CreateNewPost extends React.Component {
         });
     }
 
+<<<<<<< HEAD
     onOpenTextModal = () => {
         this.setState({
             open: true,
@@ -50,6 +55,11 @@ export class CreateNewPost extends React.Component {
             postType: "video",
             title: "Video post",
             postDescription: "Youtube video link"
+=======
+    onOpenModal = () => {
+        this.setState({
+            open: true
+>>>>>>> Add new text post.
         });
     }
 
@@ -70,6 +80,7 @@ export class CreateNewPost extends React.Component {
     handleClick = (event) => {
         let post = this.state.inputValue;
         if (this.state.inputValue) {
+<<<<<<< HEAD
 
             if (this.state.postType === "text") {
                 newPostService.addNewTextPost(post).then(data => {
@@ -92,18 +103,29 @@ export class CreateNewPost extends React.Component {
             this.setState({
                 open: false,
                 inputValue: ""
+=======
+            newPostService.addNewPost(post).then(data => {
+                this.props.refreshFeed();
+            });
+            this.setState({
+                open: false
+>>>>>>> Add new text post.
             });
         }
     }
 
     render() {
         const { open } = this.state;
+<<<<<<< HEAD
         const { title } = this.state;
         const { postDescription } = this.state;
+=======
+>>>>>>> Add new text post.
         return (
             <div className="add-post">
                 <div className={"create-new-options " + this.state.createNewClass}>
                     <div>
+<<<<<<< HEAD
                         <div id="create-post" onClick={this.onOpenTextModal}></div>
                         <div className="create-new-type">Post</div>
                     </div>
@@ -113,6 +135,23 @@ export class CreateNewPost extends React.Component {
                     </div>
                     <div>
                         <div id="create-video" onClick={this.onOpenVideoModal}></div>
+=======
+                        <div id="create-post" onClick={this.onOpenModal}></div>
+                        <Modal open={open} onClose={this.onCloseModal} center>
+                            <h5 className="new-post-title">New post</h5>
+                            <p className="new-post-description">Post content</p>
+                            <input className="new-post-content" type="text" value={this.state.inputValue} onChange={this.handleChange} />
+                            <div className="send-post" onClick={this.handleClick}>POST</div>
+                        </Modal>
+                        <div className="create-new-type">Post</div>
+                    </div>
+                    <div>
+                        <div id="create-image"><Link to=""></Link></div>
+                        <div className="create-new-type">Image</div>
+                    </div>
+                    <div>
+                        <div id="create-video"><Link to=""></Link></div>
+>>>>>>> Add new text post.
                         <div className="create-new-type">Video</div>
                     </div>
                 </div>
@@ -121,12 +160,15 @@ export class CreateNewPost extends React.Component {
                     <div className={"new-post " + this.state.createNewClass}>New post</div>
                     <div className="plus">+</div>
                 </div>
+<<<<<<< HEAD
                 <Modal open={open} title={title} onClose={this.onCloseModal} center>
                     <h5 className="new-post-title">{title}</h5>
                     <p className="new-post-description">{postDescription}</p>
                     <input className="new-post-content" type="text" value={this.state.inputValue} onChange={this.handleChange} />
                     <div className="send-post" onClick={this.handleClick}>POST</div>
                 </Modal>
+=======
+>>>>>>> Add new text post.
             </div>
         );
     }

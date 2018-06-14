@@ -256,7 +256,11 @@ footer p {
   cursor: pointer;
 }
 
+<<<<<<< HEAD
 .post-author {
+=======
+.post-writer {
+>>>>>>> Add new text post.
   width: 100%;
   padding: 15px;
   box-sizing: border-box;

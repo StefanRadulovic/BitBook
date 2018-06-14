@@ -2,7 +2,11 @@ import { apiUrl, apiKey, sessionId } from '../shared/constants';
 
 class newPostService {
 
+<<<<<<< HEAD
     addNewTextPost(post) {
+=======
+    addNewPost(post) {
+>>>>>>> Add new text post.
         return fetch(apiUrl + 'TextPosts', {
             method: 'POST',
             body: JSON.stringify({
@@ -19,6 +23,7 @@ class newPostService {
                 return data;
             });
     }
+<<<<<<< HEAD
 
     addNewImagePost(imageUrl) {
         return fetch(apiUrl + 'ImagePosts', {
@@ -56,6 +61,8 @@ class newPostService {
                 return data;
             });
     }
+=======
+>>>>>>> Add new text post.
 }
 
 export default new newPostService();
