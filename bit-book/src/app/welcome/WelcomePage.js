@@ -37,11 +37,13 @@ class WelcomePage extends Component {
             this.setState({
                 registerPass: event.target.value
             })
+
         }
     }
 
 
     render() {
+
         return (
             <div className='container'>
                 <div className='row welcomeMainDiv'>
