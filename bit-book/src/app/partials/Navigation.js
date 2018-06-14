@@ -24,7 +24,7 @@ export class Navigation extends React.Component {
             <div>
                 <div className="menu-button" onClick={this.toggleMenu}><i className="fas fa-ellipsis-v"></i></div>
                 <ul id="navigation" className={this.state.navigationClass}>
-                    <li><Link to='/home'>Feed</Link></li>
+                    <li><Link to='/posts'>Feed</Link></li>
                     <li><Link to='/people'>People</Link></li>
                     <li><Link to='/profile'>Profile</Link></li>
                 </ul>
