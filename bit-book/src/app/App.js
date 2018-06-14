@@ -22,8 +22,8 @@ class App extends Component {
           <Switch>
             <Route exact path='/' component={WelcomePage} />
             <Route path="/home" component={Feed} />
-            <Route path='/people' component={PeoplePage} />
-            <Route path='/people/:id' component={SingleUserProfilePage} />
+            <Route exact path='/people' component={PeoplePage} />
+            <Route path='/people/:id' component={MyProfilePage} />
             <Route path='/profile' component={MyProfilePage} />
             <Route path="/text" component={FeedText} />
             <Route path="/images" component={FeedImages} />
