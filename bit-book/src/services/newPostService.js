@@ -43,7 +43,7 @@ class newPostService {
         return fetch(apiUrl + 'VideoPosts', {
             method: 'POST',
             body: JSON.stringify({
-                videoUrl: "https://www.youtube.com/embed/" + videoUrl.split("watch?v=")[1]
+                videoUrl: videoUrl
             }),
             headers: {
                 "Content-type": "application/json; charset=UTF-8",

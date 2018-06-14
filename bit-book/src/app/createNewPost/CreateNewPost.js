@@ -1,5 +1,8 @@
 import React from 'react';
 import newPostService from '../../services/newPostService';
+import { validateImgURL } from '../../shared/validateUrl';
+import { validateVideoUrl } from '../../shared/validateUrl';
+import { getVideoId } from '../../shared/validateUrl';
 import { Link } from 'react-router-dom';
 import Modal from 'react-responsive-modal';
 
@@ -13,7 +16,8 @@ export class CreateNewPost extends React.Component {
             postType: "",
             inputValue: "",
             title: "",
-            postDescription: ""
+            postDescription: "",
+            invalidUrlClass: ""
         }
     }
 
@@ -54,9 +58,14 @@ export class CreateNewPost extends React.Component {
     }
 
     onCloseModal = () => {
+        this.closeModal();
+    }
+
+    closeModal = () => {
         this.setState({
             open: false,
-            inputValue: ""
+            inputValue: "",
+            invalidUrlClass: "invalid-url-hidden"
         });
     }
 
@@ -74,25 +83,36 @@ export class CreateNewPost extends React.Component {
             if (this.state.postType === "text") {
                 newPostService.addNewTextPost(post).then(data => {
                     this.props.refreshFeed();
-                });
+                }).then(data => this.closeModal());
             }
 
             if (this.state.postType === "image") {
-                newPostService.addNewImagePost(post).then(data => {
-                    this.props.refreshFeed();
-                });
+
+                if (validateImgURL(post)) {
+                    newPostService.addNewImagePost(post).then(data => {
+                        this.props.refreshFeed();
+                    }).then(data => this.closeModal());
+                } else {
+                    this.setState({
+                        invalidUrlClass: "invalid-url-visible"
+                    });
+                }
             }
 
             if (this.state.postType === "video") {
-                newPostService.addNewVideoPost(post).then(data => {
-                    this.props.refreshFeed();
-                });
-            }
 
-            this.setState({
-                open: false,
-                inputValue: ""
-            });
+                if (validateVideoUrl(post)) {
+                    let videoUrlParams = getVideoId(post);
+                    let url = "https://www.youtube.com/embed/" + videoUrlParams[5];
+                    newPostService.addNewVideoPost(url).then(data => {
+                        this.props.refreshFeed();
+                    }).then(data => this.closeModal());
+                } else {
+                    this.setState({
+                        invalidUrlClass: "invalid-url-visible"
+                    });
+                }
+            }
         }
     }
 
@@ -100,6 +120,7 @@ export class CreateNewPost extends React.Component {
         const { open } = this.state;
         const { title } = this.state;
         const { postDescription } = this.state;
+        const { invalidUrlClass } = this.state;
         return (
             <div className="add-post">
                 <div className={"create-new-options " + this.state.createNewClass}>
@@ -125,6 +146,7 @@ export class CreateNewPost extends React.Component {
                     <h5 className="new-post-title">{title}</h5>
                     <p className="new-post-description">{postDescription}</p>
                     <input className="new-post-content" type="text" value={this.state.inputValue} onChange={this.handleChange} />
+                    <div className={"invalid-url-hidden " + invalidUrlClass}>Invalid url!</div>
                     <div className="send-post" onClick={this.handleClick}>POST</div>
                 </Modal>
             </div>
