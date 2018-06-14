@@ -1,6 +1,5 @@
 import React from 'react';
 import singleFeedItemService from '../../services/singleFeedItemService';
-import profileService from '../../services/profileService';
 import { LoadingScreen } from '../partials/LoadingScreen';
 import SingleComment from './SingleComment';
 import { NoComments } from './NoComments';
@@ -24,10 +23,6 @@ export default class Comments extends React.Component {
         });
     }
 
-    updateComments = () => {
-        this.loadComments();
-    }
-
     handleChange = (event) => {
         let value = event.target.value;
         this.setState({
@@ -36,14 +31,11 @@ export default class Comments extends React.Component {
     }
 
     handleClick = (event) => {
-        let authorId = this.state.profile.userId;
-        let authorName = this.state.profile.name;
         let comment = this.state.inputValue;
         let postId = this.props.postId;
-        let dateCreated = new Date();
         if (this.state.inputValue) {
-            singleFeedItemService.addNewComment(authorId, authorName, comment, dateCreated, postId).then(data => {
-                this.updateComments();
+            singleFeedItemService.addNewComment(comment, postId).then(data => {
+                this.loadComments();
             });
             this.setState({
                 inputValue: ""
@@ -52,13 +44,7 @@ export default class Comments extends React.Component {
     }
 
     componentDidMount() {
-        this.updateComments();
-        profileService.getProfile()
-            .then(profile => {
-                this.setState({
-                    profile: profile
-                });
-            });
+        this.loadComments();
     }
 
     render() {
@@ -69,10 +55,10 @@ export default class Comments extends React.Component {
                     <div className="send-comment" onClick={this.handleClick}>Send</div>
                 </div>
                 {this.state.comments === null ? <LoadingScreen /> :
-                     this.state.comments.length === 0 ? <NoComments /> :
+                    this.state.comments.length === 0 ? <NoComments /> :
                         this.state.comments.map((comment, i) => {
-                        return <SingleComment comment={comment} key={i} />
-                    })}
+                            return <SingleComment comment={comment} key={i} />
+                        })}
             </div>
         );
     }
