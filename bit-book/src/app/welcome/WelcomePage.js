@@ -1,39 +1,44 @@
 import React, { Component } from 'react';
 import { LoginRegister } from './LoginRegister';
-
+import authentificationService from '../../services/authentificationService'
 
 class WelcomePage extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            loginEmail: '',
-            loginPass: '',
+            username: '',
+            pass: '',
             registerName: '',
             registerEmail: '',
-            registerPass: '',
+
         }
     }
 
 
     setInputValues = event => {
-        if (event.target.name === "loginEmail") {
+        if (event.target.name === "loginUsername") {
+
             this.setState({
-                loginEmail: event.target.value
+                loginUsername: event.target.value
             })
         } else if (event.target.name === "loginPass") {
+
             this.setState({
                 loginPass: event.target.value
             })
         } else if (event.target.name === "registerName") {
+
             this.setState({
                 registerName: event.target.value
             })
         } else if (event.target.name === "registerEmail") {
+
             this.setState({
                 registerEmail: event.target.value
             })
         } else if (event.target.name === "registerPass") {
+
             this.setState({
                 registerPass: event.target.value
             })
@@ -41,6 +46,31 @@ class WelcomePage extends Component {
         }
     }
 
+
+    logInHandler = () => {
+        const logInObj = {
+            username: this.state.username,
+            password: this.state.pass
+        }
+
+        authentificationService.logIn(logInObj).then(data => {
+            console.log(data);
+
+        })
+    }
+    registerHandler = () => {
+        const regObj = {
+            username: this.state.username,
+            password: this.state.pass,
+            name: this.state.registerName,
+            email: this.state.registerEmail
+        }
+
+        authentificationService.register(regObj).then(data => {
+            console.log(data);
+
+        })
+    }
 
     render() {
 
@@ -54,6 +84,8 @@ class WelcomePage extends Component {
                     <div className='col-5 offset-1'>
                         <LoginRegister
                             setInputValues={this.setInputValues}
+                            logInHandler={this.logInHandler}
+                            registerHandler={this.registerHandler}
                         />
                     </div>
                 </div>
