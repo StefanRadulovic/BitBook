@@ -29,6 +29,7 @@ class App extends Component {
             <Route path="/images" component={FeedImages} />
             <Route path="/videos" component={FeedVideos} />
             <Route path={"/post/:type/:id"} component={SingleFeedItem} />
+            <Redirect from="/posts" to="/home" />
           </Switch>
         </div>
         <Footer />
