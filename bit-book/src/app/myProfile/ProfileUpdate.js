@@ -4,14 +4,7 @@ class ProfileUpdate extends Component {
     constructor(props) {
         super(props)
 
-        this.state = {
-            nameText: '',
-            aboutText: '',
-            disabled: false
 
-
-
-        }
         this.onChangeNameHandler = this.onChangeNameHandler.bind(this);
         this.onChangeAboutHandler = this.onChangeAboutHandler.bind(this)
     }
@@ -46,7 +39,7 @@ class ProfileUpdate extends Component {
 
     render() {
         let alertClass = 'col-7 update-profile-img-name';
-        if (this.state.nameText.length > 30) {
+        if (this.props.nameText.length > 30) {
             alertClass = 'col-7 alert update-profile-img-name';
 
 
@@ -62,12 +55,12 @@ class ProfileUpdate extends Component {
                     <div className={alertClass}>
                         <label htmlFor='inputFullName'>Name</label>
                         <br />
-                        <input type='text' id='inputFullName' className='col-12' value={this.state.nameText} onChange={this.onChangeNameHandler} />
+                        <input type='text' id='inputFullName' className='col-12' value={this.props.nameText} onChange={this.onChangeNameHandler} />
                         <br />
-                        <span id="letter-counter">{this.state.nameText.length}/30</span>
+                        <span id="letter-counter">{this.props.nameText.length}/30</span>
                     </div>
                 </div>
-                <textarea name="aboutUser" id="aboutUser-update" className='col-12' rows="4" onChange={this.onChangeAboutHandler} value={this.state.aboutText}></textarea>
+                <textarea name="aboutUser" id="aboutUser-update" className='col-12' rows="4" onChange={this.onChangeAboutHandler} value={this.props.about}></textarea>
                 <div className="update-profile-error">{this.props.error}</div>
                 <div>
                     <input className="btn btn-light updateProfileButton" type='button' value='CLOSE' onClick={this.props.onCloseClickHandler} />
