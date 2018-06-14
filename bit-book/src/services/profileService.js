@@ -10,8 +10,45 @@ class ProfileService {
             }
         })
             .then(response => response.json())
-        // .then(data => {
-        // })
+
+    }
+
+    updateProfile(profileObj) {
+        return fetch(`${apiUrl}Profiles`, {
+            'method': 'PUT',
+            'headers': {
+                'Key': 'bitbookdev',
+                'SessionId': '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE',
+                'Content-Type': 'application/json'
+            },
+            'body': JSON.stringify(profileObj)
+        }).then(response => {
+
+            if (!response.ok) {
+
+                return response.json().then((error) => {
+                    throw new Error(error.message)
+                })
+            } else {
+                return ''
+            }
+        });
+
+    }
+    uploadImage(formData) {
+        return fetch(`${apiUrl}upload`,
+            {
+                'method': 'POST',
+                'headers': {
+                    'Key': 'bitbookdev',
+                    'SessionId': '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE',
+
+                },
+                'body': formData
+            }).then(response => response.json())
+            .then(data => {
+                return data
+            })
     }
 }
 

@@ -28,13 +28,12 @@ class PeopleService {
                     postLast = `${date} ${lastTime[0]}:${lastTime[1]}`
 
                 }
-                let aboutShort = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, nulla animi dignissimos corporis nostrum voluptatibus tenetur natus voluptatem obcaecati quidem eos iusto nesciunt, quo voluptates illo, excepturi aut nisi accusantium. Delectus debitis, quidem asperiores ut'
-                if (true) {  // zameni uslov kad bude ok input sa apija
+                if (!user.avatarUrl) {
                     let imgUrl = 'http://livetestbed3.squaregrowth.com/core-content/uploads/2017/04/Placeholder-human-1.png';
-                    return new User(imgUrl, aboutShort, capitalize(user.name), user.id, postLast)
+                    return new User(imgUrl, user.aboutShort, capitalize(user.name), user.id, postLast)
 
                 }
-                return new User(user.avatarUrl, user.aboutShort, user.name, user.userId, postLast)
+                return new User(user.avatarUrl, user.aboutShort, capitalize(user.name), user.userId, postLast)
             })
         })
 
