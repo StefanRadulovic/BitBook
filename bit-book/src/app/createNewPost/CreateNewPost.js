@@ -11,13 +11,19 @@ export class CreateNewPost extends React.Component {
             createNewClass: "",
             open: false,
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Add image and video post.
             postType: "",
             inputValue: "",
             title: "",
             postDescription: ""
+<<<<<<< HEAD
 =======
             inputValue: ""
 >>>>>>> Add new text post.
+=======
+>>>>>>> Add image and video post.
         }
     }
 
@@ -31,6 +37,9 @@ export class CreateNewPost extends React.Component {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Add image and video post.
     onOpenTextModal = () => {
         this.setState({
             open: true,
@@ -50,6 +59,7 @@ export class CreateNewPost extends React.Component {
     }
 
     onOpenVideoModal = () => {
+<<<<<<< HEAD
         this.setState({
             open: true,
             postType: "video",
@@ -60,6 +70,13 @@ export class CreateNewPost extends React.Component {
         this.setState({
             open: true
 >>>>>>> Add new text post.
+=======
+        this.setState({
+            open: true,
+            postType: "video",
+            title: "Video post",
+            postDescription: "Youtube video link"
+>>>>>>> Add image and video post.
         });
     }
 
@@ -81,6 +98,9 @@ export class CreateNewPost extends React.Component {
         let post = this.state.inputValue;
         if (this.state.inputValue) {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Add image and video post.
 
             if (this.state.postType === "text") {
                 newPostService.addNewTextPost(post).then(data => {
@@ -100,6 +120,7 @@ export class CreateNewPost extends React.Component {
                 });
             }
 
+<<<<<<< HEAD
             this.setState({
                 open: false,
                 inputValue: ""
@@ -110,6 +131,11 @@ export class CreateNewPost extends React.Component {
             this.setState({
                 open: false
 >>>>>>> Add new text post.
+=======
+            this.setState({
+                open: false,
+                inputValue: ""
+>>>>>>> Add image and video post.
             });
         }
     }
@@ -117,14 +143,20 @@ export class CreateNewPost extends React.Component {
     render() {
         const { open } = this.state;
 <<<<<<< HEAD
+<<<<<<< HEAD
         const { title } = this.state;
         const { postDescription } = this.state;
 =======
 >>>>>>> Add new text post.
+=======
+        const { title } = this.state;
+        const { postDescription } = this.state;
+>>>>>>> Add image and video post.
         return (
             <div className="add-post">
                 <div className={"create-new-options " + this.state.createNewClass}>
                     <div>
+<<<<<<< HEAD
 <<<<<<< HEAD
                         <div id="create-post" onClick={this.onOpenTextModal}></div>
                         <div className="create-new-type">Post</div>
@@ -143,15 +175,22 @@ export class CreateNewPost extends React.Component {
                             <input className="new-post-content" type="text" value={this.state.inputValue} onChange={this.handleChange} />
                             <div className="send-post" onClick={this.handleClick}>POST</div>
                         </Modal>
+=======
+                        <div id="create-post" onClick={this.onOpenTextModal}></div>
+>>>>>>> Add image and video post.
                         <div className="create-new-type">Post</div>
                     </div>
                     <div>
-                        <div id="create-image"><Link to=""></Link></div>
+                        <div id="create-image" onClick={this.onOpenImageModal}></div>
                         <div className="create-new-type">Image</div>
                     </div>
                     <div>
+<<<<<<< HEAD
                         <div id="create-video"><Link to=""></Link></div>
 >>>>>>> Add new text post.
+=======
+                        <div id="create-video" onClick={this.onOpenVideoModal}></div>
+>>>>>>> Add image and video post.
                         <div className="create-new-type">Video</div>
                     </div>
                 </div>
@@ -161,14 +200,20 @@ export class CreateNewPost extends React.Component {
                     <div className="plus">+</div>
                 </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Add image and video post.
                 <Modal open={open} title={title} onClose={this.onCloseModal} center>
                     <h5 className="new-post-title">{title}</h5>
                     <p className="new-post-description">{postDescription}</p>
                     <input className="new-post-content" type="text" value={this.state.inputValue} onChange={this.handleChange} />
                     <div className="send-post" onClick={this.handleClick}>POST</div>
                 </Modal>
+<<<<<<< HEAD
 =======
 >>>>>>> Add new text post.
+=======
+>>>>>>> Add image and video post.
             </div>
         );
     }
