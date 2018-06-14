@@ -2,7 +2,7 @@ import { apiUrl } from '../shared/constants';
 
 class ProfileService {
 
-    getProfile() {
+    getMyProfile() {
         return fetch(`${apiUrl}/profile`, {
             headers: {
                 'Key': 'bitbookdev',

@@ -10,7 +10,6 @@ import FeedText from './feed/FeedText';
 import FeedImages from './feed/FeedImages';
 import FeedVideos from './feed/FeedVideos';
 import SingleFeedItem from './singleFeedItem/SingleFeedItem';
-import SingleUserProfilePage from './singleUserProfile/SingleUserProfilePage';
 
 
 class App extends Component {
@@ -21,8 +20,8 @@ class App extends Component {
         <div id="page-content">
           <Switch>
             <Route path="/home" component={Feed} />
-            <Route path='/people' component={PeoplePage} />
-            <Route path='/people/:id' component={SingleUserProfilePage} />
+            <Route exact path='/people' component={PeoplePage} />
+            <Route path='/people/:id' component={MyProfilePage} />
             <Route path='/profile' component={MyProfilePage} />
             <Route path="/text" component={FeedText} />
             <Route path="/images" component={FeedImages} />

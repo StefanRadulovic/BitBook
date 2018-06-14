@@ -34,10 +34,15 @@ class MyProfilePage extends Component {
         })
     }
     reloadPage = () => {
-        profileService.getProfile()
+        profileService.getMyProfile()
             .then(profile => {
+
                 this.setState({
-                    profile: profile
+                    profile: profile,
+                    nameInput: profile.name,
+                    aboutInput: profile.about,
+                    imageUploadUrl: profile.avatarUrl
+
                 })
             })
     }
@@ -199,7 +204,7 @@ class MyProfilePage extends Component {
                     classNames={{ overlay: 'custom-overlay', modal: 'custom-modal' }}>
                     <h2>Update profile</h2>
 
-                    <ProfileUpdate updateName={this.updateName} updateAbout={this.updateAbout} onCloseClickHandler={this.onCloseClickHandler} openSecondModal={this.onOpenSecondModal} onSaveHandler={this.onSaveHandler} imgUrl={this.state.imageUploadUrl} error={this.state.updateError} />
+                    <ProfileUpdate updateName={this.updateName} updateAbout={this.updateAbout} onCloseClickHandler={this.onCloseClickHandler} openSecondModal={this.onOpenSecondModal} onSaveHandler={this.onSaveHandler} imgUrl={this.state.imageUploadUrl} error={this.state.updateError} nameText={this.state.nameInput} about={this.state.aboutInput} />
 
                 </Modal >
 
