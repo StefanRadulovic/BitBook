@@ -15,27 +15,6 @@ class FeedService {
                 return data
             });
     }
-
-    addNewPost(userId, userName, postBody, type, dateCreated) {
-        return fetch(apiUrl + 'Comments', {
-            method: 'POST',
-            body: JSON.stringify({
-                userId: userId,
-                userName: userName,
-                body: postBody,
-                type: type,
-                dateCreated: dateCreated
-            }),
-            headers: {
-                "Content-type": "application/json; charset=UTF-8",
-                'Key': apiKey,
-                'SessionId': sessionId
-            }
-        }).then(response => response.json())
-            .then(data => {
-                return data
-            });
-    }
 }
 
 export default new FeedService();
