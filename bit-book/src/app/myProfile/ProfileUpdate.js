@@ -1,5 +1,5 @@
 import React, { Fragment, Component } from 'react'
-
+let alertClass = alertClass = 'col-7 update-profile-img-name';
 class ProfileUpdate extends Component {
     constructor(props) {
         super(props)
@@ -7,6 +7,7 @@ class ProfileUpdate extends Component {
         this.state = {
             nameText: '',
             aboutText: '',
+            disabled: false
 
 
 
@@ -16,11 +17,25 @@ class ProfileUpdate extends Component {
     }
 
     onChangeNameHandler(event) {
+
+
         this.setState({
             nameText: event.target.value
         })
-        this.props.updateName(event.target.value)
+        this.props.updateName(event.target.value);
+        // if (this.state.nameText.length > 29) {
+        //     alertClass = 'col-7 alert update-profile-img-name';
+        //     this.setState({
+        //         disabled: true
+        //     })
+        // } else {
+        //     alertClass = 'col-7 update-profile-img-name';
+        //     this.setState({
+        //         disabled: false  //KAKO da se sinhronizuje, ovako ne valja, dodaje klasu na jedan gore a skida je na jedan dole
+        //     })
+        // }
     }
+
     onChangeAboutHandler(event) {
         this.setState({
             aboutText: event.target.value
@@ -32,7 +47,9 @@ class ProfileUpdate extends Component {
     render() {
         let alertClass = 'col-7 update-profile-img-name';
         if (this.state.nameText.length > 30) {
-            alertClass = 'col-7 alert update-profile-img-name'
+            alertClass = 'col-7 alert update-profile-img-name';
+
+
         }
         return (
             <Fragment>

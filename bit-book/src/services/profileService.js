@@ -24,19 +24,15 @@ class ProfileService {
             'body': JSON.stringify(profileObj)
         }).then(response => {
 
-            if (response.ok) {
-                return response.json()
+            if (!response.ok) {
+
+                return response.json().then((error) => {
+                    throw new Error(error.message)
+                })
             } else {
-                return response.json()
+                return ''
             }
-
-
-        }).then(data => {
-            return data
-        }).catch(err => {
-
-            throw err
-        })
+        });
 
     }
     uploadImage(formData) {

@@ -493,6 +493,7 @@ color: #222
 }
 #update-img{
   width: 100%;
+  
   }
 .update-profile-img-name{
   display: inline-block;
@@ -512,8 +513,6 @@ color: #222
 }
 #upload-img{
 width: 600px;
-height: 300px;
-
 }
 #upload-img h2{
   margin-bottom: 30px;
@@ -532,7 +531,9 @@ height: 300px;
   padding: 5px 0;
   
 }
-
+.update-profile-error{
+  color: #ED1C24
+}
 /* end my profil page */
 
 
