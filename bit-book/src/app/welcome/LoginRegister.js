@@ -1,6 +1,5 @@
 import React from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-// import 'react-tabs/style/react-tabs.css';
 
 
 export const LoginRegister = (props) => {
@@ -20,26 +19,29 @@ export const LoginRegister = (props) => {
 
             <TabPanel>
                 <div className="loginReg">
-                    <label for="loginEmail">email </label>
-                    <input type="email" id="loginEmail" name="loginEmail" placeholder=" Email Address" onChange={handleChange} />
+                    <label htmlFor="loginUsername">username </label>
+                    <input type="text" id="loginUsername" name="loginUsername" placeholder=" Username" onChange={handleChange} />
                     <br />
-                    <label for="loginPass">password </label>
+                    <label htmlFor="loginPass">password </label>
                     <input type="password" id="loginPass" name="loginPass" placeholder=" Password" onChange={handleChange} />
                     <br />
-                    <button type="button" class="btn btn-outline-primary">Log In</button>
+                    <input type="button" className="btn btn-outline-primary" onClick={props.logInHandler} value="Log In" />
                 </div>
             </TabPanel>
             <TabPanel>
-                <label for="registerName">Name </label>
+                <label htmlFor="registerName">Name </label>
                 <input type="text" id="registerName" name="registerName" placeholder=" Full Name" onChange={handleChange} />
                 <br />
-                <label for="registerEmail">email </label>
+                <label htmlFor="registerEmail">email </label>
                 <input type="email" id="registerEmail" name="registerEmail" placeholder=" Email Address" onChange={handleChange} />
                 <br />
-                <label for="registerPass">password </label>
+                <label htmlFor="loginUsername">username </label>
+                <input type="text" id="loginUsername" name="loginUsername" placeholder=" Username" onChange={handleChange} />
+                <br />
+                <label htmlFor="registerPass">password </label>
                 <input type="password" id="registerPass" name="registerPass" placeholder=" Min 6 characters" onChange={handleChange} />
                 <br />
-                <button type="button" class="btn btn-outline-primary">Register</button>
+                <input type="button" className="btn btn-outline-primary" onClick={props.registerHandler} value="Register" />
             </TabPanel>
         </Tabs >
     )
