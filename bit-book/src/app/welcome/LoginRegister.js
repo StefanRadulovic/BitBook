@@ -11,7 +11,7 @@ export const LoginRegister = (props) => {
 
         <Tabs className="container tabs">
             <TabList className="row tabList" >
-                <Tab className="col-6">Login</Tab>
+                <Tab className="col-6">Log In</Tab>
                 <Tab className="col-6">Register</Tab>
             </TabList>
 
@@ -23,7 +23,7 @@ export const LoginRegister = (props) => {
                     <label for="loginPass">password </label>
                     <input type="password" id="loginPass" name="loginPass" placeholder="Password" />
                     <br />
-                    <button type="button" class="btn btn-primary">Login</button>
+                    <button className="logRegButton">Log In</button>
                 </div>
             </TabPanel>
             <TabPanel>
@@ -36,7 +36,7 @@ export const LoginRegister = (props) => {
                 <label for="registerPass">password </label>
                 <input type="password" id="registerPass" name="registerPass" placeholder="Min 6 characters" />
                 <br />
-                <button>Register</button>
+                <button className="logRegButton">Register</button>
             </TabPanel>
         </Tabs >
 
