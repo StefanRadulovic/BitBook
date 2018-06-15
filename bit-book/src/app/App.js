@@ -23,7 +23,12 @@ class App extends Component {
       isLoggedIn: false
     }
   }
-
+  componentDidMount() {
+    const local = localStorage.getItem('logIn');
+    if (local && local != 'undefined') {
+      this.logInLogOut()
+    }
+  }
   logInLogOut = () => {
     let logInState = this.state.isLoggedIn;
     this.setState({
@@ -32,7 +37,7 @@ class App extends Component {
   }
 
   render() {
-    let loggedIn = localStorage.getItem("loggedIn");
+
     return (
       <div id="bit-book">
         {(this.state.isLoggedIn) ? (

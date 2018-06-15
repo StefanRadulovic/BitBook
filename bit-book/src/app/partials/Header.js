@@ -8,6 +8,7 @@ export class Header extends React.Component {
     }
 
     handleClick = () => {
+        localStorage.removeItem('logIn')
         this.props.logInLogOut();
     }
 
