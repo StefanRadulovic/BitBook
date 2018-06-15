@@ -54,13 +54,14 @@ class WelcomePage extends Component {
 
 
     logInHandler = () => {
+        this.props.logIn()
         const logInObj = {
             username: this.state.username,
             password: this.state.pass
         }
 
         authentificationService.logIn(logInObj).then()
-            .catch(err => console.log(err))
+            .catch(err => console.log('eerr' + err))
 
     }
 
@@ -96,6 +97,7 @@ class WelcomePage extends Component {
                             pass={this.state.pass}
                             registerEmail={this.state.registerEmail}
                             registerName={this.state.registerName}
+                            logIn={this.props.logIn}
 
 
 

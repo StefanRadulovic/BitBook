@@ -1,33 +1,39 @@
-import { apiUrl } from '../shared/constants';
+import { apiUrl, apiKey, getOutHeader } from '../shared/constants';
 
 class ProfileService {
 
     getMyProfile() {
+        const sessionId = getOutHeader()
+
         return fetch(`${apiUrl}/profile`, {
             headers: {
-                'Key': 'bitbookdev',
-                'SessionId': '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE'
+                'Key': apiKey,
+                'SessionId': sessionId
             }
         })
             .then(response => response.json())
 
     }
     getUserProfile(id) {
+        const sessionId = getOutHeader()
+
         return fetch(`${apiUrl}/users/${id}`, {
             headers: {
-                'Key': 'bitbookdev',
-                'SessionId': '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE'
+                'Key': apiKey,
+                'SessionId': sessionId
             }
         }).then(response => {
             return response.json()
         })
     }
     updateProfile(profileObj) {
+        const sessionId = getOutHeader()
+
         return fetch(`${apiUrl}Profiles`, {
             'method': 'PUT',
             'headers': {
-                'Key': 'bitbookdev',
-                'SessionId': '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE',
+                'Key': apiKey,
+                'SessionId': sessionId,
                 'Content-Type': 'application/json'
             },
             'body': JSON.stringify(profileObj)
@@ -45,12 +51,14 @@ class ProfileService {
 
     }
     uploadImage(formData) {
+        const sessionId = getOutHeader()
+
         return fetch(`${apiUrl}upload`,
             {
                 'method': 'POST',
                 'headers': {
-                    'Key': 'bitbookdev',
-                    'SessionId': '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE',
+                    'Key': apiKey,
+                    'SessionId': sessionId,
 
                 },
                 'body': formData

@@ -3,7 +3,10 @@ export const apiUrl = 'http://bitbookapi.azurewebsites.net/api/';
 // export const apiKey = 'bitbookdev';
 export const apiKey = 'DB2F506';
 
+export const getOutHeader = () => {
+    const login = localStorage.getItem('logIn');
 
-const login = localStorage.getItem('logIn')
-export const sessionId = JSON.parse(login).sessionId;
+    return JSON.parse(login).sessionId;
 
+
+}

@@ -6,7 +6,7 @@ export const LoginRegister = (props) => {
 
 
     const handleChange = event => {
-        props.setInputValues(event)
+        props.setInputValues(event);
     };
 
 
