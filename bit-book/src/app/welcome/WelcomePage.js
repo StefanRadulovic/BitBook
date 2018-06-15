@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { LoginRegister } from './LoginRegister';
+import { Redirect } from 'react-router-dom';
 import authentificationService from '../../services/authentificationService'
 
 class WelcomePage extends Component {
@@ -11,7 +12,8 @@ class WelcomePage extends Component {
             pass: '',
             registerName: '',
             registerEmail: '',
-            error: ''
+            error: '',
+            registered: false
 
         }
     }
@@ -84,15 +86,26 @@ class WelcomePage extends Component {
         }
 
         authentificationService.register(regObj).then(data => {
-            console.log(data);
+            let registered = !this.state.registered;
+            this.setState({
+                registered: registered
+            })
 
+
+        }).catch(err => {
+            this.setState({
+                error: err
+            })
 
         })
     }
 
     render() {
+        // if (this.state.registered) {
+        //     return <Redirect to="/" />
+        // }
 
-        return (
+        return !this.state.registered ? (
             <div className='container'>
                 <div className='row welcomeMainDiv'>
                     <div className='col-4 offset-1'>
@@ -111,14 +124,11 @@ class WelcomePage extends Component {
                             logIn={this.props.logIn}
                             error={this.state.error}
                             keyUpHandler={this.keyUpHandler}
-
-
-
                         />
                     </div>
                 </div>
             </div>
-        )
+        ) : <Redirect to="/home" />
     }
 }
 

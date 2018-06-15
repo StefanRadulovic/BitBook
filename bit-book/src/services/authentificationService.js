@@ -44,7 +44,17 @@ class AuthentificationService {
             },
             'body': JSON.stringify(registerObj)
         }).then(response => {
-            return response.json()
+            if (response.ok) {
+                return response.json()
+            } else {
+                return response.json().then(data => {
+                    console.log(data.error);
+
+                    throw new Error(data.error.message)
+                })
+            }
+        }).catch(err => {
+            throw err
         })
 
     }
