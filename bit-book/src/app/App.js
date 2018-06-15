@@ -14,35 +14,6 @@ import WelcomePage from './welcome/WelcomePage';
 import WelcomeHeader from './welcome/WelcomeHeader';
 
 
-// class App extends Component {
-//   render() {
-//     return (
-//       <div id="bit-book">
-//         <Header />
-//         <div id="page-content">
-//           <Switch>
-//             <Route exact path='/' component={WelcomePage} />
-//             <Route path="/home" component={Feed} />
-//             <Route exact path='/people' component={PeoplePage} />
-//             <Route path='/people/:id' component={MyProfilePage} />
-//             <Route path='/profile' component={MyProfilePage} />
-//             <Route path="/text" component={FeedText} />
-//             <Route path="/images" component={FeedImages} />
-//             <Route path="/videos" component={FeedVideos} />
-//             <Route path={"/post/:type/:id"} component={SingleFeedItem} />
-//             <Redirect from="/posts" to="/home" />
-//           </Switch>
-//         </div>
-//         <Footer />
-
-//       </div >
-//     );
-//   }
-// }
-
-// export default App;
-
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -75,8 +46,6 @@ class App extends Component {
                 <Route path={"/post/:type/:id"} component={SingleFeedItem} />
                 <Redirect from='/posts' to='/home' />
                 <Redirect from='/' to='/home' />
-
-
               </Switch>
             </div>
           </div>
