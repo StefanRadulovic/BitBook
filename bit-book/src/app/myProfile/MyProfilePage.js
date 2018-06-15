@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
 import profileService from '../../services/profileService';
 import { Link } from 'react-router-dom';
-
 import Modal from 'react-responsive-modal';
 import ProfileUpdate from './ProfileUpdate';
 import UploadPicture from './UploadPicture';
 import { validateImgURL } from '../../shared/validateUrl'
 
-
-
 class MyProfilePage extends Component {
     constructor(props) {
         super(props);
+
         this.state = {
             profile: {},
             open: false,
@@ -25,11 +23,11 @@ class MyProfilePage extends Component {
             profileEmail: '',
             ourEmail: ''
         }
-
     }
+
     getUserProfile = () => {
 
-        const id = this.props.match.params.id
+        const id = this.props.match.params.id;
         profileService.getUserProfile(id).then(profile => {
             this.setState({
                 profile: profile,
@@ -37,61 +35,54 @@ class MyProfilePage extends Component {
                 nameInput: profile.name,
                 aboutInput: profile.about,
                 imageUploadUrl: profile.avatarUrl
-
-            })
-        })
+            });
+        });
     }
-    reloadPage = () => {
 
+    reloadPage = () => {
 
         profileService.getMyProfile()
             .then(profile => {
-
                 this.setState({
                     profile: profile,
                     nameInput: profile.name,
                     aboutInput: profile.about,
                     imageUploadUrl: profile.avatarUrl,
                     profileEmail: profile.email
-
-
-                })
-            })
+                });
+            });
     }
+
     componentDidMount() {
         const local = localStorage.getItem('logIn');
         const ourEmail = JSON.parse(local).email;
         this.setState({
             ourEmail
         });
-        (!this.props.match.params.id) ? this.reloadPage() : this.getUserProfile()
-
-
-
-
-
+        (!this.props.match.params.id) ? this.reloadPage() : this.getUserProfile();
     }
 
     onOpenModal = () => {
         this.setState({ open: true });
-    };
+    }
 
     onCloseModal = () => {
         this.setState({ open: false, updateError: '' });
-    };
+    }
     updateName = (text) => {
         this.setState({
             nameInput: text
-        })
+        });
     }
     updateAbout = (text) => {
         this.setState({
             aboutInput: text
-        })
+        });
     }
+
     onOpenSecondModal = () => {
         this.setState({ openSecondModal: true });
-    };
+    }
 
     onCloseSecondModal = () => {
         this.setState({
@@ -100,7 +91,7 @@ class MyProfilePage extends Component {
             imageUploadUrl: '',
 
         });
-    };
+    }
 
     profileImage = () => {
 
@@ -111,9 +102,10 @@ class MyProfilePage extends Component {
         } else {
             return (
                 <img className="profileImg" src={this.state.profile.avatarUrl} />
-            )
+            );
         }
     }
+
     onSaveHandler = () => {
         if (this.state.nameInput.length <= 30) {
             const profileObj = {
@@ -121,10 +113,8 @@ class MyProfilePage extends Component {
                 'email': this.state.nameInput,
                 'about': this.state.aboutInput,
                 'aboutShort': this.state.aboutInput,
-                'avatarUrl': this.state.imageUploadUrl,
-
+                'avatarUrl': this.state.imageUploadUrl
             }
-
 
             profileService.updateProfile(profileObj).then(data => {
 
@@ -132,22 +122,19 @@ class MyProfilePage extends Component {
                     updateError: '',
                     open: false
                 })
-                this.reloadPage()
-
+                this.reloadPage();
             }).catch(err => {
                 this.setState({
                     updateError: err.message
-                })
-
-
-            })
+                });
+            });
         } else {
             this.setState({
                 updateError: "Name is too long!"
-            })
+            });
         }
-
     }
+
     uploadFileHandler = () => {
 
         const formData = new FormData();
@@ -156,15 +143,14 @@ class MyProfilePage extends Component {
             this.setState({
                 imageUploadUrl: data,
                 openSecondModal: false
-
-            })
-        })
-
+            });
+        });
     }
+
     selectProfileImageHandler = (event) => {
         this.setState({
             fileImg: event.target.files[0]
-        })
+        });
 
     }
     onClosePictureUpload = () => {
@@ -172,37 +158,34 @@ class MyProfilePage extends Component {
             openSecondModal: false,
             imageUploadUrl: '',
             errorImgUrl: ''
-
-        })
+        });
     }
-    onCloseClickHandler = () => {
 
+    onCloseClickHandler = () => {
 
         this.setState({
             imageUploadUrl: null,
-
-        })
+        });
         this.onCloseModal()
-
     }
-    setImgurl = (text) => {
+
+    setImgUrl = (text) => {
         this.setState({
             imageUploadUrl: text
-        })
+        });
     }
+
     upLoadUrl = () => {
         if (validateImgURL(this.state.imageUploadUrl)) {
 
             this.setState({
                 openSecondModal: false,
                 errorImgUrl: '',
-
-
-            })
+            });
         } else {
             this.setState({
                 errorImgUrl: "Input correct url!"
-            })
+            });
         }
     }
 
@@ -211,32 +194,24 @@ class MyProfilePage extends Component {
             <div className="container profile">
                 {this.profileImage()}
                 <h1>{this.state.profile.name}</h1>
-
-
                 {(this.state.profileEmail != this.state.ourEmail) ? '' : <p className="btn btn-action" onClick={this.onOpenModal}>Edit profile</p>}
                 <p>{this.state.profile.about}</p>
-
                 < Modal
                     open={this.state.open}
                     onClose={this.onCloseModal}
                     center
                     classNames={{ overlay: 'custom-overlay', modal: 'custom-modal' }}>
                     <h2>Update profile</h2>
-
                     <ProfileUpdate updateName={this.updateName} updateAbout={this.updateAbout} onCloseClickHandler={this.onCloseClickHandler} openSecondModal={this.onOpenSecondModal} onSaveHandler={this.onSaveHandler} imgUrl={this.state.imageUploadUrl} error={this.state.updateError} nameText={this.state.nameInput} about={this.state.aboutInput} />
-
                 </Modal >
 
                 <Modal open={this.state.openSecondModal} onClose={this.onCloseSecondModal} center className={{ overlay: 'custom-overlay', modal: 'custom-modal2' }}>
-                    <UploadPicture uploadFileHandler={this.uploadFileHandler} photoUrl={this.setImgurl} selectProfileImageHandler={this.selectProfileImageHandler} imgUrl={this.state.imageUploadUrl} close={this.onClosePictureUpload} upLoadUrl={this.upLoadUrl} errorImgUrl={this.state.errorImgUrl} />
-
+                    <UploadPicture uploadFileHandler={this.uploadFileHandler} photoUrl={this.setImgUrl} selectProfileImageHandler={this.selectProfileImageHandler} imgUrl={this.state.imageUploadUrl} close={this.onClosePictureUpload} upLoadUrl={this.upLoadUrl} errorImgUrl={this.state.errorImgUrl} />
                 </Modal>
                 <button type="button" className="btn btn-light postCommentButton"><i className="fas fa-circle"></i> {this.state.profile.postsCount} Posts</button>
                 <button type="button" className="btn btn-light postCommentButton"><i className="fas fa-circle"></i> {this.state.profile.commentsCount} Comments</button>
-
             </div >
-        )
-
+        );
     }
 }
 

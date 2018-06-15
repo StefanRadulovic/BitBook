@@ -23,16 +23,17 @@ class App extends Component {
       isLoggedIn: false
     }
   }
+
   componentDidMount() {
     const local = localStorage.getItem('logIn');
     if (local && local != 'undefined') {
       this.logInLogOut()
     }
   }
-  logInLogOut = () => {
-    let logInState = this.state.isLoggedIn;
+
+  logInLogOut = (isLoggedIn) => {
     this.setState({
-      isLoggedIn: !logInState
+      isLoggedIn: isLoggedIn
     })
   }
 
@@ -58,13 +59,11 @@ class App extends Component {
               </Switch>
             </div>
           </Fragment>
-
         ) : (
             <Fragment>
               <WelcomeHeader />
               <Switch>
-                <Route path='/' render={() => <WelcomePage logIn={this.logInLogOut} />} />
-
+                <Route path='/' render={() => <WelcomePage logInLogOut={this.logInLogOut} />} />
               </Switch>
             </Fragment>
           )}

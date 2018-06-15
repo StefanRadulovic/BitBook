@@ -1,14 +1,13 @@
 import { apiUrl, apiKey } from '../shared/constants'
 
-class AuthentificationService {
+class AuthenticationService {
 
     logIn(logInObj) {
-
 
         return fetch(`${apiUrl}login`, {
             'method': 'POST',
             'headers': {
-                'key': apiKey,
+                'Key': apiKey,
                 'Content-Type': 'application/json'
 
             },
@@ -24,10 +23,7 @@ class AuthentificationService {
                 })
             }
         }).then(data => {
-
             localStorage.setItem('logIn', JSON.stringify(data));
-
-
         }).catch(err => {
             throw err
         })
@@ -39,10 +35,22 @@ class AuthentificationService {
         return fetch(`${apiUrl}register`, {
             'method': 'POST',
             'headers': {
-                'apiKey': apiKey,
-
+                'Key': apiKey,
+                'Content-Type': 'application/json'
             },
-            'body': registerObj
+            'body': JSON.stringify(registerObj)
+        }).then(response => {
+            if (response.ok) {
+                return response.json()
+            } else {
+                return response.json().then(data => {
+                    console.log(data.error);
+
+                    throw new Error(data.error.message)
+                })
+            }
+        }).catch(err => {
+            throw err
         })
 
     }
@@ -50,4 +58,4 @@ class AuthentificationService {
 
 }
 
-export default new AuthentificationService();
+export default new AuthenticationService();

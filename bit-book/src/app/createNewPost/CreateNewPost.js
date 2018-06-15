@@ -116,6 +116,12 @@ export class CreateNewPost extends React.Component {
         }
     }
 
+    keyUpHandler = (event) => {
+        if (event.keyCode === 13) {
+            this.handleClick();
+        }
+    }
+
     render() {
         const { open } = this.state;
         const { title } = this.state;
@@ -145,7 +151,7 @@ export class CreateNewPost extends React.Component {
                 <Modal open={open} title={title} onClose={this.onCloseModal} center>
                     <h5 className="new-post-title">{title}</h5>
                     <p className="new-post-description">{postDescription}</p>
-                    <input className="new-post-content" type="text" value={this.state.inputValue} onChange={this.handleChange} />
+                    <input className="new-post-content" type="text" value={this.state.inputValue} onChange={this.handleChange} onKeyUp={this.keyUpHandler} autoFocus/>
                     <div className={"invalid-url-hidden " + invalidUrlClass}>Invalid url!</div>
                     <div className="send-post" onClick={this.handleClick}>POST</div>
                 </Modal>
