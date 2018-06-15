@@ -24,8 +24,9 @@ header {
 
 #header-wrap {
   width: 100%;
-  max-width: 960px;
+  width: 960px;
   margin: auto;
+  overflow: hidden;
 }
 
 header h1 {
@@ -625,8 +626,10 @@ width: 600px;
 
 /* Welcome Page */
 .log-out {
-  float: right;
-  color: white;
+  position: absolute;
+  top: 22px;
+  right: 20px;
+  color: rgb(230, 224, 224);
   cursor: pointer;
   font-size: 20px;
   line-height: 32px;

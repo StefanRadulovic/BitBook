@@ -5,13 +5,14 @@ import { Footer } from './partials/Footer';
 import Feed from './feed/Feed';
 import MyProfilePage from './myProfile/MyProfilePage';
 import { Switch, Route, Redirect } from 'react-router-dom';
+import { Fragment } from 'react';
 import PeoplePage from '../People/PeoplePage'
 import FeedText from './feed/FeedText';
 import FeedImages from './feed/FeedImages';
 import FeedVideos from './feed/FeedVideos';
 import SingleFeedItem from './singleFeedItem/SingleFeedItem';
 import WelcomePage from './welcome/WelcomePage';
-import WelcomeHeader from './welcome/WelcomeHeader';
+import { WelcomeHeader } from './welcome/WelcomeHeader';
 
 
 class App extends Component {
@@ -22,19 +23,21 @@ class App extends Component {
       isLoggedIn: false
     }
   }
+
   logInLogOut = () => {
-
-
+    let logInState = this.state.isLoggedIn;
     this.setState({
-      isLoggedIn: true
+      isLoggedIn: !logInState
     })
   }
+
   render() {
+    let loggedIn = localStorage.getItem("loggedIn");
     return (
       <div id="bit-book">
         {(this.state.isLoggedIn) ? (
-          <div>
-            <Header />
+          <Fragment>
+            <Header logInLogOut={this.logInLogOut} />
             <div id="page-content">
               <Switch>
                 <Route path="/home" component={Feed} />
@@ -48,14 +51,16 @@ class App extends Component {
                 <Redirect from='/' to='/home' />
               </Switch>
             </div>
-          </div>
+          </Fragment>
 
         ) : (
+            <Fragment>
+              <WelcomeHeader />
+              <Switch>
+                <Route path='/' render={() => <WelcomePage logIn={this.logInLogOut} />} />
 
-            <Switch>
-              <Route path='/' render={() => <WelcomePage logIn={this.logInLogOut} />} />
-
-            </Switch>
+              </Switch>
+            </Fragment>
           )}
         <Footer />
       </div >
