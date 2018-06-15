@@ -20,27 +20,33 @@ class WelcomePage extends Component {
         if (event.target.name === "loginUsername") {
 
             this.setState({
-                loginUsername: event.target.value
+                username: event.target.value
             })
         } else if (event.target.name === "loginPass") {
 
             this.setState({
-                loginPass: event.target.value
+                pass: event.target.value
             })
         } else if (event.target.name === "registerName") {
 
             this.setState({
                 registerName: event.target.value
             })
-        } else if (event.target.name === "registerEmail") {
+        } else if (event.target.name === "registerUsername") {
 
             this.setState({
-                registerEmail: event.target.value
+                username: event.target.value
             })
         } else if (event.target.name === "registerPass") {
 
             this.setState({
-                registerPass: event.target.value
+                pass: event.target.value
+            })
+
+        } else if (event.target.name === "registerEmail") {
+
+            this.setState({
+                registerEmail: event.target.value
             })
 
         }
@@ -58,6 +64,7 @@ class WelcomePage extends Component {
 
         })
     }
+
     registerHandler = () => {
         const regObj = {
             username: this.state.username,
