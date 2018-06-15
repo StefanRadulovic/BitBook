@@ -54,7 +54,7 @@ class WelcomePage extends Component {
 
 
     logInHandler = () => {
-        this.props.logIn()
+        this.props.logIn();
         const logInObj = {
             username: this.state.username,
             password: this.state.pass
