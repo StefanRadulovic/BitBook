@@ -22,6 +22,8 @@ class MyProfilePage extends Component {
             fileImg: {},
             updateError: '',
             errorImgUrl: '',
+            profileEmail: '',
+            ourEmail: ''
         }
 
     }
@@ -30,12 +32,17 @@ class MyProfilePage extends Component {
         const id = this.props.match.params.id
         profileService.getUserProfile(id).then(profile => {
             this.setState({
-                profile: profile
+                profile: profile,
+                profileEmail: profile.email,
+                nameInput: profile.name,
+                aboutInput: profile.about,
+                imageUploadUrl: profile.avatarUrl
+
             })
         })
     }
     reloadPage = () => {
-        console.log('kad pozove tebe');
+
 
         profileService.getMyProfile()
             .then(profile => {
@@ -44,15 +51,24 @@ class MyProfilePage extends Component {
                     profile: profile,
                     nameInput: profile.name,
                     aboutInput: profile.about,
-                    imageUploadUrl: profile.avatarUrl
+                    imageUploadUrl: profile.avatarUrl,
+                    profileEmail: profile.email
+
 
                 })
             })
     }
     componentDidMount() {
+        const local = localStorage.getItem('logIn');
+        const ourEmail = JSON.parse(local).email;
+        this.setState({
+            ourEmail
+        });
+        (!this.props.match.params.id) ? this.reloadPage() : this.getUserProfile()
 
 
-        (!this.props.match.params.id) ? this.reloadPage() : this.getUserProfile() // ubaciti u uslov i nas ID
+
+
 
     }
 
@@ -197,7 +213,7 @@ class MyProfilePage extends Component {
                 <h1>{this.state.profile.name}</h1>
 
 
-                {(this.props.match.params.id) ? '' : <p className="btn btn-action" onClick={this.onOpenModal}>Edit profile</p>}
+                {(this.state.profileEmail != this.state.ourEmail) ? '' : <p className="btn btn-action" onClick={this.onOpenModal}>Edit profile</p>}
                 <p>{this.state.profile.about}</p>
 
                 < Modal

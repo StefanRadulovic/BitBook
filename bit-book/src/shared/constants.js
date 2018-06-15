@@ -6,7 +6,8 @@ export const apiKey = 'DB2F506';
 export const getOutHeader = () => {
     const login = localStorage.getItem('logIn');
 
-    return JSON.parse(login).sessionId;
-
+    if (login && login != 'undefined') {
+        return JSON.parse(login).sessionId;
+    }
 
 }

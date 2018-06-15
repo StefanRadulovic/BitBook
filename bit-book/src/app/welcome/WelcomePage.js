@@ -11,6 +11,7 @@ class WelcomePage extends Component {
             pass: '',
             registerName: '',
             registerEmail: '',
+            error: ''
 
         }
     }
@@ -54,14 +55,19 @@ class WelcomePage extends Component {
 
 
     logInHandler = () => {
-        this.props.logIn();
+
         const logInObj = {
             username: this.state.username,
             password: this.state.pass
         }
 
-        authentificationService.logIn(logInObj).then()
-            .catch(err => console.log('eerr' + err))
+        authentificationService.logIn(logInObj).then(data => {
+            this.props.logIn()
+
+        })
+            .catch(err => this.setState({
+                error: err
+            }))
 
     }
 
@@ -74,7 +80,7 @@ class WelcomePage extends Component {
         }
 
         authentificationService.register(regObj).then(data => {
-            console.log(data);
+
 
         })
     }
@@ -98,6 +104,7 @@ class WelcomePage extends Component {
                             registerEmail={this.state.registerEmail}
                             registerName={this.state.registerName}
                             logIn={this.props.logIn}
+                            error={this.state.error}
 
 
 

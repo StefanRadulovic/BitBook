@@ -4,7 +4,7 @@ class User {
         this.name = name;
         this.aboutShort = aboutShort;
         this.img = avatarUrl;
-        this.lastPost = lastPost
+        this.lastPost = lastPost;
     }
 
 

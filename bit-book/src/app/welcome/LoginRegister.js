@@ -26,6 +26,7 @@ export const LoginRegister = (props) => {
                     <input type="password" id="loginPass" name="loginPass" placeholder=" Password" onChange={handleChange} value={props.pass} />
                     <br />
                     <input type="button" className="btn btn-outline-primary" onClick={props.logInHandler} value="Log In" />
+                    <div className='alert'>{props.error.message}</div>
                 </div>
             </TabPanel>
             <TabPanel>
@@ -42,6 +43,7 @@ export const LoginRegister = (props) => {
                 <input type="password" id="registerPass" name="registerPass" placeholder=" Min 6 characters" onChange={handleChange} value={props.pass} />
                 <br />
                 <input type="button" className="btn btn-outline-primary" onClick={props.registerHandler} value="Register" />
+                <div className='alert'>{props.error}</div>
             </TabPanel>
         </Tabs >
     )
