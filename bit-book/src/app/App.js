@@ -10,14 +10,16 @@ import FeedText from './feed/FeedText';
 import FeedImages from './feed/FeedImages';
 import FeedVideos from './feed/FeedVideos';
 import SingleFeedItem from './singleFeedItem/SingleFeedItem';
-import WelcomePage from './welcome/WelcomePage'
+import WelcomePage from './welcome/WelcomePage';
+import WelcomeHeader from './welcome/WelcomeHeader';
 
 
 class App extends Component {
   render() {
     return (
       <div id="bit-book">
-        <Header />
+        {/* <Header /> */}
+        <WelcomeHeader />
         <div id="page-content">
           <Switch>
             <Route exact path='/' component={WelcomePage} />
