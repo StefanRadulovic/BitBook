@@ -1,9 +1,10 @@
-import { apiUrl, apiKey, sessionId } from '../shared/constants';
+import { apiUrl, apiKey, getOutHeader } from '../shared/constants';
+
 
 class SingleFeedItemService {
 
     getPostByType(postId, type) {
-
+        const sessionId = getOutHeader()
         let typeUrl = 'TextPosts/';
 
         if (type == 'image') {
@@ -27,6 +28,8 @@ class SingleFeedItemService {
     }
 
     getComments(postId) {
+        const sessionId = getOutHeader()
+
         return fetch(apiUrl + 'Comments?postId=' + postId, {
             method: 'GET',
             headers: {
@@ -41,6 +44,8 @@ class SingleFeedItemService {
     }
 
     addNewComment(comment, postId) {
+        const sessionId = getOutHeader()
+
         return fetch(apiUrl + 'Comments', {
             method: 'POST',
             body: JSON.stringify({

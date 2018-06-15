@@ -26,6 +26,7 @@ class MyProfilePage extends Component {
 
     }
     getUserProfile = () => {
+
         const id = this.props.match.params.id
         profileService.getUserProfile(id).then(profile => {
             this.setState({
@@ -34,6 +35,8 @@ class MyProfilePage extends Component {
         })
     }
     reloadPage = () => {
+        console.log('kad pozove tebe');
+
         profileService.getMyProfile()
             .then(profile => {
 

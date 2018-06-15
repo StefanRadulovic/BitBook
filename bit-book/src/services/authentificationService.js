@@ -1,16 +1,35 @@
-import { apiUrl, apiKey, sessionId } from '../shared/constants'
+import { apiUrl, apiKey } from '../shared/constants'
 
 class AuthentificationService {
 
     logIn(logInObj) {
+        console.log(logInObj);
+
         return fetch(`${apiUrl}login`, {
             'method': 'POST',
             'headers': {
-                'apiKey': apiKey,
-                'sessionId': sessionId
+                'key': apiKey,
+                'Content-Type': 'application/json'
+
             },
-            'body': logInObj
-        }).then
+            'body': JSON.stringify(logInObj)
+        }).then(response => {
+            if (response.ok) {
+                return response.json()
+            } else {
+                response.json().then(data => {
+                    throw new Error(data.message)
+                })
+            }
+        }).then(data => {
+            console.log(data);
+
+            localStorage.setItem('logIn', JSON.stringify(data));
+
+
+        }).catch(err => {
+            throw err
+        })
         // (vrati user obj koji ima sve u sebi, stavi u lokal storage, napavi logout)
 
     }
@@ -20,7 +39,7 @@ class AuthentificationService {
             'method': 'POST',
             'headers': {
                 'apiKey': apiKey,
-                'sessionId': sessionId
+
             },
             'body': registerObj
         })
