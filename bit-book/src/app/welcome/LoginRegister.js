@@ -23,7 +23,7 @@ export const LoginRegister = (props) => {
                     <input type="text" id="loginUsername" name="loginUsername" placeholder=" Username" onChange={handleChange} value={props.username} />
                     <br />
                     <label htmlFor="loginPass">password </label>
-                    <input type="password" id="loginPass" name="loginPass" placeholder=" Password" onChange={handleChange} value={props.pass} />
+                    <input type="password" id="loginPass" name="loginPass" placeholder=" Password" onChange={handleChange} onKeyUp={props.keyUpHandler} value={props.pass} />
                     <br />
                     <input type="button" className="btn btn-outline-primary" onClick={props.logInHandler} value="Log In" />
                     <div className='alert'>{props.error.message}</div>

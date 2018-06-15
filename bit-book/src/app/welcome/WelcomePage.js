@@ -70,7 +70,11 @@ class WelcomePage extends Component {
             }))
 
     }
-
+    keyUpHandler = (event) => {
+        if (event.keyCode === 13) {
+            this.logInHandler()
+        }
+    }
     registerHandler = () => {
         const regObj = {
             username: this.state.username,
@@ -80,6 +84,7 @@ class WelcomePage extends Component {
         }
 
         authentificationService.register(regObj).then(data => {
+            console.log(data);
 
 
         })
@@ -105,6 +110,7 @@ class WelcomePage extends Component {
                             registerName={this.state.registerName}
                             logIn={this.props.logIn}
                             error={this.state.error}
+                            keyUpHandler={this.keyUpHandler}
 
 
 

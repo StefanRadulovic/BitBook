@@ -8,7 +8,7 @@ class AuthentificationService {
         return fetch(`${apiUrl}login`, {
             'method': 'POST',
             'headers': {
-                'key': apiKey,
+                'Key': apiKey,
                 'Content-Type': 'application/json'
 
             },
@@ -39,10 +39,12 @@ class AuthentificationService {
         return fetch(`${apiUrl}register`, {
             'method': 'POST',
             'headers': {
-                'apiKey': apiKey,
-
+                'Key': apiKey,
+                'Content-Type': 'application/json'
             },
-            'body': registerObj
+            'body': JSON.stringify(registerObj)
+        }).then(response => {
+            return response.json()
         })
 
     }
