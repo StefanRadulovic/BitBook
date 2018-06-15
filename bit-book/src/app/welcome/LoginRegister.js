@@ -20,26 +20,26 @@ export const LoginRegister = (props) => {
             <TabPanel>
                 <div className="loginReg">
                     <label htmlFor="loginUsername">username </label>
-                    <input type="text" id="loginUsername" name="loginUsername" placeholder=" Username" onChange={handleChange} value={this.state.username} />
+                    <input type="text" id="loginUsername" name="loginUsername" placeholder=" Username" onChange={handleChange} value={props.username} />
                     <br />
                     <label htmlFor="loginPass">password </label>
-                    <input type="password" id="loginPass" name="loginPass" placeholder=" Password" onChange={handleChange} value={this.state.pass} />
+                    <input type="password" id="loginPass" name="loginPass" placeholder=" Password" onChange={handleChange} value={props.pass} />
                     <br />
                     <input type="button" className="btn btn-outline-primary" onClick={props.logInHandler} value="Log In" />
                 </div>
             </TabPanel>
             <TabPanel>
                 <label htmlFor="registerName">Name </label>
-                <input type="text" id="registerName" name="registerName" placeholder=" Full Name" onChange={handleChange} value={this.state.registerName} />
+                <input type="text" id="registerName" name="registerName" placeholder=" Full Name" onChange={handleChange} value={props.registerName} />
                 <br />
                 <label htmlFor="registerEmail">email </label>
                 <input type="email" id="registerEmail" name="registerEmail" placeholder=" Email Address" onChange={handleChange} />
                 <br />
                 <label htmlFor="registerUsername">username </label>
-                <input type="text" id="registerUsername" name="registerUsername" placeholder=" Username" onChange={handleChange} value={this.state.username} />
+                <input type="text" id="registerUsername" name="registerUsername" placeholder=" Username" onChange={handleChange} value={props.username} />
                 <br />
                 <label htmlFor="registerPass">password </label>
-                <input type="password" id="registerPass" name="registerPass" placeholder=" Min 6 characters" onChange={handleChange} value={this.state.pass} />
+                <input type="password" id="registerPass" name="registerPass" placeholder=" Min 6 characters" onChange={handleChange} value={props.pass} />
                 <br />
                 <input type="button" className="btn btn-outline-primary" onClick={props.registerHandler} value="Register" />
             </TabPanel>

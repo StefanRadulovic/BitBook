@@ -59,10 +59,9 @@ class WelcomePage extends Component {
             password: this.state.pass
         }
 
-        authentificationService.logIn(logInObj).then(data => {
-            console.log(data);
+        authentificationService.logIn(logInObj).then()
+            .catch(err => console.log(err))
 
-        })
     }
 
     registerHandler = () => {
@@ -93,6 +92,13 @@ class WelcomePage extends Component {
                             setInputValues={this.setInputValues}
                             logInHandler={this.logInHandler}
                             registerHandler={this.registerHandler}
+                            username={this.state.username}
+                            pass={this.state.pass}
+                            registerEmail={this.state.registerEmail}
+                            registerName={this.state.registerName}
+
+
+
                         />
                     </div>
                 </div>
