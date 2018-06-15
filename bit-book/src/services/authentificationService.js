@@ -3,7 +3,7 @@ import { apiUrl, apiKey } from '../shared/constants'
 class AuthentificationService {
 
     logIn(logInObj) {
-        console.log(logInObj);
+
 
         return fetch(`${apiUrl}login`, {
             'method': 'POST',
@@ -17,12 +17,13 @@ class AuthentificationService {
             if (response.ok) {
                 return response.json()
             } else {
-                response.json().then(data => {
-                    throw new Error(data.message)
+                return response.json().then(data => {
+                    console.log(data.error);
+
+                    throw new Error(data.error.message)
                 })
             }
         }).then(data => {
-            console.log(data);
 
             localStorage.setItem('logIn', JSON.stringify(data));
 

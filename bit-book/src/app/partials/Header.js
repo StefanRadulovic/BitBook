@@ -8,6 +8,7 @@ export class Header extends React.Component {
     }
 
     handleClick = () => {
+        localStorage.removeItem('logIn')
         this.props.logInLogOut();
     }
 
@@ -18,7 +19,7 @@ export class Header extends React.Component {
                     <h1 id="app-title"><Link to='/posts'>Bitbook</Link></h1>
                     <Navigation />
                 </div>
-                <div className="log-out" onClick={this.handleClick}>Log out</div>
+                <div className="log-out" onClick={this.handleClick}><Link to='/'>Log out</Link></div>
             </header >
         );
     }

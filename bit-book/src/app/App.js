@@ -23,7 +23,12 @@ class App extends Component {
       isLoggedIn: false
     }
   }
-
+  componentDidMount() {
+    const local = localStorage.getItem('logIn');
+    if (local && local != 'undefined') {
+      this.logInLogOut()
+    }
+  }
   logInLogOut = () => {
     let logInState = this.state.isLoggedIn;
     this.setState({
@@ -32,7 +37,7 @@ class App extends Component {
   }
 
   render() {
-    let loggedIn = localStorage.getItem("loggedIn");
+
     return (
       <div id="bit-book">
         {(this.state.isLoggedIn) ? (
@@ -41,7 +46,8 @@ class App extends Component {
             <div id="page-content">
               <Switch>
                 <Route path="/home" component={Feed} />
-                <Route path='/people' component={PeoplePage} />
+                <Route exact path='/people' component={PeoplePage} />
+                <Route path='/people/:id' component={MyProfilePage} />
                 <Route path='/profile' component={MyProfilePage} />
                 <Route path="/text" component={FeedText} />
                 <Route path="/images" component={FeedImages} />
