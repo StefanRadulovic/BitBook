@@ -1,7 +1,8 @@
 import React from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { Redirect } from 'react-router-dom';
-import authenticationService from '../../services/authenticationService'
+import authenticationService from '../../services/authenticationService';
+import profileService from '../../services/profileService';
 
 
 export class LoginRegister extends React.Component {
@@ -64,10 +65,13 @@ export class LoginRegister extends React.Component {
         authenticationService.logIn(logInObj).then(data => {
 
             this.props.logInLogOut(true);
+            
+            profileService.getMyProfile().then(data => {
+                localStorage.setItem('userId', data.userId);
+            });
         }).catch(err => this.setState({
                 error: err
-            }))
-
+            }));
     }
 
     keyUpHandler = (event) => {
