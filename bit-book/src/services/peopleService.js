@@ -18,11 +18,12 @@ class PeopleService {
         }).then(response => {
             return response.json()
         }).then(data => {
-
+            
             return data.map(user => {
+                let postLast;
+    if(user.lastPostDate!==null)    {            
                 let splited = user.lastPostDate.split('T')
                 let lastTime = splited[1].split(':')
-                let postLast;
                 if (new Date(user.lastPostDate).toDateString() == new Date().toDateString()) {
                     postLast = `${lastTime[0]}:${lastTime[1]}`
                 } else {
@@ -30,6 +31,9 @@ class PeopleService {
                     postLast = `${date} ${lastTime[0]}:${lastTime[1]}`
 
                 }
+            }else{
+                postLast='No post!'
+            }
                 if (!user.avatarUrl) {
                     let imgUrl = 'http://livetestbed3.squaregrowth.com/core-content/uploads/2017/04/Placeholder-human-1.png';
                     return new User(imgUrl, user.aboutShort, capitalize(user.name), user.id, postLast)
