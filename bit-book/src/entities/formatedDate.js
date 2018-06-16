@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-const formtedDate = (date) => {
+const formatedDate = (date) => {
     let splited = date.split(' ');
     let nextSplited = splited[0].split('-');
     let newDate = `${nextSplited[2]}.${nextSplited[1]}.${nextSplited[0]}`;
@@ -10,4 +10,4 @@ const formtedDate = (date) => {
 
 }
 
-export default formtedDate;
+export default formatedDate;

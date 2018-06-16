@@ -43,6 +43,12 @@ export default class Comments extends React.Component {
         }
     }
 
+    keyUpHandler = (event) => {
+        if (event.keyCode === 13) {
+            this.handleClick();
+        }
+    }
+
     componentDidMount() {
         this.loadComments();
     }
@@ -51,7 +57,7 @@ export default class Comments extends React.Component {
         return (
             <div className="feed-item-comments">
                 <div className="add-comment">
-                    <input type="text" value={this.state.inputValue} onChange={this.handleChange} placeholder="Add your comment" />
+                    <input type="text" value={this.state.inputValue} onChange={this.handleChange} onKeyUp={this.keyUpHandler} placeholder="Add your comment" />
                     <div className="send-comment" onClick={this.handleClick}>Send</div>
                 </div>
                 {this.state.comments === null ? <LoadingScreen /> :

@@ -1,8 +1,8 @@
-import { apiUrl, apiKey, sessionId } from '../shared/constants';
-
+import { apiUrl, apiKey, getOutHeader } from '../shared/constants';
 class deletePostService {
 
     deletePost(postId) {
+        const sessionId = getOutHeader()
 
         return fetch(apiUrl + 'Posts/' + postId, {
             method: 'DELETE',

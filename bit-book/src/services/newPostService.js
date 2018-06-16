@@ -1,8 +1,10 @@
-import { apiUrl, apiKey, sessionId } from '../shared/constants';
+import { apiUrl, apiKey, getOutHeader } from '../shared/constants';
 
 class newPostService {
 
     addNewTextPost(post) {
+        const sessionId = getOutHeader()
+
         return fetch(apiUrl + 'TextPosts', {
             method: 'POST',
             body: JSON.stringify({
@@ -21,6 +23,8 @@ class newPostService {
     }
 
     addNewImagePost(imageUrl) {
+        const sessionId = getOutHeader()
+
         return fetch(apiUrl + 'ImagePosts', {
             method: 'POST',
             body: JSON.stringify({
@@ -39,6 +43,7 @@ class newPostService {
     }
 
     addNewVideoPost(videoUrl) {
+        const sessionId = getOutHeader()
 
         return fetch(apiUrl + 'VideoPosts', {
             method: 'POST',

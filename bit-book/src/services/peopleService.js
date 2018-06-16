@@ -1,13 +1,14 @@
-import { apiUrl, apiKey, sessionId } from '../shared/constants';
+import { apiUrl, apiKey, getOutHeader } from '../shared/constants';
 import formatedDate from '../entities/formatedDate'
 import User from '../entities/User';
 import { capitalize } from '../entities/capitalize';
 
 
-
 class PeopleService {
 
     fetchPeopleData() {
+        const sessionId = getOutHeader()
+
         return fetch(`${apiUrl}users`, {
             headers: {
                 'Content-Type': 'application/json',
@@ -43,6 +44,8 @@ class PeopleService {
     }
 
     fetchSingleUserData = (id) => {
+        const sessionId = getOutHeader()
+
         return fetch(`${apiUrl}users/${id}`, {
             headers: {
                 'Content-Type': 'application/json',

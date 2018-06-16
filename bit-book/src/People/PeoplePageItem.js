@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 
 
 const PeoplePageItem = (props) => {
+    console.log(props.user.id);
 
     return (
 

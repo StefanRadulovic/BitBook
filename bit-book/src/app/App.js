@@ -5,77 +5,72 @@ import { Footer } from './partials/Footer';
 import Feed from './feed/Feed';
 import MyProfilePage from './myProfile/MyProfilePage';
 import { Switch, Route, Redirect } from 'react-router-dom';
+import { Fragment } from 'react';
 import PeoplePage from '../People/PeoplePage'
 import FeedText from './feed/FeedText';
 import FeedImages from './feed/FeedImages';
 import FeedVideos from './feed/FeedVideos';
 import SingleFeedItem from './singleFeedItem/SingleFeedItem';
-import WelcomePage from './welcome/WelcomePage'
+import WelcomePage from './welcome/WelcomePage';
+import { WelcomeHeader } from './welcome/WelcomeHeader';
 
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isLoggedIn: false
+    }
+  }
+
+  componentDidMount() {
+    const local = localStorage.getItem('logIn');
+    if (local && local != 'undefined') {
+      this.logInLogOut()
+    }
+  }
+
+  logInLogOut = (isLoggedIn) => {
+    this.setState({
+      isLoggedIn: isLoggedIn
+    })
+  }
+
   render() {
+
     return (
       <div id="bit-book">
-        <Header />
-        <div id="page-content">
-          <Switch>
-            <Route exact path='/' component={WelcomePage} />
-            <Route path="/home" component={Feed} />
-            <Route exact path='/people' component={PeoplePage} />
-            <Route path='/people/:id' component={MyProfilePage} />
-            <Route path='/profile' component={MyProfilePage} />
-            <Route path="/text" component={FeedText} />
-            <Route path="/images" component={FeedImages} />
-            <Route path="/videos" component={FeedVideos} />
-            <Route path={"/post/:type/:id"} component={SingleFeedItem} />
-            <Redirect from="/posts" to="/home" />
-          </Switch>
-        </div>
+        {(this.state.isLoggedIn) ? (
+          <Fragment>
+            <Header logInLogOut={this.logInLogOut} />
+            <div id="page-content">
+              <Switch>
+                <Route path="/home" component={Feed} />
+                <Route exact path='/people' component={PeoplePage} />
+                <Route path='/people/:id' component={MyProfilePage} />
+                <Route path='/profile' component={MyProfilePage} />
+                <Route path="/text" component={FeedText} />
+                <Route path="/images" component={FeedImages} />
+                <Route path="/videos" component={FeedVideos} />
+                <Route path={"/post/:type/:id"} component={SingleFeedItem} />
+                <Redirect from='/posts' to='/home' />
+                <Redirect from='/' to='/home' />
+              </Switch>
+            </div>
+          </Fragment>
+        ) : (
+            <Fragment>
+              <WelcomeHeader />
+              <Switch>
+                <Route path='/' render={() => <WelcomePage logInLogOut={this.logInLogOut} />} />
+              </Switch>
+            </Fragment>
+          )}
         <Footer />
-
       </div >
     );
   }
 }
 
 export default App;
-
-
-// class App extends Component {
-//   constructor(props) {
-//     super(props);
-
-//     this.state = {
-//       loggedIn: false
-//     }
-//   }
-
-//   render() {
-//     return (
-//       <div id="bit-book">
-//         {this.state.loggedIn ? (
-//           <div>
-//             <Header />
-//             <div id="page-content">
-//               <Switch>
-//                 <Route path="/home" component={Feed} />
-//                 <Route path='/people' component={PeoplePage} />
-//                 <Route path='/profile' component={MyProfilePage} />
-//                 <Route path="/text" component={FeedText} />
-//                 <Route path="/images" component={FeedImages} />
-//                 <Route path="/videos" component={FeedVideos} />
-//                 <Route path={"/post/:type/:id"} component={SingleFeedItem} />
-//               </Switch>
-//             </div>
-//           </div>
-//         ) : (
-//             <Switch>
-//               <Route path='/' component={WelcomePage} />
-//             </Switch>
-//           )}
-//         <Footer />
-//       </div >
-//     );
-//   }
-// }
