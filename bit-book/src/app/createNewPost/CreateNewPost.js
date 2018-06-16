@@ -131,21 +131,17 @@ export class CreateNewPost extends React.Component {
             <div className="add-post">
                 <div className={"create-new-options " + this.state.createNewClass}>
                     <div>
-                        <div id="create-post" onClick={this.onOpenTextModal}></div>
-                        <div className="create-new-type">Post</div>
+                        <div className="create-post" id="create-post" onClick={this.onOpenTextModal}><i class="fas fa-align-justify"></i></div>
                     </div>
                     <div>
-                        <div id="create-image" onClick={this.onOpenImageModal}></div>
-                        <div className="create-new-type">Image</div>
+                        <div className="create-post" id="create-image" onClick={this.onOpenImageModal}><i class="far fa-image"></i></div>
                     </div>
                     <div>
-                        <div id="create-video" onClick={this.onOpenVideoModal}></div>
-                        <div className="create-new-type">Video</div>
+                        <div className="create-post" id="create-video" onClick={this.onOpenVideoModal}><i class="fab fa-youtube"></i></div>
                     </div>
                 </div>
 
                 <div className="create-new-post" onClick={this.toggleCreateNew}>
-                    <div className={"new-post " + this.state.createNewClass}>New post</div>
                     <div className="plus">+</div>
                 </div>
                 <Modal open={open} title={title} onClose={this.onCloseModal} center>

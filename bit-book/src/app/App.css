@@ -24,7 +24,7 @@ header {
 
 #header-wrap {
   width: 100%;
-  width: 960px;
+  max-width: 960px;
   margin: auto;
   overflow: hidden;
 }
@@ -53,14 +53,14 @@ header h1 {
   margin: 0;
 }
 
-#navigation li {
+.navigation {
   display: inline-block;
   margin-left: 40px;
   font-size: 24px;
 }
 
-#navigation a,
-#navigation a:visited {
+.navigation a,
+.navigation a:visited {
   text-decoration: none;
   color: white;
 }
@@ -125,7 +125,7 @@ footer p {
   background-color:	#a5b9cc;
   color: white;
   padding: 10px;
-  font-size: 22px;
+  font-size: 18px;
   border-radius: 5px;
   cursor: pointer;
 }
@@ -142,8 +142,13 @@ footer p {
 
 .add-post {
   position: fixed;
-  right: 50px;
-  top: 400px;
+  right: 90px;
+  bottom: 90px;
+}
+
+.add-post i {
+  color: white;
+  font-size: 22px;
 }
 
 .new-post {
@@ -175,31 +180,27 @@ footer p {
   margin: 20px 0;
 }
 
-#create-post {
+.create-post {
   float: left;
   width: 60px;
   height: 60px;
-  background-color: #4298B5;
+  line-height: 37px;
+  vertical-align: middle;
+  text-align: center;
   border-radius: 50%;
   cursor: pointer;
+}
+
+#create-post {
+  background-color: #4298B5;
 }
 
 #create-image {
-  float: left;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
   background-color: #92B06A;
-  cursor: pointer;
 }
 
 #create-video {
-  float: left;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
   background-color: #ED1C24;
-  cursor: pointer;
 }
 
 .create-new-options {
@@ -477,41 +478,138 @@ footer p {
 }
 /* People page */
 
-.user {
+.container {
+  max-width: 960px;
+}
+
+.people-page {
+  width: 100%;
+  max-width: 960px;
+  margin: auto;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+.people-page-item {
+  width: 100%;
   padding: 10px;
+  box-sizing: border-box;
   margin: 20px 0;
   box-shadow: 0 0 10px 0px rgba(0,0,0,0.3);
   border-radius: 3px;
-  
+  overflow: hidden;
 }
-.user a,.user a:hover{
-text-decoration: none;
-color: #222
+
+.user-image {
+  float: left;
 }
-.user img{
-  border-radius: 50%
+
+.user-image img {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
 }
+
+.user-info {
+  float: left;
+  margin-left: 40px;
+  margin-top: 20px;
+}
+
+.user-info a,
+.user-info a:visited {
+  text-decoration: none;
+}
+
 .user span{
   display: inline-block
 }
-.search {
-  
-  width: 100%
-}
-.people-img{
-  width: 100%;
+
+.last-post {
+  float: right;
+  margin-right: 20px;
+  margin-top: 20px;
+  text-align: right;
 }
 
+.search-box {
+  width: 100%;
+  overflow: hidden;
+}
+
+.fa-search {
+  color: #918c8c;
+  float: left;
+  font-size: 24px;
+  padding: 5px 0;
+}
+
+#search-people {
+  padding: 5px 15px;
+  width: calc(100% - 40px);
+  float: right;
+}
 
 /* My profile Page */
+
+.my-profile-page {
+  width: 100%;
+  max-width: 960px;
+  margin: auto;
+}
 
 .profile {
   text-align: center;
 }
 
+.profile-img {
+  width: 250px;
+  height: 250px;
+  margin: auto;
+}
+
+.my-profile-page h1 {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.my-profile-page p {
+  text-align: center;
+  margin: 10px 0;
+  font-size: 18px;
+}
+
+.edit-profile {
+  text-align: center;
+  width: 130px;
+  margin: auto;
+  background-color: #e0e1e2;
+  color: rgba(0, 0, 0, 0.6);
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+.edit-profile:hover {
+  background-color: #c0c1c2;
+  color: rgba(0, 0, 0, 0.95);
+}
+
+.edit-profile:focus {
+  outline: none;
+}
+
+.posts-and-comments {
+  width: 330px;
+  margin: auto;
+  overflow: hidden;
+}
+
 .profileImg {
   width: 250px;
-  height: 200px;
+  height: 250px;
   margin-bottom: 20px;
   border-radius: 50%;
 }
@@ -519,6 +617,14 @@ color: #222
 .postCommentButton{
   margin: 20px;
   border-radius: 200px;
+}
+
+.user-posts {
+  float: left;
+}
+
+.user-comments {
+  float: right;
 }
 
 .fa-circle{
@@ -532,60 +638,58 @@ color: #222
 .custom-overlay {
   background: rgba(167, 180, 185, 0.7);
 }
+
 .custom-modal {
   background: rgb(255, 255, 255);
   max-width: 700px;
   width:100%;
 }
+
 /* .custom-modal2{
   background: rgb(255, 255, 255);
   min-width: 500px !important;
   max-width: 700px;
   width:100%;
 } */
-.btn.btn-action {
-  background-color: #e0e1e2;
-  border: none;
-  color: rgba(0, 0, 0, 0.6);
-}
-.btn.btn-action:hover {
-  background-color: #c0c1c2;
-  color: rgba(0, 0, 0, 0.95);
-}
-.btn.btn-action:focus {
-  outline: none;
-}
+
 .updateProfileButton{
   width: 80px;
   border-radius: 200px;
   margin:15px;
   float: right;
 }
+
 #inputFullName, #inputFullName:focus, #aboutUser-update {
   background-color: rgb(255, 255, 255);
   border:none;
   border-bottom:  2px solid gray;
 }
-#inputFullNmae{
+
+#inputFullName{
   width: 100%;
 }
+
 #letter-counter{
   display: block;
   float: right;
 }
+
 .alert{
   color:red
 }
+
 #update-img{
   width: 100%;
-  
-  }
+}
+
 .update-profile-img-name{
   display: inline-block;
 }
+
 .update-profile-img-name{
   margin-top: 20px;
 }
+
 .upload-img-btn{
   width: 100%;
   margin-top: 10px;
@@ -593,43 +697,48 @@ color: #222
   padding: 5px 0;
   font-size: 85%
 }
+
 #aboutUser-update{
   margin-top: 15px;
 }
+
 #upload-img{
 width: 600px;
 }
+
 #upload-img h2{
   margin-bottom: 30px;
 }
+
 .upload-url-btn{
   width: 120px;
   margin: 10px;
   border-radius: 200px;
   padding: 5px 0;
-  
 }
+
 .upload-close-btn{
   width: 120px;
   margin-bottom: 10px;
   border-radius: 200px;
   padding: 5px 0;
-  
 }
+
 .update-profile-error{
   color: #ED1C24
 }
-/* end my profil page */
-
-/* END My Profile page */
-
 
 /* Welcome Page */
+
+#log-out {
+  display: none;
+}
+
 .log-out {
   position: absolute;
   top: 22px;
   right: 20px;
-  color: rgb(230, 224, 224);
+  color: white;
   cursor: pointer;
   font-size: 20px;
   line-height: 32px;
@@ -682,100 +791,50 @@ label {
   margin: 20px 0;
 }
 
-/* END Welcome page */
+@media all and (max-width: 1400px) {
 
+  .add-post {
+    position: fixed;
+    right: 15px;
+    bottom: 60px;
+  }
 
-
-/* Welcome Page */
-
-/* .welcomeMainDiv{
-  margin: 100px 0;
+  .filter-posts {
+    position: fixed;
+    right: 15px;
+    top: 125px;
+  }
 }
 
-.tabList{
-  list-style-type: none;
-  text-align: center;
-  border-bottom: 1px solid  #a5b9cc;
+@media all and (max-width: 1200px) {
+
+  .log-out {
+    display: none;
+  }
+  
+  #log-out {
+    display: inline-block;
+    color: white;
+    cursor: pointer;
+  }
+
+  #log-out a,
+  #log-out a:visited {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+  }
 }
-
-.tabs{
-  border: 1px solid #a5b9cc;
-}
-
-.react-tabs__tab--selected{
-  background-color: #5e9eda;
-  color: white;
-}
-
-.react-tabs__tab-panel--selected{
-  padding: 10px 0;
-  text-align: center;
-}
-
-#welcomeTitle{
-  margin-bottom: 20px;
-  color: #2783d8;
-}
-
-label {
-  display: inline-block;
-  width: 80px;
-  text-align: right;
-  padding-right: 20px;
-}​
-
-.btn-outline-primary {
-  margin: 20px 0;
-} */
-
-/* END Welcome page */
-
-/* Welcome Page */
-
-/* .welcomeMainDiv{
-  margin: 100px 0;
-}
-
-.tabList{
-  list-style-type: none;
-  text-align: center;
-  border-bottom: 1px solid  #a5b9cc;
-}
-
-.tabs{
-  border: 1px solid #a5b9cc;
-}
-
-.react-tabs__tab--selected{
-  background-color: #5e9eda;
-  color: white;
-}
-
-.react-tabs__tab-panel--selected{
-  padding: 10px 0;
-  text-align: center;
-}
-
-#welcomeTitle{
-  margin-bottom: 20px;
-  color: #2783d8;
-}
-
-label {
-  display: inline-block;
-  width: 80px;
-  text-align: right;
-  padding-right: 20px;
-}​ */
-
-/* END Welcome page */
 
 @media all and (max-width: 640px) {
+
   .menu-button {
     display: block;
-    color: white;
+    color: #ffffff;
     font-size: 30px;
     float: right;
+    margin-right: 15px;
+    padding: 0 15px;
   }
 
   #navigation li {

@@ -17,7 +17,7 @@ export class Header extends React.Component {
             <header>
                 <div id="header-wrap">
                     <h1 id="app-title"><Link to='/posts'>Bitbook</Link></h1>
-                    <Navigation />
+                    <Navigation logInLogOut={this.props.logInLogOut} />
                 </div>
                 <div className="log-out" onClick={this.handleClick}><Link to='/'>Log out</Link></div>
             </header >

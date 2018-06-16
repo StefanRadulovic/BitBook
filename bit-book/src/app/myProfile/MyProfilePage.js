@@ -97,11 +97,15 @@ class MyProfilePage extends Component {
 
         if (!this.state.profile.avatarUrl) {
             return (
-                <img className="profileImg" src="https://intellihr.com.au/wp-content/uploads/2017/06/avatar_placeholder_temporary.png" />
+                <div class="profile-img">
+                    <img className="profileImg" src="https://intellihr.com.au/wp-content/uploads/2017/06/avatar_placeholder_temporary.png" />
+                </div>
             )
         } else {
             return (
-                <img className="profileImg" src={this.state.profile.avatarUrl} />
+                <div class="profile-img">
+                    <img className="profileImg" src={this.state.profile.avatarUrl} />
+                </div>
             );
         }
     }
@@ -191,10 +195,10 @@ class MyProfilePage extends Component {
 
     render() {
         return (
-            <div className="container profile">
+            <div className="my-profile-page">
                 {this.profileImage()}
                 <h1>{this.state.profile.name}</h1>
-                {(this.state.profileEmail != this.state.ourEmail) ? '' : <p className="btn btn-action" onClick={this.onOpenModal}>Edit profile</p>}
+                {(this.state.profileEmail != this.state.ourEmail) ? '' : <div className="edit-profile" onClick={this.onOpenModal}>Edit profile</div>}
                 <p>{this.state.profile.about}</p>
                 < Modal
                     open={this.state.open}
@@ -208,8 +212,10 @@ class MyProfilePage extends Component {
                 <Modal open={this.state.openSecondModal} onClose={this.onCloseSecondModal} center className={{ overlay: 'custom-overlay', modal: 'custom-modal2' }}>
                     <UploadPicture uploadFileHandler={this.uploadFileHandler} photoUrl={this.setImgUrl} selectProfileImageHandler={this.selectProfileImageHandler} imgUrl={this.state.imageUploadUrl} close={this.onClosePictureUpload} upLoadUrl={this.upLoadUrl} errorImgUrl={this.state.errorImgUrl} />
                 </Modal>
-                <button type="button" className="btn btn-light postCommentButton"><i className="fas fa-circle"></i> {this.state.profile.postsCount} Posts</button>
-                <button type="button" className="btn btn-light postCommentButton"><i className="fas fa-circle"></i> {this.state.profile.commentsCount} Comments</button>
+                <div className="posts-and-comments">
+                    <div className="btn btn-light postCommentButton user-posts"><i className="fas fa-circle"></i> {this.state.profile.postsCount} Posts</div>
+                    <div className="btn btn-light postCommentButton user-comments"><i className="fas fa-circle"></i> {this.state.profile.commentsCount} Comments</div>
+                </div>
             </div >
         );
     }

@@ -44,15 +44,11 @@ class PeoplePage extends Component {
 
 
         return (
-            <div className="container">
-                <div className="row people">
+            <div className="people-page">
                     <SearchBox search={this.search} />
                     {(this.state.people.filter(this.filterUserList).length == 0) ? '' : this.state.people.filter(this.filterUserList).map((user, i) => {
-
                         return <PeoplePageItem key={i} user={user} />
                     })}
-                </div>
-
             </div>
         )
     }
