@@ -10,7 +10,8 @@ class InfiniteFeedService {
             headers: {
                 'Content-Type': 'application/json',
                 'Key': apiKey,
-                'SessionId': sessionId
+                'SessionId': sessionId,
+                "Content-Size":4  // mozda da se ovde ubaci strana koliko postova ima
             }
         }).then(response => {
             console.log('res'+response);
