@@ -751,14 +751,15 @@ width: 600px;
   color: white;
 }
 
-.welcomeMainDiv{
-  margin: 200px 0;
+.welcome-main-div{
+  margin: 170px 0;
 }
 
 .tabList{
   list-style-type: none;
   text-align: center;
   border-bottom: 1px solid  #a5b9cc;
+  cursor: pointer;
 }
 
 .tabs{
@@ -766,7 +767,7 @@ width: 600px;
 }
 
 .react-tabs__tab--selected{
-  background-color: #5e9eda;
+  background-color: #2d8ef7;
   color: white;
 }
 
@@ -825,6 +826,26 @@ label {
     font-size: 20px;
   }
 }
+
+.welcome-sub-divs {
+  margin-bottom: 200px;
+}
+
+.tabs input, label{
+  margin-bottom: 20px;
+}
+
+.input.btn.btn-primary{
+margin-top: 200px;
+}
+
+#loginPass, #registerPass {
+  margin-bottom: 40px;
+}
+
+
+/* END Welcome page */
+
 
 @media all and (max-width: 640px) {
 

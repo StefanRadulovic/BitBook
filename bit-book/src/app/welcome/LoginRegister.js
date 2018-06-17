@@ -65,13 +65,13 @@ export class LoginRegister extends React.Component {
         authenticationService.logIn(logInObj).then(data => {
 
             this.props.logInLogOut(true);
-            
+
             profileService.getMyProfile().then(data => {
                 localStorage.setItem('userId', data.userId);
             });
         }).catch(err => this.setState({
-                error: err
-            }));
+            error: err
+        }));
     }
 
     keyUpHandler = (event) => {
@@ -104,46 +104,44 @@ export class LoginRegister extends React.Component {
         })
     }
 
-    onTabSelect = (index) => { 
+    onTabSelect = (index) => {
         this.setState({
             currentIndex: index,
         });
     }
 
-    render () {
+    render() {
         return (
             <Tabs className="container tabs" selectedIndex={this.state.currentIndex} onSelect={this.onTabSelect}>
                 <TabList className="row tabList" >
                     <Tab className="col-6">Log In</Tab>
                     <Tab className="col-6">Register</Tab>
                 </TabList>
-    
-                <TabPanel>
-                    <div className="loginReg">
-                        <label htmlFor="loginUsername">username </label>
-                        <input type="text" id="loginUsername" name="loginUsername" placeholder=" Username" onChange={this.handleChange} value={this.state.username} />
-                        <br />
-                        <label htmlFor="loginPass">password </label>
-                        <input type="password" id="loginPass" name="loginPass" placeholder=" Password" onChange={this.handleChange} onKeyUp={this.keyUpHandler} value={this.state.pass} />
-                        <br />
-                        <input type="button" className="btn btn-outline-primary" onClick={this.logInHandler} value="Log In" />
-                        <div className='alert'>{this.state.error.message}</div>
-                    </div>
+
+                <TabPanel className="login-reg-panel">
+                    <label htmlFor="loginUsername">Username </label>
+                    <input type="text" id="loginUsername" name="loginUsername" placeholder=" Username" onChange={this.handleChange} value={this.state.username} />
+                    <br />
+                    <label htmlFor="loginPass">Password </label>
+                    <input type="password" id="loginPass" name="loginPass" placeholder=" Password" onChange={this.handleChange} onKeyUp={this.keyUpHandler} value={this.state.pass} />
+                    <br />
+                    <input type="button" className="btn btn-primary" onClick={this.logInHandler} value="Log In" />
+                    <div className='alert'>{this.state.error.message}</div>
                 </TabPanel>
-                <TabPanel>
+                <TabPanel className="login-reg-panel">
                     <label htmlFor="registerName">Name </label>
                     <input type="text" id="registerName" name="registerName" placeholder=" Full Name" onChange={this.handleChange} value={this.state.registerName} />
                     <br />
-                    <label htmlFor="registerEmail">email </label>
+                    <label htmlFor="registerEmail">Email </label>
                     <input type="email" id="registerEmail" name="registerEmail" placeholder=" Email Address" onChange={this.handleChange} value={this.state.registerEmail} />
                     <br />
-                    <label htmlFor="registerUsername">username </label>
+                    <label htmlFor="registerUsername">Username </label>
                     <input type="text" id="registerUsername" name="registerUsername" placeholder=" Username" onChange={this.handleChange} value={this.state.username} />
                     <br />
-                    <label htmlFor="registerPass">password </label>
+                    <label htmlFor="registerPass">Password </label>
                     <input type="password" id="registerPass" name="registerPass" placeholder=" Min 6 characters" onChange={this.handleChange} value={this.state.pass} />
                     <br />
-                    <input type="button" className="btn btn-outline-primary" onClick={this.registerHandler} value="Register" />
+                    <input type="button" className="btn btn-primary" onClick={this.registerHandler} value="Register" />
                     <div className='alert'>{this.state.error.message}</div>
                 </TabPanel>
             </Tabs >
