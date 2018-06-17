@@ -5725,8 +5725,11 @@ react-images-uploader@^1.2.0-rc1:
     react-progress-button-for-images-uploader "^5.0.1"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 react-lifecycles-compat@^3.0.0, react-lifecycles-compat@^3.0.4:
 =======
+=======
+>>>>>>> infiniti scroll started
 react-infinite-scroller@^1.1.4:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/react-infinite-scroller/-/react-infinite-scroller-1.1.4.tgz#176b1a9ca8fdff53eeb34f648c7b0d446459d61b"
