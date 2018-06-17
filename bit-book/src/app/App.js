@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { Header } from './partials/Header';
 import { Footer } from './partials/Footer';
-import Feed from './feed/Feed';
+// import Feed from './feed/Feed';
 import MyProfilePage from './myProfile/MyProfilePage';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { Fragment } from 'react';
@@ -13,6 +13,8 @@ import FeedVideos from './feed/FeedVideos';
 import SingleFeedItem from './singleFeedItem/SingleFeedItem';
 import WelcomePage from './welcome/WelcomePage';
 import { WelcomeHeader } from './welcome/WelcomeHeader';
+import Feed from './feed/InfiniteScroll';
+
 
 
 class App extends Component {
