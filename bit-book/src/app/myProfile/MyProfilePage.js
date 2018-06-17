@@ -21,8 +21,8 @@ class MyProfilePage extends Component {
             updateError: '',
             errorImgUrl: '',
             profileEmail: '',
-            ourEmail: ''
-        }
+            ourEmail: '',
+                    }
     }
 
     getUserProfile = () => {
@@ -59,9 +59,13 @@ class MyProfilePage extends Component {
         this.setState({
             ourEmail
         });
+        console.log(this.props.match.params.id);
         (!this.props.match.params.id) ? this.reloadPage() : this.getUserProfile();
     }
-
+componentWillReceiveProps(nextProps){
+            
+        (!nextProps.match.params.id) ? this.reloadPage() : this.getUserProfile();
+}
     onOpenModal = () => {
         this.setState({ open: true });
     }
@@ -88,7 +92,6 @@ class MyProfilePage extends Component {
         this.setState({
             openSecondModal: false,
             errorImgUrl: '',
-            imageUploadUrl: '',
 
         });
     }
@@ -160,16 +163,13 @@ class MyProfilePage extends Component {
     onClosePictureUpload = () => {
         this.setState({
             openSecondModal: false,
-            imageUploadUrl: '',
+
             errorImgUrl: ''
         });
     }
 
     onCloseClickHandler = () => {
 
-        this.setState({
-            imageUploadUrl: null,
-        });
         this.onCloseModal()
     }
 
