@@ -14,6 +14,9 @@ import SingleFeedItem from './singleFeedItem/SingleFeedItem';
 import WelcomePage from './welcome/WelcomePage';
 import { WelcomeHeader } from './welcome/WelcomeHeader';
 import Feed from './feed/FeedPagination'
+// import Feed from './feed/InfiniteScroll';
+
+
 
 class App extends Component {
   constructor(props) {
