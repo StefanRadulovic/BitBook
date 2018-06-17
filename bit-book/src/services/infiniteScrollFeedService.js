@@ -18,6 +18,7 @@ class InfiniteFeedService {
                 'Content-Type': 'application/json',
                 'Key': apiKey,
 <<<<<<< HEAD
+<<<<<<< HEAD
                 'SessionId': sessionId,
             }
         }).then(response => {
@@ -25,6 +26,10 @@ class InfiniteFeedService {
         })
 =======
                 'SessionId': sessionId
+=======
+                'SessionId': sessionId,
+                "Content-Size":4  // mozda da se ovde ubaci strana koliko postova ima
+>>>>>>> infinite scroll
             }
         }).then(response => {
             console.log('res'+response);
