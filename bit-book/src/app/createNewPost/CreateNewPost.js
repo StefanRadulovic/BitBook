@@ -131,13 +131,13 @@ export class CreateNewPost extends React.Component {
             <div className="add-post">
                 <div className={"create-new-options " + this.state.createNewClass}>
                     <div>
-                        <div className="create-post" id="create-post" onClick={this.onOpenTextModal}><i class="fas fa-align-justify"></i></div>
+                        <div className="create-post" id="create-post" onClick={this.onOpenTextModal}><i className="fas fa-align-justify"></i></div>
                     </div>
                     <div>
-                        <div className="create-post" id="create-image" onClick={this.onOpenImageModal}><i class="far fa-image"></i></div>
+                        <div className="create-post" id="create-image" onClick={this.onOpenImageModal}><i className="far fa-image"></i></div>
                     </div>
                     <div>
-                        <div className="create-post" id="create-video" onClick={this.onOpenVideoModal}><i class="fab fa-youtube"></i></div>
+                        <div className="create-post" id="create-video" onClick={this.onOpenVideoModal}><i className="fab fa-youtube"></i></div>
                     </div>
                 </div>
 
@@ -147,7 +147,7 @@ export class CreateNewPost extends React.Component {
                 <Modal open={open} title={title} onClose={this.onCloseModal} center>
                     <h5 className="new-post-title">{title}</h5>
                     <p className="new-post-description">{postDescription}</p>
-                    <input className="new-post-content" type="text" value={this.state.inputValue} onChange={this.handleChange} onKeyUp={this.keyUpHandler} autoFocus/>
+                    <input className="new-post-content" type="text" value={this.state.inputValue} onChange={this.handleChange} onKeyUp={this.keyUpHandler} autoFocus />
                     <div className={"invalid-url-hidden " + invalidUrlClass}>Invalid url!</div>
                     <div className="send-post" onClick={this.handleClick}>POST</div>
                 </Modal>
