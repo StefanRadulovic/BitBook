@@ -59,7 +59,7 @@ export default class Feed extends React.Component {
             <div className="feed">
                 <FeedContent posts={this.state.posts} refreshFeed={this.loadPosts} pagPosts={this.state.pagPosts} page={this.state.pageSkip} />
                 <FilterPosts />
-                <CreateNewPost refreshFeed={this.loadPosts} />
+                <CreateNewPost refreshFeed={this.loadPagPosts} />
             </div>
         );
     }
