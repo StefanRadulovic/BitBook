@@ -106,7 +106,7 @@ export class LoginRegister extends React.Component {
             })
         } else {
             this.setState({
-                passLengthError: "Password mast have at least 6 characters!"
+                passLengthError: "Password too short! Password mast have at least 6 characters!"
             })
         }
 

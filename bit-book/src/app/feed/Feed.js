@@ -29,6 +29,9 @@ export default class Feed extends React.Component {
         });
     }
     loadPagPosts = (page) => {
+        if (page === undefined) {
+            page = this.state.pageSkip
+        }
         paginationFeedService.getPaginationPosts(page).then(pagPosts => {
 
             this.setState({
