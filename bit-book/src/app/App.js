@@ -46,7 +46,7 @@ class App extends Component {
             <Header logInLogOut={this.logInLogOut} />
             <div id="page-content">
               <Switch>
-                <Route path="/home" component={Feed} />
+                <Route exact path="/home/:pageNumber" component={Feed} />
                 <Route exact path='/people' component={PeoplePage} />
                 <Route path='/people/:id' component={MyProfilePage} />
                 <Route path='/profile' component={MyProfilePage} />
@@ -55,7 +55,7 @@ class App extends Component {
                 <Route path="/videos" component={FeedVideos} />
                 <Route path={"/post/:type/:id"} component={SingleFeedItem} />
                 <Redirect from='/posts' to='/home' />
-                <Redirect from='/' to='/home' />
+                <Redirect from='/' to='/home/1' />
               </Switch>
             </div>
           </Fragment>
