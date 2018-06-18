@@ -30,6 +30,8 @@ export default class Feed extends React.Component {
     }
     loadPagPosts = (page) => {
         paginationFeedService.getPaginationPosts(page).then(pagPosts => {
+            console.log(pagPosts);
+
             this.setState({
                 pagPosts
             })
@@ -40,7 +42,11 @@ export default class Feed extends React.Component {
         this.loadPagPosts(this.state.pageSkip);
     }
     componentWillReceiveProps(nextProps) {
+
         const page = nextProps.match.params.pageNumber - 1
+        this.setState({
+            pageSkip: page
+        })
 
         this.loadPagPosts(page)
 
@@ -48,7 +54,7 @@ export default class Feed extends React.Component {
     render() {
         return this.state.posts === null ? <LoadingScreen /> : (
             <div className="feed">
-                <FeedContent posts={this.state.posts} refreshFeed={this.loadPosts} pagPosts={this.state.pagPosts} />
+                <FeedContent posts={this.state.posts} refreshFeed={this.loadPosts} pagPosts={this.state.pagPosts} page={this.state.pageSkip} />
                 <FilterPosts />
                 <CreateNewPost refreshFeed={this.loadPosts} />
             </div>

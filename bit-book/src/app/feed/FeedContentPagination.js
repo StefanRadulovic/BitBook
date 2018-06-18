@@ -18,10 +18,10 @@ const pageNumber = (num) => {
 }
 export const FeedContent = (props) => {
 
-    const numberOfPage = Math.ceil(props.posts.length / 5)
+    const numberOfPage = Math.ceil(props.posts / 5)
     return (
         <div className="feed-content">
-            {props.posts.length === 0 ? <NothingInFeed /> :
+            {(props.posts === 0) ? <NothingInFeed /> :
                 (props.pagPosts.map((post, i) => {
                     if (post.type === "text") {
                         return <TextPost post={post} refreshFeed={props.refreshFeed} key={i} />;
@@ -36,43 +36,19 @@ export const FeedContent = (props) => {
             <nav aria-label="Page navigation example">
                 <ul className="pagination">
                     <li className="page-item">
-                        <a className="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                            <span className="sr-only">Previous</span>
-                        </a>
+                        <Link to={`/home/${props.page}`} className="page-link"> <span aria-hidden="true">&laquo;</span></Link>
                     </li>
                     {
                         pageNumber(numberOfPage)
                     }
                     <li className="page-item">
-                        <a className="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                            <span className="sr-only">Next</span>
-                        </a>
+                        <Link to={`/home/${props.page + 2}`} className="page-link"> <span aria-hidden="true">&raquo;</span></Link>
                     </li>
 
                 </ul>
             </nav>
 
-            {/* <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav> */}
+
         </div>
     );
 }
