@@ -6,6 +6,8 @@ import { FilterPosts } from './FilterPosts';
 import { CreateNewPost } from '../createNewPost/CreateNewPost';
 import { FeedContent } from './FeedContentPagination';
 import paginationFeedService from '../../services/paginationFeedService';
+import Lightbox from 'react-image-lightbox';
+import 'react-image-lightbox/style.css';
 
 
 
@@ -15,7 +17,8 @@ export default class Feed extends React.Component {
         this.state = {
             posts: null,
             pagPosts: [],
-            pageSkip: 0
+            pageSkip: 0,
+            isOpen: false,
         }
     }
 
@@ -57,10 +60,14 @@ export default class Feed extends React.Component {
         this.loadPagPosts(page)
 
     }
+
+    imgClickhandler = () => {
+        console.log('HI')
+    }
     render() {
         return this.state.posts === null ? <LoadingScreen /> : (
             <div className="feed">
-                <FeedContent posts={this.state.posts} refreshFeed={this.loadPosts} pagPosts={this.state.pagPosts} page={this.state.pageSkip} />
+                <FeedContent posts={this.state.posts} refreshFeed={this.loadPagPosts} pagPosts={this.state.pagPosts} page={this.state.pageSkip} imgClickhandler={this.imgClickhandler} />
                 <FilterPosts />
                 <CreateNewPost refreshFeed={this.loadPagPosts} />
             </div>

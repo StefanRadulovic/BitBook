@@ -22,7 +22,7 @@ class MyProfilePage extends Component {
             errorImgUrl: '',
             profileEmail: '',
             ourEmail: '',
-                    }
+        }
     }
 
     getUserProfile = () => {
@@ -62,10 +62,10 @@ class MyProfilePage extends Component {
         console.log(this.props.match.params.id);
         (!this.props.match.params.id) ? this.reloadPage() : this.getUserProfile();
     }
-componentWillReceiveProps(nextProps){
-            
+    componentWillReceiveProps(nextProps) {
+
         (!nextProps.match.params.id) ? this.reloadPage() : this.getUserProfile();
-}
+    }
     onOpenModal = () => {
         this.setState({ open: true });
     }
