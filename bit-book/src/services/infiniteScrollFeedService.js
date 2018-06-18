@@ -3,6 +3,7 @@ import { apiUrl, apiKey, getOutHeader } from '../shared/constants';
 class InfiniteFeedService {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     getPosts(pageNumber) {
         const sessionId = getOutHeader()
 
@@ -13,6 +14,12 @@ class InfiniteFeedService {
 
         return fetch(apiUrl + 'Posts/', {
 >>>>>>> infiniti scroll started
+=======
+    getPosts(pageNumber) {
+        const sessionId = getOutHeader()
+
+        return fetch(`${apiUrl}Posts?$top=5&$skip=${pageNumber}`, {
+>>>>>>> scroll event does not work
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -28,6 +35,7 @@ class InfiniteFeedService {
                 'SessionId': sessionId
 =======
                 'SessionId': sessionId,
+<<<<<<< HEAD
                 "Content-Size":4  // mozda da se ovde ubaci strana koliko postova ima
 >>>>>>> infinite scroll
             }
@@ -36,6 +44,12 @@ class InfiniteFeedService {
             
            return response.json()})
 >>>>>>> infiniti scroll started
+=======
+            }
+        }).then(response => {
+            return response.json()
+        })
+>>>>>>> scroll event does not work
             .then(data => {
                 return data
             });

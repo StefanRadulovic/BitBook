@@ -3,12 +3,14 @@ import { NothingInFeed } from './NothingInFeed';
 import { TextPost } from './TextPost';
 import { ImagePost } from './ImagePost';
 import { VideoPost } from './VideoPost';
-import InfiniteScroll from 'react-infinite-scroller'
 
 export const FeedContent = (props) => {
 
     return (
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> scroll event does not work
         <div className="feed-content" onScroll={(event) => { console.log(event) }} >
             {props.posts.length === 0 ? <NothingInFeed /> :
                 (props.posts.map((post, i) => {
@@ -22,6 +24,7 @@ export const FeedContent = (props) => {
                         return <VideoPost post={post} refreshFeed={props.refreshFeed} key={i} />;
                     }
                 }))}
+<<<<<<< HEAD
 =======
         <div className="feed-content">
             <InfiniteScroll
@@ -43,6 +46,8 @@ export const FeedContent = (props) => {
                     }))}
             </InfiniteScroll>
 >>>>>>> infiniti scroll started
+=======
+>>>>>>> scroll event does not work
         </div>
     );
 }

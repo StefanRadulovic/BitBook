@@ -18,7 +18,6 @@ export default class Feed extends React.Component {
 
     loadPosts = () => {
 
-
         infiniteScrollFeedService.getPosts(1).then(data => {
 
 
@@ -29,6 +28,7 @@ export default class Feed extends React.Component {
         });
     }
     onScrollHandler = (event) => {
+        console.log("HI");
 
 
     }
