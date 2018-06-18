@@ -2,21 +2,19 @@ import { apiUrl, apiKey, getOutHeader } from '../shared/constants';
 
 class InfiniteFeedService {
 
-    getPosts() {
+    getPosts(pageNumber) {
         const sessionId = getOutHeader()
 
-        return fetch(apiUrl + 'Posts/', {
+        return fetch(`${apiUrl}Posts?$top=5&$skip=${pageNumber}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
                 'Key': apiKey,
                 'SessionId': sessionId,
-                "Content-Size":4  // mozda da se ovde ubaci strana koliko postova ima
             }
         }).then(response => {
-            console.log('res'+response);
-            
-           return response.json()})
+            return response.json()
+        })
             .then(data => {
                 return data
             });
