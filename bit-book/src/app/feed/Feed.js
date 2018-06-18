@@ -19,9 +19,9 @@ export default class Feed extends React.Component {
         }
     }
 
-    loadPosts = () => {
+    loadPostsNumber = () => {
 
-        paginationFeedService.getPosts().then(data => {
+        paginationFeedService.getPostsNumber().then(data => {
             this.setState({
                 posts: data
             });
@@ -30,7 +30,6 @@ export default class Feed extends React.Component {
     }
     loadPagPosts = (page) => {
         paginationFeedService.getPaginationPosts(page).then(pagPosts => {
-            console.log(pagPosts);
 
             this.setState({
                 pagPosts
@@ -38,8 +37,12 @@ export default class Feed extends React.Component {
         })
     }
     componentDidMount() {
-        this.loadPosts();
-        this.loadPagPosts(this.state.pageSkip);
+        this.loadPostsNumber();
+        const page = this.props.match.params.pageNumber - 1;
+        this.setState({
+            pageSkip: page
+        });
+        this.loadPagPosts(page);
     }
     componentWillReceiveProps(nextProps) {
 

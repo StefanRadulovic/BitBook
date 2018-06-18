@@ -2,7 +2,7 @@ import { apiUrl, apiKey, getOutHeader } from '../shared/constants';
 
 class PaginationFeedService {
 
-    getPosts() {
+    getPostsNumber() {
         const sessionId = getOutHeader()
 
         return fetch(apiUrl + 'posts/count', {
