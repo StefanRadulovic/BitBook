@@ -25,6 +25,7 @@ class App extends Component {
     this.state = {
       isLoggedIn: false
     }
+
   }
 
   componentDidMount() {
