@@ -1,6 +1,5 @@
 import React from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import { Redirect } from 'react-router-dom';
 import authenticationService from '../../services/authenticationService';
 import profileService from '../../services/profileService';
 

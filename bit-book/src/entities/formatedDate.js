@@ -1,5 +1,3 @@
-import React from 'react'
-
 
 const formatedDate = (date) => {
     let splited = date.split(' ');

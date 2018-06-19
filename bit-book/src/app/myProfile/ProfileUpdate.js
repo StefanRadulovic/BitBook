@@ -1,5 +1,5 @@
 import React, { Fragment, Component } from 'react'
-let alertClass = alertClass = 'col-7 update-profile-img-name';
+
 class ProfileUpdate extends Component {
     constructor(props) {
         super(props)
@@ -16,17 +16,6 @@ class ProfileUpdate extends Component {
             nameText: event.target.value
         })
         this.props.updateName(event.target.value);
-        // if (this.state.nameText.length > 29) {
-        //     alertClass = 'col-7 alert update-profile-img-name';
-        //     this.setState({
-        //         disabled: true
-        //     })
-        // } else {
-        //     alertClass = 'col-7 update-profile-img-name';
-        //     this.setState({
-        //         disabled: false  //KAKO da se sinhronizuje, ovako ne valja, dodaje klasu na jedan gore a skida je na jedan dole
-        //     })
-        // }
     }
 
     onChangeAboutHandler(event) {
@@ -48,8 +37,8 @@ class ProfileUpdate extends Component {
             <Fragment>
                 <div className='row'>
                     <div className='col-4 update-profile-img-name'>
-                        {(!this.props.imgUrl) ? <img src='http://www.btisolutions.com/v2/wp-content/uploads/2016/07/ef3-placeholder-image-470x430.jpg' className="offset-1 col-10" id="update-img" /> :
-                            <img src={this.props.imgUrl} className="offset-1 col-10" id="update-img" />}
+                        {(!this.props.imgUrl) ? <img src='http://www.btisolutions.com/v2/wp-content/uploads/2016/07/ef3-placeholder-image-470x430.jpg' className="offset-1 col-10" id="update-img" alt="" /> :
+                            <img src={this.props.imgUrl} className="offset-1 col-10" id="update-img" alt="" />}
                         <input type='button' className="btn btn-light upload-img-btn" value='UPLOAD PHOTO' onClick={this.props.openSecondModal} />
                     </div>
                     <div className={alertClass}>

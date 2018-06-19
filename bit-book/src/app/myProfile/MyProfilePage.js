@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import profileService from '../../services/profileService';
-import { Link } from 'react-router-dom';
 import Modal from 'react-responsive-modal';
 import ProfileUpdate from './ProfileUpdate';
 import UploadPicture from './UploadPicture';
@@ -101,13 +100,13 @@ class MyProfilePage extends Component {
         if (!this.state.profile.avatarUrl) {
             return (
                 <div class="profile-img">
-                    <img className="profileImg" src="https://intellihr.com.au/wp-content/uploads/2017/06/avatar_placeholder_temporary.png" />
+                    <img alt="" className="profileImg" src="https://intellihr.com.au/wp-content/uploads/2017/06/avatar_placeholder_temporary.png" />
                 </div>
             )
         } else {
             return (
                 <div class="profile-img">
-                    <img className="profileImg" src={this.state.profile.avatarUrl} />
+                    <img alt="" className="profileImg" src={this.state.profile.avatarUrl} />
                 </div>
             );
         }
@@ -198,7 +197,7 @@ class MyProfilePage extends Component {
             <div className="my-profile-page">
                 {this.profileImage()}
                 <h1>{this.state.profile.name}</h1>
-                {(this.state.profileEmail != this.state.ourEmail) ? '' : <div className="edit-profile" onClick={this.onOpenModal}>Edit profile</div>}
+                {(this.state.profileEmail !== this.state.ourEmail) ? '' : <div className="edit-profile" onClick={this.onOpenModal}>Edit profile</div>}
                 <p>{this.state.profile.about}</p>
                 < Modal
                     open={this.state.open}
