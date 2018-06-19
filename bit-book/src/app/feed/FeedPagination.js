@@ -6,8 +6,7 @@ import { FilterPosts } from './FilterPosts';
 import { CreateNewPost } from '../createNewPost/CreateNewPost';
 import { FeedContent } from './FeedContentPagination';
 import paginationFeedService from '../../services/paginationFeedService';
-import Lightbox from 'react-image-lightbox';
-import 'react-image-lightbox/style.css';
+
 
 
 
@@ -44,7 +43,10 @@ export default class Feed extends React.Component {
     }
     componentDidMount() {
         this.loadPostsNumber();
-        const page = this.props.match.params.pageNumber - 1;
+        let page = this.props.match.params.pageNumber - 1
+        if (page > this.state.posts / 5) {
+            page = 0
+        }
         this.setState({
             pageSkip: page
         });
