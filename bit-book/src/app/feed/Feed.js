@@ -30,6 +30,22 @@ export default class Feed extends React.Component {
         this.loadPosts();
     }
 
+    componentWillReceiveProps(nextProps) {
+        let pageUnm = nextProps.match.params.pageNumber - 1
+        let page;
+        if (pageUnm > this.state.posts / 5) {
+            page = 0
+        } else {
+            page = pageUnm
+        }
+        this.setState({
+            pageSkip: page
+        })
+
+        this.loadPagPosts(page)
+
+    }
+
     render() {
         return this.state.posts === null ? <LoadingScreen /> : (
             <div className="feed">

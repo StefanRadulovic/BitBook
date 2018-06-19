@@ -26,7 +26,7 @@ class App extends Component {
 
   componentDidMount() {
     const local = localStorage.getItem('logIn');
-    if (local && local != 'undefined') {
+    if (local) {
       this.logInLogOut(true);
     }
   }
