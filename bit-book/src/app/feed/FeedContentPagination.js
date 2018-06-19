@@ -28,7 +28,7 @@ export const FeedContent = (props) => {
                         return <TextPost post={post} refreshFeed={props.refreshFeed} key={i} />;
                     }
                     if (post.type === "image") {
-                        return <ImagePost post={post} refreshFeed={props.refreshFeed} key={i} />;
+                        return <ImagePost post={post} refreshFeed={props.refreshFeed} key={i} onClick={props.imgClickhandler} />;
                     }
                     if (post.type === "video") {
                         return <VideoPost post={post} refreshFeed={props.refreshFeed} key={i} />;

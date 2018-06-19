@@ -15,7 +15,8 @@ export class LoginRegister extends React.Component {
             pass: '',
             registerName: '',
             registerEmail: '',
-            error: ''
+            error: '',
+            passLengthError: ''
         };
     }
 
@@ -62,7 +63,8 @@ export class LoginRegister extends React.Component {
             password: this.state.pass
         }
 
-        authenticationService.logIn(logInObj).then(data => {
+        authenticationService.logIn(logInObj).then(() => {
+
 
             this.props.logInLogOut(true);
 
@@ -81,27 +83,34 @@ export class LoginRegister extends React.Component {
     }
 
     registerHandler = (event) => {
-        const regObj = {
-            username: this.state.username,
-            password: this.state.pass,
-            name: this.state.registerName,
-            email: this.state.registerEmail
-        };
+        if (this.state.pass.length >= 6) {
+            const regObj = {
+                username: this.state.username,
+                password: this.state.pass,
+                name: this.state.registerName,
+                email: this.state.registerEmail
+            };
 
-        authenticationService.register(regObj).then(data => {
-            this.setState({
-                username: '',
-                pass: '',
-                registerName: '',
-                registerEmail: '',
-                currentIndex: 0
-            });
-        }).catch(err => {
-            this.setState({
-                error: err
+            authenticationService.register(regObj).then(data => {
+                this.setState({
+                    username: '',
+                    pass: '',
+                    registerName: '',
+                    registerEmail: '',
+                    currentIndex: 0
+                });
+            }).catch(err => {
+                this.setState({
+                    error: err
+                })
+
             })
+        } else {
+            this.setState({
+                passLengthError: "Password too short! Password mast have at least 6 characters!"
+            })
+        }
 
-        })
     }
 
     onTabSelect = (index) => {
@@ -142,7 +151,7 @@ export class LoginRegister extends React.Component {
                     <input type="password" id="registerPass" name="registerPass" placeholder=" Min 6 characters" onChange={this.handleChange} value={this.state.pass} />
                     <br />
                     <input type="button" className="btn btn-primary" onClick={this.registerHandler} value="Register" />
-                    <div className='alert'>{this.state.error.message}</div>
+                    <div className='alert'>{this.state.error.message}{this.state.passLengthError}</div>
                 </TabPanel>
             </Tabs >
         )
