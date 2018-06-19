@@ -45,8 +45,13 @@ export default class Feed extends React.Component {
         this.loadPagPosts(page);
     }
     componentWillReceiveProps(nextProps) {
-
-        const page = nextProps.match.params.pageNumber - 1
+        let pageUnm = nextProps.match.params.pageNumber - 1
+        let page;
+        if (pageUnm > this.state.posts / 5) {
+            page = 0
+        } else {
+            page = pageUnm
+        }
         this.setState({
             pageSkip: page
         })
