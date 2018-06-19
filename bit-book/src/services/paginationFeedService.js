@@ -5,7 +5,7 @@ class PaginationFeedService {
     getPostsNumber() {
         const sessionId = getOutHeader()
 
-        return fetch(apiUrl + 'posts/count', {
+        return fetch(`${apiUrl}posts/count`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -29,8 +29,14 @@ class PaginationFeedService {
                 'Key': apiKey,
                 'SessionId': sessionId
             }
-        }).then(response => response.json())
+        }).then(response => {
+
+
+            return response.json()
+        })
             .then(data => {
+
+
                 return data
             });
     }

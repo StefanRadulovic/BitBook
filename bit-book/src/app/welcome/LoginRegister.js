@@ -63,7 +63,8 @@ export class LoginRegister extends React.Component {
             password: this.state.pass
         }
 
-        authenticationService.logIn(logInObj).then(data => {
+        authenticationService.logIn(logInObj).then(() => {
+
 
             this.props.logInLogOut(true);
 
