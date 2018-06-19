@@ -7,11 +7,11 @@ class SingleFeedItemService {
         const sessionId = getOutHeader()
         let typeUrl = 'TextPosts/';
 
-        if (type == 'image') {
+        if (type === 'image') {
             typeUrl = 'ImagePosts/';
         }
 
-        if (type == 'video') {
+        if (type === 'video') {
             typeUrl = 'VideoPosts/';
         }
         return fetch(apiUrl + typeUrl + postId, {
@@ -59,8 +59,8 @@ class SingleFeedItemService {
             }
         }).then(response => response.json())
             .then(data => {
-               
-                
+
+
                 return data
             });
     }

@@ -3,7 +3,6 @@ import newPostService from '../../services/newPostService';
 import { validateImgURL } from '../../shared/validateUrl';
 import { validateVideoUrl } from '../../shared/validateUrl';
 import { getVideoId } from '../../shared/validateUrl';
-import { Link } from 'react-router-dom';
 import Modal from 'react-responsive-modal';
 
 export class CreateNewPost extends React.Component {
