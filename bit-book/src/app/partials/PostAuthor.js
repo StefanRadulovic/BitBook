@@ -26,13 +26,16 @@ export class PostAuthor extends React.Component {
         let userId = this.state.user.id;
         postService.deletePost(postId, userId)
             .then(data => {
+
                 this.props.refreshFeed();
             });
     }
 
     componentDidMount() {
+
         this.loadUserData();
     }
+
 
     render() {
         return this.state.user === null ? "" : (

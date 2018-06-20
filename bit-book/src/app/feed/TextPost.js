@@ -6,7 +6,7 @@ export const TextPost = (props) => {
 
     return (
         <div className="post">
-            <PostAuthor post={props.post} refreshFeed={props.refreshFeed} />
+            <PostAuthor post={props.post} refreshFeed={props.refreshFeed} key={props.post.id} />
             <div className="post-content">
                 <p>{props.post.text}</p>
             </div>

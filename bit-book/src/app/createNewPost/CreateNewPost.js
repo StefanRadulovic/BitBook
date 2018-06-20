@@ -77,7 +77,7 @@ export class CreateNewPost extends React.Component {
 
     handleClick = (event) => {
         let post = this.state.inputValue;
-        if (this.state.inputValue) {
+        if (post) {
 
             if (this.state.postType === "text") {
                 postService.addNewTextPost(post).then(data => {
