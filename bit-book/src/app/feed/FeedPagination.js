@@ -1,11 +1,11 @@
 import React from 'react';
-// import feedService from '../../services/feedService';
+import postService from '../../services/postService';
 import { LoadingScreen } from '../partials/LoadingScreen';
 // import { FeedContent } from './FeedContent';
 import { FilterPosts } from './FilterPosts';
 import { CreateNewPost } from '../createNewPost/CreateNewPost';
 import { FeedContent } from './FeedContentPagination';
-import paginationFeedService from '../../services/paginationFeedService';
+
 
 
 
@@ -23,7 +23,7 @@ export default class Feed extends React.Component {
 
     loadPostsNumber = () => {
 
-        paginationFeedService.getPostsNumber().then(data => {
+        postService.getPostsNumber().then(data => {
             this.setState({
                 posts: data
             });
@@ -34,7 +34,7 @@ export default class Feed extends React.Component {
         if (page === undefined) {
             page = this.state.pageSkip
         }
-        paginationFeedService.getPaginationPosts(page).then(pagPosts => {
+        postService.getPagPosts(page).then(pagPosts => {
 
             this.setState({
                 pagPosts

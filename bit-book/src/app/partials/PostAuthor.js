@@ -1,7 +1,7 @@
 import React from 'react';
-import peopleService from '../../services/peopleService';
-import deletePostService from '../../services/deletePostService';
-import { timeSince } from '../../entities/timeSince';
+import userService from '../../services/userService';
+import postService from '../../services/postService';
+import { timeSince } from '../../shared/utils';
 import { Link } from 'react-router-dom';
 
 export class PostAuthor extends React.Component {
@@ -13,7 +13,7 @@ export class PostAuthor extends React.Component {
     }
 
     loadUserData = () => {
-        peopleService.fetchSingleUserData(this.props.post.userId)
+        userService.getUserProfile(this.props.post.userId)
             .then(data => {
                 this.setState({
                     user: data
@@ -24,7 +24,7 @@ export class PostAuthor extends React.Component {
     handleClick = () => {
         let postId = this.props.post.id;
         let userId = this.state.user.id;
-        deletePostService.deletePost(postId, userId)
+        postService.deletePost(postId, userId)
             .then(data => {
                 this.props.refreshFeed();
             });
