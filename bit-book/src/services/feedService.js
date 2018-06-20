@@ -14,7 +14,7 @@ class FeedService {
             }
         }).then(response => response.json())
             .then(data => {
-                return data
+                return data;
             });
     }
 }

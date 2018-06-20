@@ -15,3 +15,5 @@ export const FilterText = (props) => {
         </div>
     );
 }
+
+const res = FilterText({});
