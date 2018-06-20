@@ -40,8 +40,10 @@ export default class Feed extends React.Component {
                         })
                     })
             }
+            posts: null
         }
     }
+
     loadPosts = () => {
 
         postService.getPagPosts(1).then(data => {
@@ -63,6 +65,16 @@ export default class Feed extends React.Component {
         window.removeEventListener("scroll", this.handleScroll);  // da kad predjemo na drugi page nemamo vise listener jer smo ga prikacili na windov i on ostaje tu dok se ne skloniS
     }
 
+    onScrollHandler = (event) => {
+        // console.log(event.view.innerHeight);
+        console.log(event);
+
+
+    }
+    componentDidMount() {
+
+        this.loadPosts();
+    }
 
     render() {
         return this.state.posts === null ? <LoadingScreen /> : (
