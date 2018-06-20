@@ -1,5 +1,5 @@
-import React, { Component, Fragment } from 'react'
-import peopleService from '../services/peopleService'
+import React, { Component } from 'react'
+import userService from '../services/userService';
 import PeoplePageItem from './PeoplePageItem'
 import SearchBox from './SearchBox'
 
@@ -17,7 +17,7 @@ class PeoplePage extends Component {
 
 
     componentDidMount() {
-        peopleService.fetchPeopleData().then(people => {
+        userService.fetchPeopleData().then(people => {
 
 
             this.setState({
@@ -45,10 +45,10 @@ class PeoplePage extends Component {
 
         return (
             <div className="people-page">
-                    <SearchBox search={this.search} />
-                    {(this.state.people.filter(this.filterUserList).length == 0) ? '' : this.state.people.filter(this.filterUserList).map((user, i) => {
-                        return <PeoplePageItem key={i} user={user} />
-                    })}
+                <SearchBox search={this.search} />
+                {(this.state.people.filter(this.filterUserList).length === 0) ? '' : this.state.people.filter(this.filterUserList).map((user, i) => {
+                    return <PeoplePageItem key={i} user={user} />
+                })}
             </div>
         )
     }

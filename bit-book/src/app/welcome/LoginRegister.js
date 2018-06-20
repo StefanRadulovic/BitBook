@@ -1,8 +1,8 @@
 import React from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import { Redirect } from 'react-router-dom';
 import authenticationService from '../../services/authenticationService';
-import profileService from '../../services/profileService';
+import userService from '../../services/userService';
+
 
 
 export class LoginRegister extends React.Component {
@@ -68,7 +68,7 @@ export class LoginRegister extends React.Component {
 
             this.props.logInLogOut(true);
 
-            profileService.getMyProfile().then(data => {
+            userService.getMyProfile().then(data => {
                 localStorage.setItem('userId', data.userId);
             });
         }).catch(err => this.setState({

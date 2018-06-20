@@ -1,8 +1,21 @@
+export const capitalize = (title) => {
+
+    return title.slice(0, 1).toUpperCase() + title.slice(1);
+}
+
+export const formatedDate = (date) => {
+    let splited = date.split(' ');
+    let nextSplited = splited[0].split('-');
+    let newDate = `${nextSplited[2]}.${nextSplited[1]}.${nextSplited[0]}`;
+    return newDate;
+
+
+}
 export const timeSince = (time) => {
 
-    
+
     let currentTime = new Date();
-    
+
     let delta = (currentTime - time) / 60000;
     let message;
 

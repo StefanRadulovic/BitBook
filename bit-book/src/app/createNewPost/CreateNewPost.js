@@ -1,9 +1,8 @@
 import React from 'react';
-import newPostService from '../../services/newPostService';
+import postService from '../../services/postService';
 import { validateImgURL } from '../../shared/validateUrl';
 import { validateVideoUrl } from '../../shared/validateUrl';
 import { getVideoId } from '../../shared/validateUrl';
-import { Link } from 'react-router-dom';
 import Modal from 'react-responsive-modal';
 
 export class CreateNewPost extends React.Component {
@@ -81,7 +80,7 @@ export class CreateNewPost extends React.Component {
         if (this.state.inputValue) {
 
             if (this.state.postType === "text") {
-                newPostService.addNewTextPost(post).then(data => {
+                postService.addNewTextPost(post).then(data => {
                     this.props.refreshFeed();
                 }).then(data => this.closeModal());
             }
@@ -89,7 +88,7 @@ export class CreateNewPost extends React.Component {
             if (this.state.postType === "image") {
 
                 if (validateImgURL(post)) {
-                    newPostService.addNewImagePost(post).then(data => {
+                    postService.addNewImagePost(post).then(data => {
                         this.props.refreshFeed();
                     }).then(data => this.closeModal());
                 } else {
@@ -104,7 +103,7 @@ export class CreateNewPost extends React.Component {
                 if (validateVideoUrl(post)) {
                     let videoUrlParams = getVideoId(post);
                     let url = "https://www.youtube.com/embed/" + videoUrlParams[5];
-                    newPostService.addNewVideoPost(url).then(data => {
+                    postService.addNewVideoPost(url).then(data => {
                         this.props.refreshFeed();
                     }).then(data => this.closeModal());
                 } else {

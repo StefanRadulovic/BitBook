@@ -3,7 +3,9 @@
   padding: 0;
   font-family: Roboto;
 }
-
+.disabled-link {
+  pointer-events: none;
+}
 textarea:focus, input:focus{
   outline: none;
 }
@@ -96,6 +98,7 @@ footer p {
   padding: 5px;
   box-sizing: border-box;
   position: relative;
+  overflow: hidden;   
 }
 
 .feed-content {

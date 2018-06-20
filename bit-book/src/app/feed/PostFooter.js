@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { capitalize } from '../../entities/capitalize';
+import { capitalize } from '../../shared/utils';
 
 export const PostFooter = (props) => {
 

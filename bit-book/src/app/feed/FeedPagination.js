@@ -1,14 +1,13 @@
 import React from 'react';
-// import feedService from '../../services/feedService';
+import postService from '../../services/postService';
 import { LoadingScreen } from '../partials/LoadingScreen';
 // import { FeedContent } from './FeedContent';
 import { FilterPosts } from './FilterPosts';
 import { CreateNewPost } from '../createNewPost/CreateNewPost';
 import { FeedContent } from './FeedContentPagination';
-import paginationFeedService from '../../services/paginationFeedService';
-// import Lightbox from 'react-image-lightbox';
-// import 'react-image-lightbox/style.css';
 
+
+g
 
 
 export default class Feed extends React.Component {
@@ -24,7 +23,7 @@ export default class Feed extends React.Component {
 
     loadPostsNumber = () => {
 
-        paginationFeedService.getPostsNumber().then(data => {
+        postService.getPostsNumber().then(data => {
             this.setState({
                 posts: data
             });
@@ -35,7 +34,7 @@ export default class Feed extends React.Component {
         if (page === undefined) {
             page = this.state.pageSkip
         }
-        paginationFeedService.getPaginationPosts(page).then(pagPosts => {
+        postService.getPagPosts(page).then(pagPosts => {
 
             this.setState({
                 pagPosts
@@ -44,7 +43,10 @@ export default class Feed extends React.Component {
     }
     componentDidMount() {
         this.loadPostsNumber();
-        const page = this.props.match.params.pageNumber - 1;
+        let page = this.props.match.params.pageNumber - 1
+        if (page > this.state.posts / 5) {
+            page = 0
+        }
         this.setState({
             pageSkip: page
         });
@@ -52,7 +54,11 @@ export default class Feed extends React.Component {
     }
     componentWillReceiveProps(nextProps) {
 
-        const page = nextProps.match.params.pageNumber - 1
+        let page = nextProps.match.params.pageNumber - 1
+        if (page > this.state.posts / 5) {
+            page = 0
+        }
+
         this.setState({
             pageSkip: page
         })

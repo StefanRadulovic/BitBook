@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import profileService from '../../services/profileService';
-import { Link } from 'react-router-dom';
+import userService from '../../services/userService';
 import Modal from 'react-responsive-modal';
 import ProfileUpdate from './ProfileUpdate';
 import UploadPicture from './UploadPicture';
@@ -28,7 +27,7 @@ class MyProfilePage extends Component {
     getUserProfile = () => {
 
         const id = this.props.match.params.id;
-        profileService.getUserProfile(id).then(profile => {
+        userService.getUserProfile(id).then(profile => {
             this.setState({
                 profile: profile,
                 profileEmail: profile.email,
@@ -41,7 +40,7 @@ class MyProfilePage extends Component {
 
     reloadPage = () => {
 
-        profileService.getMyProfile()
+        userService.getMyProfile()
             .then(profile => {
                 this.setState({
                     profile: profile,
@@ -59,7 +58,7 @@ class MyProfilePage extends Component {
         this.setState({
             ourEmail
         });
-        console.log(this.props.match.params.id);
+
         (!this.props.match.params.id) ? this.reloadPage() : this.getUserProfile();
     }
     componentWillReceiveProps(nextProps) {
@@ -101,13 +100,13 @@ class MyProfilePage extends Component {
         if (!this.state.profile.avatarUrl) {
             return (
                 <div class="profile-img">
-                    <img className="profileImg" src="https://intellihr.com.au/wp-content/uploads/2017/06/avatar_placeholder_temporary.png" />
+                    <img alt="" className="profileImg" src="https://intellihr.com.au/wp-content/uploads/2017/06/avatar_placeholder_temporary.png" />
                 </div>
             )
         } else {
             return (
                 <div class="profile-img">
-                    <img className="profileImg" src={this.state.profile.avatarUrl} />
+                    <img alt="" className="profileImg" src={this.state.profile.avatarUrl} />
                 </div>
             );
         }
@@ -123,7 +122,7 @@ class MyProfilePage extends Component {
                 'avatarUrl': this.state.imageUploadUrl
             }
 
-            profileService.updateProfile(profileObj).then(data => {
+            userService.updateProfile(profileObj).then(data => {
 
                 this.setState({
                     updateError: '',
@@ -146,7 +145,7 @@ class MyProfilePage extends Component {
 
         const formData = new FormData();
         formData.append('file', this.state.fileImg)
-        profileService.uploadImage(formData).then(data => {
+        userService.uploadImage(formData).then(data => {
             this.setState({
                 imageUploadUrl: data,
                 openSecondModal: false
@@ -198,7 +197,7 @@ class MyProfilePage extends Component {
             <div className="my-profile-page">
                 {this.profileImage()}
                 <h1>{this.state.profile.name}</h1>
-                {(this.state.profileEmail != this.state.ourEmail) ? '' : <div className="edit-profile" onClick={this.onOpenModal}>Edit profile</div>}
+                {(this.state.profileEmail !== this.state.ourEmail) ? '' : <div className="edit-profile" onClick={this.onOpenModal}>Edit profile</div>}
                 <p>{this.state.profile.about}</p>
                 < Modal
                     open={this.state.open}

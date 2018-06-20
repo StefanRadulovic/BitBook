@@ -1,6 +1,5 @@
 import React from 'react';
-import singleFeedItemService from '../../services/singleFeedItemService';
-import { timeSince } from '../../entities/timeSince';
+import postService from '../../services/postService';
 import { LoadingScreen } from '../partials/LoadingScreen';
 import { SingleTextPost } from './SingleTextPost';
 import { SingleImagePost } from './SingleImagePost';
@@ -8,7 +7,6 @@ import { SingleVideoPost } from './SingleVideoPost';
 import { PostAuthor } from '../partials/PostAuthor';
 import Comments from './Comments';
 import Feed from '../feed/Feed';
-import { Link, Redirect } from 'react-router-dom';
 
 export default class SingleFeedItem extends React.Component {
     constructor(props) {
@@ -25,7 +23,7 @@ export default class SingleFeedItem extends React.Component {
         let postId = this.props.match.params.id;
         let type = this.props.match.params.type;
 
-        singleFeedItemService.getPostByType(postId, type).then(data => {
+        postService.getPostByType(postId, type).then(data => {
             this.setState({
                 post: data
             });

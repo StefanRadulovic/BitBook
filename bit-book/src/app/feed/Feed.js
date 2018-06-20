@@ -1,5 +1,5 @@
 import React from 'react';
-import feedService from '../../services/feedService';
+import postService from '../../services/postService';
 import { LoadingScreen } from '../partials/LoadingScreen';
 import { FeedContent } from './FeedContent';
 import { FilterPosts } from './FilterPosts';
@@ -13,12 +13,14 @@ export default class Feed extends React.Component {
         this.state = {
             posts: null,
 
+
         }
     }
 
     loadPosts = () => {
 
-        feedService.getPosts().then(data => {
+        postService.getPosts().then(data => {
+
             this.setState({
                 posts: data
             });
@@ -28,6 +30,22 @@ export default class Feed extends React.Component {
 
     componentDidMount() {
         this.loadPosts();
+    }
+
+    componentWillReceiveProps(nextProps) {
+        let pageUnm = nextProps.match.params.pageNumber - 1
+        let page;
+        if (pageUnm > this.state.posts / 5) {
+            page = 0
+        } else {
+            page = pageUnm
+        }
+        this.setState({
+            pageSkip: page
+        })
+
+        this.loadPagPosts(page)
+
     }
 
     render() {

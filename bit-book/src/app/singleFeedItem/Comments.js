@@ -1,5 +1,5 @@
 import React from 'react';
-import singleFeedItemService from '../../services/singleFeedItemService';
+import postService from '../../services/postService';
 import { LoadingScreen } from '../partials/LoadingScreen';
 import SingleComment from './SingleComment';
 import { NoComments } from './NoComments';
@@ -16,7 +16,7 @@ export default class Comments extends React.Component {
 
     loadComments = () => {
         let postId = this.props.postId;
-        singleFeedItemService.getComments(postId).then(data => {
+        postService.getComments(postId).then(data => {
             this.setState({
                 comments: data
             });
@@ -34,7 +34,7 @@ export default class Comments extends React.Component {
         let comment = this.state.inputValue;
         let postId = this.props.postId;
         if (this.state.inputValue) {
-            singleFeedItemService.addNewComment(comment, postId).then(data => {
+            postService.addNewComment(comment, postId).then(data => {
                 this.loadComments();
             });
             this.setState({

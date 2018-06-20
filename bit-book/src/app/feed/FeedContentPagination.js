@@ -19,6 +19,7 @@ const pageNumber = (num) => {
 export const FeedContent = (props) => {
 
     const numberOfPage = Math.ceil(props.posts / 5)
+
     return (
         <div className="feed-content">
             {(props.posts === 0) ? <NothingInFeed /> :
@@ -35,15 +36,15 @@ export const FeedContent = (props) => {
                 }))}
             <nav aria-label="Page navigation example">
                 <ul className="pagination">
-                    <li className="page-item">
-                        <Link to={`/home/${props.page}`} className="page-link"> <span aria-hidden="true">&laquo;</span></Link>
-                    </li>
+                    {(props.page === 0) ? "" : <li className="page-item">
+                        <Link to={`/home/${props.page}`} className="page-link "> <span aria-hidden="true">&laquo;</span></Link>
+                    </li>}
                     {
                         pageNumber(numberOfPage)
                     }
-                    <li className="page-item">
-                        <Link to={`/home/${props.page + 2}`} className="page-link"> <span aria-hidden="true">&raquo;</span></Link>
-                    </li>
+                    {(props.page === numberOfPage - 1) ? "" : <li className="page-item">
+                        <Link to={`/home/${props.page + 2}`} className="page-link "> <span aria-hidden="true">&raquo;</span></Link>
+                    </li>}
 
                 </ul>
             </nav>
