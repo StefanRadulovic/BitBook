@@ -5726,10 +5726,13 @@ react-images-uploader@^1.2.0-rc1:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 react-lifecycles-compat@^3.0.0, react-lifecycles-compat@^3.0.4:
 =======
 =======
 >>>>>>> infiniti scroll started
+=======
+>>>>>>> 0ba09da94dec67dda9a01031465a93e212fe504c
 react-infinite-scroller@^1.1.4:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/react-infinite-scroller/-/react-infinite-scroller-1.1.4.tgz#176b1a9ca8fdff53eeb34f648c7b0d446459d61b"
