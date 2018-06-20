@@ -1,24 +1,16 @@
 import React from 'react';
-<<<<<<< HEAD
-// import feedService from '../../services/feedService';;
-=======
 // import feedService from '../../services/feedService';
->>>>>>> 0ba09da94dec67dda9a01031465a93e212fe504c
 import { LoadingScreen } from '../partials/LoadingScreen';
 import { FeedContent } from './FeedContent';
 import { FilterPosts } from './FilterPosts';
 import { CreateNewPost } from '../createNewPost/CreateNewPost';
 import infiniteScrollFeedService from '../../services/infiniteScrollFeedService';
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 0ba09da94dec67dda9a01031465a93e212fe504c
 export default class Feed extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-<<<<<<< HEAD
             posts: null,
             pageSkip: 0,
             // height: window.innerHeight
@@ -49,13 +41,6 @@ export default class Feed extends React.Component {
                 })
         }
     }
-=======
-            posts: null
-        }
-        this.scroll = React.createRef()
-    }
-
->>>>>>> 0ba09da94dec67dda9a01031465a93e212fe504c
     loadPosts = () => {
 
         infiniteScrollFeedService.getPosts(1).then(data => {
@@ -67,7 +52,6 @@ export default class Feed extends React.Component {
 
         });
     }
-<<<<<<< HEAD
 
     componentDidMount() {
         window.addEventListener("scroll", this.handleScroll);
@@ -79,29 +63,10 @@ export default class Feed extends React.Component {
     }
 
 
-
-
-    render() {
-        return this.state.posts === null ? <LoadingScreen /> : (
-            <div className="feed" ref={this.scroll}>
-                <FeedContent posts={this.state.posts} hasMore={this.state.hasMoreItems} reshFeed={this.loadPosts} />
-=======
-    onScrollHandler = (event) => {
-        // console.log(event.view.innerHeight);
-        console.log(event);
-
-
-    }
-    componentDidMount() {
-
-        this.loadPosts();
-    }
-
     render() {
         return this.state.posts === null ? <LoadingScreen /> : (
             <div className="feed">
                 <FeedContent posts={this.state.posts} refreshFeed={this.loadPosts} />
->>>>>>> 0ba09da94dec67dda9a01031465a93e212fe504c
                 <FilterPosts />
                 <CreateNewPost refreshFeed={this.loadPosts} />
             </div>
