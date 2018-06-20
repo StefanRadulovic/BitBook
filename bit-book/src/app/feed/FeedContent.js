@@ -7,7 +7,11 @@ import { VideoPost } from './VideoPost';
 export const FeedContent = (props) => {
 
     return (
-        <div className="feed-content">
+<<<<<<< HEAD
+
+=======
+>>>>>>> 0ba09da94dec67dda9a01031465a93e212fe504c
+        <div className="feed-content" onScroll={(event) => { console.log(event) }} >
             {props.posts.length === 0 ? <NothingInFeed /> :
                 (props.posts.map((post, i) => {
                     if (post.type === "text") {

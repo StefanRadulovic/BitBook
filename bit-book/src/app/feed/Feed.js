@@ -13,12 +13,14 @@ export default class Feed extends React.Component {
         this.state = {
             posts: null,
 
+
         }
     }
 
     loadPosts = () => {
 
         feedService.getPosts().then(data => {
+
             this.setState({
                 posts: data
             });
