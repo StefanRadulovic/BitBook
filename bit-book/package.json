@@ -21,5 +21,8 @@
     "eject": "react-scripts eject"
   },
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^4.12.0"
+  }
 }
