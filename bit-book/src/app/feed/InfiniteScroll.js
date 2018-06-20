@@ -11,11 +11,36 @@ export default class Feed extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            posts: null
+            posts: null,
+            pageSkip: 0,
+            // height: window.innerHeight
         }
         this.scroll = React.createRef()
     }
+    handleScroll = () => {
+        const windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
+        const body = document.body;
+        const html = document.documentElement;
+        const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
+        const windowBottom = windowHeight + Math.ceil(window.pageYOffset);
 
+        if (windowBottom >= docHeight) {
+
+
+            infiniteScrollFeedService.getPosts(this.state.pageSkip)
+                .then(posts => {
+                    const newSkip = this.state.pageSkip + 1;
+                    const copyPosts = this.state.posts.slice();
+                    const newPosts = copyPosts.concat(posts);
+
+                    this.setState({
+                        posts: newPosts,
+                        pageSkip: newSkip
+
+                    })
+                })
+        }
+    }
     loadPosts = () => {
 
         infiniteScrollFeedService.getPosts(1).then(data => {
@@ -27,21 +52,18 @@ export default class Feed extends React.Component {
 
         });
     }
-    onScrollHandler = (event) => {
-        console.log("HI");
 
-
-    }
     componentDidMount() {
-
+        window.addEventListener("scroll", this.handleScroll);
         this.loadPosts();
     }
 
-
-
-    componentDidMount() {
-        this.loadPosts();
+    componentWillUnmount() {
+        window.removeEventListener("scroll", this.handleScroll);  // da kad predjemo na drugi page nemamo vise listener jer smo ga prikacili na windov i on ostaje tu dok se ne skloniS
     }
+
+
+
 
     render() {
         return this.state.posts === null ? <LoadingScreen /> : (

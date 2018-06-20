@@ -13,8 +13,8 @@ import FeedVideos from './feed/FeedVideos';
 import SingleFeedItem from './singleFeedItem/SingleFeedItem';
 import WelcomePage from './welcome/WelcomePage';
 import { WelcomeHeader } from './welcome/WelcomeHeader';
-import Feed from './feed/FeedPagination'
-// import Feed from './feed/InfiniteScroll';
+// import Feed from './feed/FeedPagination'
+import Feed from './feed/InfiniteScroll';
 
 
 

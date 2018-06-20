@@ -13,6 +13,7 @@ export default class Feed extends React.Component {
         this.state = {
             posts: null,
 
+
         }
     }
 
