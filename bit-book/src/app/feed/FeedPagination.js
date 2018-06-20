@@ -1,13 +1,12 @@
 import React from 'react';
 import postService from '../../services/postService';
 import { LoadingScreen } from '../partials/LoadingScreen';
-// import { FeedContent } from './FeedContent';
 import { FilterPosts } from './FilterPosts';
 import { CreateNewPost } from '../createNewPost/CreateNewPost';
 import { FeedContent } from './FeedContentPagination';
 
 
-g
+
 
 
 export default class Feed extends React.Component {
