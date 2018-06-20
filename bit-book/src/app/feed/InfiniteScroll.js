@@ -1,10 +1,10 @@
 import React from 'react';
-// import feedService from '../../services/feedService';
+import postService from '../../services/postService';
 import { LoadingScreen } from '../partials/LoadingScreen';
 import { FeedContent } from './FeedContent';
 import { FilterPosts } from './FilterPosts';
 import { CreateNewPost } from '../createNewPost/CreateNewPost';
-import infiniteScrollFeedService from '../../services/infiniteScrollFeedService';
+
 
 
 export default class Feed extends React.Component {
@@ -13,9 +13,9 @@ export default class Feed extends React.Component {
         this.state = {
             posts: null,
             pageSkip: 0,
-            // height: window.innerHeight
+
         }
-        this.scroll = React.createRef()
+
     }
     handleScroll = () => {
         const windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
@@ -25,25 +25,26 @@ export default class Feed extends React.Component {
         const windowBottom = windowHeight + Math.ceil(window.pageYOffset);
 
         if (windowBottom >= docHeight) {
+            if (this.state.posts !== null) {
 
+                postService.getPagPosts(this.state.pageSkip)
+                    .then(posts => {
+                        const newSkip = this.state.pageSkip + 1;
+                        const copyPosts = this.state.posts.slice();
+                        const newPosts = copyPosts.concat(posts);
 
-            infiniteScrollFeedService.getPosts(this.state.pageSkip)
-                .then(posts => {
-                    const newSkip = this.state.pageSkip + 1;
-                    const copyPosts = this.state.posts.slice();
-                    const newPosts = copyPosts.concat(posts);
+                        this.setState({
+                            posts: newPosts,
+                            pageSkip: newSkip
 
-                    this.setState({
-                        posts: newPosts,
-                        pageSkip: newSkip
-
+                        })
                     })
-                })
+            }
         }
     }
     loadPosts = () => {
 
-        infiniteScrollFeedService.getPosts(1).then(data => {
+        postService.getPagPosts(1).then(data => {
 
 
             this.setState({

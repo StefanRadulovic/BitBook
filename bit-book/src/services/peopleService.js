@@ -1,7 +1,7 @@
 import { apiUrl, apiKey, getOutHeader } from '../shared/constants';
-import formatedDate from '../entities/formatedDate'
 import User from '../entities/User';
-import { capitalize } from '../entities/capitalize';
+import { capitalize, formatedDate } from '../shared/utils';
+
 
 
 class PeopleService {

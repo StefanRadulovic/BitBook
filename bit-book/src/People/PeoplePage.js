@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import peopleService from '../services/peopleService'
+import userService from '../services/userService';
 import PeoplePageItem from './PeoplePageItem'
 import SearchBox from './SearchBox'
 
@@ -17,7 +17,7 @@ class PeoplePage extends Component {
 
 
     componentDidMount() {
-        peopleService.fetchPeopleData().then(people => {
+        userService.fetchPeopleData().then(people => {
 
 
             this.setState({

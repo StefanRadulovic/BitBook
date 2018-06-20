@@ -1,6 +1,6 @@
 import React from 'react';
-import peopleService from '../../services/peopleService';
-import { timeSince } from '../../entities/timeSince';
+import userService from '../../services/userService';
+import { timeSince } from '../../shared/utils';
 import { Link } from 'react-router-dom';
 
 export default class SingleComment extends React.Component {
@@ -12,7 +12,7 @@ export default class SingleComment extends React.Component {
     }
 
     componentDidMount() {
-        peopleService.fetchSingleUserData(this.props.comment.authorId).then(data => {
+        userService.getUserProfile(this.props.comment.authorId).then(data => {
             this.setState({
                 authorAvatar: data.avatarUrl
             });

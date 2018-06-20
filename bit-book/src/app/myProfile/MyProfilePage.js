@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import profileService from '../../services/profileService';
+import userService from '../../services/userService';
 import Modal from 'react-responsive-modal';
 import ProfileUpdate from './ProfileUpdate';
 import UploadPicture from './UploadPicture';
@@ -27,7 +27,7 @@ class MyProfilePage extends Component {
     getUserProfile = () => {
 
         const id = this.props.match.params.id;
-        profileService.getUserProfile(id).then(profile => {
+        userService.getUserProfile(id).then(profile => {
             this.setState({
                 profile: profile,
                 profileEmail: profile.email,
@@ -40,7 +40,7 @@ class MyProfilePage extends Component {
 
     reloadPage = () => {
 
-        profileService.getMyProfile()
+        userService.getMyProfile()
             .then(profile => {
                 this.setState({
                     profile: profile,
@@ -58,7 +58,7 @@ class MyProfilePage extends Component {
         this.setState({
             ourEmail
         });
-        console.log(this.props.match.params.id);
+
         (!this.props.match.params.id) ? this.reloadPage() : this.getUserProfile();
     }
     componentWillReceiveProps(nextProps) {
@@ -122,7 +122,7 @@ class MyProfilePage extends Component {
                 'avatarUrl': this.state.imageUploadUrl
             }
 
-            profileService.updateProfile(profileObj).then(data => {
+            userService.updateProfile(profileObj).then(data => {
 
                 this.setState({
                     updateError: '',
@@ -145,7 +145,7 @@ class MyProfilePage extends Component {
 
         const formData = new FormData();
         formData.append('file', this.state.fileImg)
-        profileService.uploadImage(formData).then(data => {
+        userService.uploadImage(formData).then(data => {
             this.setState({
                 imageUploadUrl: data,
                 openSecondModal: false
