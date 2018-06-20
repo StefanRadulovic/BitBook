@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import userService from '../services/userService';
+import userService from '../../services/userService';
 import PeoplePageItem from './PeoplePageItem'
 import SearchBox from './SearchBox'
 

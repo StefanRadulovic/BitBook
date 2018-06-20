@@ -44,16 +44,22 @@ export default class Feed extends React.Component {
     }
     loadPosts = () => {
 
-        postService.getPagPosts(1).then(data => {
+        postService.getPagPosts(this.state.pageSkip).then(data => {
 
-
+            const newPageSkip = this.state.pageSkip + 1
             this.setState({
-                posts: data
+                posts: data,
+                pageSkip: newPageSkip
             });
 
         });
     }
-
+    refreshFeed = () => {
+        this.setState({
+            pageSkip: 0
+        });
+        this.loadPosts();
+    }
     componentDidMount() {
         window.addEventListener("scroll", this.handleScroll);
         this.loadPosts();
@@ -67,9 +73,9 @@ export default class Feed extends React.Component {
     render() {
         return this.state.posts === null ? <LoadingScreen /> : (
             <div className="feed">
-                <FeedContent posts={this.state.posts} refreshFeed={this.loadPosts} />
+                <FeedContent posts={this.state.posts} refreshFeed={this.refreshFeed} />
                 <FilterPosts />
-                <CreateNewPost refreshFeed={this.loadPosts} />
+                <CreateNewPost refreshFeed={this.refreshFeed} />
             </div>
         );
     }
