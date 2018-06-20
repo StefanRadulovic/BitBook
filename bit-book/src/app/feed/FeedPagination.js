@@ -7,7 +7,7 @@ import { CreateNewPost } from '../createNewPost/CreateNewPost';
 import { FeedContent } from './FeedContentPagination';
 
 
-
+g
 
 
 export default class Feed extends React.Component {
