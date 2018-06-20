@@ -3,8 +3,8 @@ import { NothingInFeed } from './NothingInFeed';
 import { TextPost } from './TextPost';
 
 export const FilterText = (props) => {
-
     return (
+
         <div className="feed-content">
             {props.posts.length === 0 ? <NothingInFeed /> :
                 (props.posts.map((post, i) => {
@@ -15,5 +15,3 @@ export const FilterText = (props) => {
         </div>
     );
 }
-
-const res = FilterText({});

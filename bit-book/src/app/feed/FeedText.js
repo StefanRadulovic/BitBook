@@ -16,6 +16,8 @@ export default class FeedText extends React.Component {
     loadPosts = () => {
 
         postService.getPosts().then(data => {
+            console.log(data);
+
             this.setState({
                 posts: data
             });
