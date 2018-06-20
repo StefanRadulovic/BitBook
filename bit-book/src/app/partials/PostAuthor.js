@@ -42,7 +42,7 @@ export class PostAuthor extends React.Component {
             <div className="post-author">
                 <div className="post-author-img"><img src={this.state.user.avatarUrl} alt={this.state.user.name} /></div>
                 <div className="post-author-details">
-                    <div className="post-author-name"><Link to={"/people/" + this.state.user.userId}>{this.state.user.name}</Link></div>
+                    <div className="post-author-name"><Link to={`/people/${this.state.user.userId}`}>{this.state.user.name}</Link></div>
                     <div className="post-time">{timeSince(new Date(this.props.post.dateCreated))}</div>
                 </div>
                 {this.props.post.userId === JSON.parse(localStorage.getItem('userId')) ?
